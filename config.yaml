@@ -1,0 +1,102 @@
+config:
+  backup: true
+  create: true
+  dotpath: dotfiles
+dotfiles:
+  d_fonts:
+    dst: ~/.fonts
+    src: fonts
+  d_owl:
+    dst: ~/.config/owl
+    src: config/owl
+  d_themes:
+    dst: ~/.themes
+    src: themes
+  f_compton.conf:
+    dst: ~/.config/compton.conf
+    src: config/compton.conf
+  f_config.fish:
+    dst: ~/.config/fish/config.fish
+    src: config/fish/config.fish
+  f_gitattributes:
+    dst: ~/.gitattributes
+    src: gitattributes
+  f_gitconfig:
+    dst: ~/.gitconfig
+    src: gitconfig
+  f_gitignore:
+    dst: ~/.gitignore
+    src: gitignore
+  f_gtkrc-2.0:
+    dst: ~/.gtkrc-2.0
+    src: gtkrc-2.0
+  f_issue:
+    dst: /etc/issue
+    src: etc/issue
+  f_known_hosts:
+    dst: ~/.ssh/known_hosts
+    src: ssh/known_hosts
+  f_mailcap:
+    dst: ~/.mailcap
+    src: mailcap
+  f_mimeapps.list:
+    dst: ~/.config/mimeapps.list
+    src: config/mimeapps.list
+  f_mpv.conf:
+    dst: ~/.config/mpv/mpv.conf
+    src: config/mpv/mpv.conf
+  f_ncmpcpp_config:
+    dst: ~/.ncmpcpp/config
+    src: ncmpcpp/config
+  f_rofi_config:
+    dst: ~/.config/rofi/config
+    src: config/rofi/config
+  f_rtv.cfg:
+    dst: ~/.config/rtv/rtv.cfg
+    src: config/rtv/rtv.cfg
+  f_settings.ini:
+    dst: ~/.config/gtk-3.0/settings.ini
+    src: config/gtk-3.0/settings.ini
+  f_ssh_config:
+    dst: ~/.ssh/config
+    src: ssh/config
+  f_streamlink_config:
+    dst: ~/.config/streamlink/config
+    src: config/streamlink/config
+  f_termite_config:
+    dst: ~/.config/termite/config
+    src: config/termite/config
+  f_vimrc:
+    dst: ~/.vimrc
+    src: vimrc
+  f_xinitrc:
+    dst: ~/.xinitrc
+    src: xinitrc
+profiles:
+  ovo:
+    dotfiles:
+    - f_xinitrc
+    - f_ssh_config
+    - f_known_hosts
+    - f_compton.conf
+    - f_config.fish
+    - f_mimeapps.list
+    - f_mpv.conf
+    - f_termite_config
+    - d_fonts
+    - f_gitattributes
+    - f_gitconfig
+    - f_gitignore
+    - f_ncmpcpp_config
+    - f_mailcap
+    - f_vimrc
+    - f_rtv.cfg
+    - f_streamlink_config
+    - f_rofi_config
+    - f_settings.ini
+    - f_gtkrc-2.0
+    - d_themes
+    - d_owl
+  sudo:
+    dotfiles:
+    - f_issue

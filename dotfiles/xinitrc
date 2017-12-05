@@ -1,0 +1,7 @@
+#!/bin/bash
+
+mkdir $HOME/.cache
+mkdir $HOME/.cache/awesome
+sleep 2 && $HOME/.config/awesome/autorun.sh &
+
+exec awesome >> $HOME/.cache/awesome/stdout 2>> $HOME/.cache/awesome/stderr
