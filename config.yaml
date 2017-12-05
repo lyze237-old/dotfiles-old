@@ -3,6 +3,9 @@ config:
   create: true
   dotpath: dotfiles
 dotfiles:
+  d_awesome:
+    dst: ~/.config/awesome
+    src: config/awesome
   d_fonts:
     dst: ~/.fonts
     src: fonts
@@ -97,6 +100,7 @@ profiles:
     - f_gtkrc-2.0
     - d_themes
     - d_owl
+    - d_awesome
   sudo:
     dotfiles:
     - f_issue

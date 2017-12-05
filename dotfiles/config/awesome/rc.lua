@@ -66,7 +66,7 @@ altkey = "Mod1"
 
 -- Layout {{{ 
 awful.layout.layouts = {
-    awful.layout.suit.tile.left, --1
+    awful.layout.suit.fair, --1
     awful.layout.suit.tile, --2
     awful.layout.suit.tile.bottom, --3
     awful.layout.suit.floating, --4
