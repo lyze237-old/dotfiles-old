@@ -457,10 +457,10 @@ false)
         {description = "file manager", group = "launcher"}),
 
     awful.key({ modkey }, "p", function() awful.spawn("arandr") end,
-        {description = "display settings", group = "launcher"}),
+        {description = "display settings", group = "launcher"})
 
-    awful.key({ altkey, "Control" }, "l", function() awful.spawn(os.getenv("HOME") .. "/.config/owl/scripts/lock/lock.sh") end,
-        {description = "lock screen", group = "launcher"})
+--    awful.key({ altkey, "Control" }, "l", function() awful.spawn(os.getenv("HOME") .. "/.config/owl/scripts/lock/lock.sh") end,
+--        {description = "lock screen", group = "launcher"})
 
 )
 
@@ -636,7 +636,8 @@ awful.rules.rules = {
                 "pinentry",
                 "veromix",
                 "xtightvncviewer",
-                "flameshot"
+                "flameshot",
+                "stalonetray"
             },
             name = {
                 "Event Tester",  -- xev.
@@ -717,7 +718,7 @@ awful.rules.rules = {
         properties = {
         },
         callback = function(c)
-	     awful.spawn.with_shell("cat " .. os.getenv("HOME") .. "/nextcloud.txt | xclip -selection clipboard -r")
+	     awful.spawn.with_shell("cat " .. os.getenv("HOME") .. "/nextcloud.txt | xargs echo -n | xclip -selection clipboard")
         end
     }, 
 

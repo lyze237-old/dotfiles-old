@@ -47,7 +47,7 @@ theme.fg_minimize                               = theme.colors.fg3
 
 theme.tasklist_disable_icon                     = false
 theme.useless_gap                               = 10
-theme.border_width                              = 2
+theme.border_width                              = 2 
 theme.border_normal                             = theme.colors.bg1
 theme.border_focus                              = theme.colors.orange
 theme.border_marked                             = theme.colors.red
