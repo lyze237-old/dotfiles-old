@@ -447,8 +447,8 @@ false)
     awful.key({ modkey }, "r", function() awful.spawn("rofi -show run -modi run,drun,window") end,
         {description = "rofi run", group = "launcher"}),
 
-    awful.key({ modkey }, "d", function() awful.spawn("rofi -show drun -modi run,drun,window") end,
-        {description = "rofi drun", group = "launcher"}),
+    -- awful.key({ modkey }, "d", function() awful.spawn("rofi -show drun -modi run,drun,window") end,
+      --  {description = "rofi drun", group = "launcher"}),
 
     awful.key({ modkey }, "a", function() awful.spawn("rofi -show window -modi run,drun,window") end,
         {description = "rofi window", group = "launcher"}),
@@ -606,6 +606,11 @@ root.keys(globalkeys)
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
+        except_any = { 
+            class = {
+                "albert"
+            } 
+        },
         properties = { 
             border_width = beautiful.border_width,
             border_color = beautiful.border_normal,

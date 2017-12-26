@@ -4,12 +4,13 @@ message/rfc822=thunderbird.desktop
 x-scheme-handler/tg=telegramdesktop.desktop
 text/plain=mousepad.desktop
 application/x-shellscript=mousepad.desktop
+x-scheme-handler/discord-384215522050572288=discord-384215522050572288.desktop
 
 [Added Associations]
 text/plain=mousepad.desktop;
 application/x-shellscript=mousepad.desktop;vim.desktop;
-image/png=gimp.desktop;
-image/jpeg=feh.desktop;display-im6.q16.desktop;
+image/png=feh.desktop;gimp.desktop;
+image/jpeg=display-im6.q16.desktop;feh.desktop;
 application/json=mousepad.desktop;
 application/vnd.android.package-archive=openjdk-8-java.desktop;
 text/x-csharp=mousepad.desktop;vim.desktop;

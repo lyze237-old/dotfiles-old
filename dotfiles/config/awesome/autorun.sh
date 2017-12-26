@@ -39,3 +39,6 @@ redshift-gtk &
 /opt/lyze/Telegram/Telegram &
 sleep 0.5 && corebird &
 sleep 1 && discord &
+
+# albert
+albert & 
