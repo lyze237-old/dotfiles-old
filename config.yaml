@@ -9,6 +9,9 @@ dotfiles:
   d_fonts:
     dst: ~/.fonts
     src: fonts
+  d_functions:
+    dst: ~/.config/fish/functions
+    src: config/fish/functions
   d_mutt:
     dst: ~/.config/mutt
     src: config/mutt
@@ -117,6 +120,7 @@ profiles:
     - f_urlview
     - f_msmtprc
     - f_offlineimaprc
+    - d_functions
   sudo:
     dotfiles:
     - f_issue

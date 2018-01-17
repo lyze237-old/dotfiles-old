@@ -779,10 +779,10 @@ awful.rules.rules = {
         }
     },
 
-    -- middle screen thunderbird
+    -- middle screen mutt 
     {
         rule = {
-            class = "Thunderbird"
+            name= "mutt"
         },
         properties = {
             screen = 1,

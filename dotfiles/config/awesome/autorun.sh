@@ -24,8 +24,7 @@ termite --title rtv -e rtv &
 termite --title weechat -e weechat &
 
 # mail desktop 
-thunderbird &
-
+termite --title mutt -e mutt &
 # other
 bash -c 'sleep 5 ; steam' &
 firefox &
