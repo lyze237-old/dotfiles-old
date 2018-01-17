@@ -53,7 +53,7 @@ echo Updating apt cache
 sudo apt update
 
 echo Installing everything possible
-sudo apt install -f -y xorg corebird fish python3-setuptools arc-theme numix-icon-theme-circle mopidy ncmpcpp rofi g++ build-essential qt5-qmake qt5-default dotnet-sdk-2.0.* mono-devel xdotool htop indicator-kdeconnect nextcloud-client compton mopidy-spotify steam mpc mpdris2 redshift redshift-gtk ffmpeg obs-studio mpv vlc python3-socks gimp wmctrl feh awesome i3lock arandr lxappearance ranger w3m xfce4-terminal thunar unzip pulseaudio pavucontrol thunar scrot imagemagick libnotify-bin ubuntu-restricted-extras urlview xclip weechat neovim numlockx thunderbird breeze-cursor-theme firefox python3-docopt python3-jinja2 xarchiver albert
+sudo apt install -f -y xorg corebird fish python3-setuptools arc-theme numix-icon-theme-circle mopidy ncmpcpp rofi g++ build-essential qt5-qmake qt5-default dotnet-sdk-2.0.* mono-devel xdotool htop indicator-kdeconnect nextcloud-client compton mopidy-spotify steam mpc mpdris2 redshift redshift-gtk ffmpeg obs-studio mpv vlc python3-socks gimp wmctrl feh awesome i3lock arandr lxappearance ranger w3m xfce4-terminal thunar unzip pulseaudio pavucontrol thunar scrot imagemagick libnotify-bin ubuntu-restricted-extras urlview xclip weechat neovim numlockx thunderbird breeze-cursor-theme firefox python3-docopt python3-jinja2 xarchiver albert urlview w3m gpgsm msmtp offlineimap mutt
 
 #############################################
 # Manual Website Installation

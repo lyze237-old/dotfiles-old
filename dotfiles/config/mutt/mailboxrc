@@ -1,0 +1,15 @@
+# vim: filetype=muttrc
+set imap_user = "lyze@mailbox.org"
+set realname = "Michael Weinberger"                                  
+set mbox_type = Maildir
+set sendmail = "/usr/bin/msmtp -a mailbox"
+set folder = "~/.Mail/mailbox"
+set spoolfile = +INBOX
+set record = +Sent
+set postponed = +Drafts
+set header_cache = ~/.config/mutt/Personal/cache/headers
+set message_cachedir = ~/.config/mutt/Personal/cache/bodies
+set certificate_file = ~/.config/mutt/Personal/certificates
+set ssl_starttls = yes
+set ssl_force_tls = yes
+

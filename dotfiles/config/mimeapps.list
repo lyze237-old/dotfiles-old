@@ -16,3 +16,4 @@ application/vnd.android.package-archive=openjdk-8-java.desktop;
 text/x-csharp=mousepad.desktop;vim.desktop;
 video/mp4=vlc.desktop;
 application/gzip=xarchiver.desktop;
+application/zip=xarchiver.desktop;

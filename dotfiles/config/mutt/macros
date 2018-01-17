@@ -1,0 +1,20 @@
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index gs "<change-folder>=Sent<enter>" "Go to sent"
+macro index gd "<change-folder>=Drafts<enter>" "Go to drafts"
+macro index gj "<change-folder>=Junk<enter>" "Go to junk"
+macro index gt "<change-folder>=Trash<enter>" "Go to trash"
+
+#macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+macro index \cb "\
+:set my_tmp_pipe_decode=\$pipe_decode\n\
+:set pipe_decode\n\
+|urlview\n\
+:set pipe_decode=\$my_tmp_pipe_decode\n\
+:unset my_tmp_pipe_decode\n" \
+'call urlview to extract URLs out of a message'
+
+macro index S ":set confirmappend=no delete=yes\n<tag-prefix><save-message>=Archive.2018\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
+
+macro index c "<change-folder>?"
+
+# vim: filetype=muttrc

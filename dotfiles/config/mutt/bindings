@@ -1,0 +1,13 @@
+bind pager j next-line
+bind pager k previous-line
+bind attach,index,pager \CD next-page
+bind attach,index,pager \CU previous-page
+bind pager G bottom
+bind attach,index G last-entry
+
+bind pager g noop
+bind pager gg top
+bind attach,index g noop
+bind attach,index gg first-entry
+
+# vim: filetype=muttrc

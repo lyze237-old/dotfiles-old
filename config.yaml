@@ -9,6 +9,9 @@ dotfiles:
   d_fonts:
     dst: ~/.fonts
     src: fonts
+  d_mutt:
+    dst: ~/.config/mutt
+    src: config/mutt
   d_owl:
     dst: ~/.config/owl
     src: config/owl
@@ -69,6 +72,9 @@ dotfiles:
   f_termite_config:
     dst: ~/.config/termite/config
     src: config/termite/config
+  f_urlview:
+    dst: ~/.urlview
+    src: urlview
   f_vimrc:
     dst: ~/.vimrc
     src: vimrc
@@ -101,6 +107,8 @@ profiles:
     - d_themes
     - d_owl
     - d_awesome
+    - d_mutt
+    - f_urlview
   sudo:
     dotfiles:
     - f_issue
