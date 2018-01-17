@@ -2,6 +2,7 @@ source '~/.config/mutt/mailboxrc'
 source '~/.config/mutt/bindings'
 source '~/.config/mutt/macros'
 source '~/.config/mutt/colors'
+source '~/.config/mutt/sidebar'
 
 set signature = '~/.config/mutt/signature'
 
@@ -10,13 +11,11 @@ set editor = "vim -c 'set spell spelllang=en,de'"
 set timeout = "5"
 set mail_check = "10"
 set mailcap_path = ~/.mailcap
-set date_format="%m/%d %I:%M"
+set date_format="%d.%m %I:%M"
 set index_format="%2C %Z %d %-15.15F %s (%-4.4c)"
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html
-
-set sidebar_visible = yes
 
 # headers
 my_hdr X-Message-Flag: WARNING!! Outlook sucks

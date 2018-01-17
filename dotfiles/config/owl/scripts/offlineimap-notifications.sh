@@ -2,6 +2,8 @@
 
 set maildir ~/.Mail/mailbox/
 
+export DISPLAY=:0
+export XAUTHORITY=~/.Xauthority
 
 while true
     set index 1 
