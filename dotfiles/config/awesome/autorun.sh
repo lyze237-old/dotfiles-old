@@ -33,6 +33,7 @@ compton &
 redshift-gtk &
 
 ~/.config/owl/scripts/updateFishWeather.sh &
+~/.config/owl/scripts/offlineimap-notifications.sh &
 
 # chat desktop 
 /opt/lyze/Telegram/Telegram &
