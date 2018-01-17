@@ -51,9 +51,15 @@ dotfiles:
   f_mpv.conf:
     dst: ~/.config/mpv/mpv.conf
     src: config/mpv/mpv.conf
+  f_msmtprc:
+    dst: ~/.msmtprc
+    src: msmtprc
   f_ncmpcpp_config:
     dst: ~/.ncmpcpp/config
     src: ncmpcpp/config
+  f_offlineimaprc:
+    dst: ~/.offlineimaprc
+    src: offlineimaprc
   f_rofi_config:
     dst: ~/.config/rofi/config
     src: config/rofi/config
@@ -109,6 +115,8 @@ profiles:
     - d_awesome
     - d_mutt
     - f_urlview
+    - f_msmtprc
+    - f_offlineimaprc
   sudo:
     dotfiles:
     - f_issue

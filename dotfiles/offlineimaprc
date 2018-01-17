@@ -1,0 +1,24 @@
+# vim filetype=config
+# Here are settings for all accounts.
+[general]
+accounts = mailbox 
+starttls = yes
+ssl = yes
+autorefresh = 1
+
+# Here's an other more general example. Add your username, password and IMAP server information, which you can look this up on your email host's website.
+[Account mailbox]
+
+localrepository = mailbox-local
+remoterepository = mailbox-remote
+
+[Repository mailbox-remote]
+type = IMAP
+remoteuser = {{@@ env['mailbox_username'] @@}} 
+remotepass = {{@@ env['mailbox_password'] @@}} 
+remotehost = {{@@ env['mailbox_imap_host'] @@}} 
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+[Repository mailbox-local]
+type = Maildir
+localfolders = ~/.Mail/mailbox
