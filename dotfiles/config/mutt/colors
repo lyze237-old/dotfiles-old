@@ -30,3 +30,5 @@ color sidebar_flagged red black
 # Color to give mailboxes containing new mail
 color sidebar_new green black
 # }}}
+
+# vim: filetype=muttrc

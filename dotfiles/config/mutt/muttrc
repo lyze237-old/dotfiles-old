@@ -4,6 +4,7 @@ source '~/.config/mutt/bindings'
 source '~/.config/mutt/macros'
 source '~/.config/mutt/colors'
 source '~/.config/mutt/sidebar'
+source '~/.config/mutt/hooks'
 # }}}
 
 set signature = '~/.config/mutt/signature'

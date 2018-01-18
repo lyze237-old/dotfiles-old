@@ -56,6 +56,6 @@ set sidebar_format = '%B %> %?N? %N?'
 #       new      - number of new messages
 #       path     - mailbox path
 #       unsorted - do not sort the mailboxes
-set sidebar_sort_method = 'unsorted'
+set sidebar_sort_method = 'path'
 
 # vim: syntax=muttrc

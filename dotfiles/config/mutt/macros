@@ -13,8 +13,6 @@ macro index \cb "\
 :unset my_tmp_pipe_decode\n" \
 'call urlview to extract URLs out of a message'
 
-macro index S ":set confirmappend=no delete=yes\n<tag-prefix><save-message>=Archive.2018\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
-
 macro index c "<change-folder>?"
 
 # vim: filetype=muttrc

@@ -6,6 +6,7 @@ export DISPLAY=:0
 export XAUTHORITY=~/.Xauthority
 
 while true
+    set result ""
     set index 1 
     for dir in (ls $maildir)
         set fulldir (echo $maildir$dir)
