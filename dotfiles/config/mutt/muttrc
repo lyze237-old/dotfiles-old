@@ -1,8 +1,10 @@
+# Sources {{{
 source '~/.config/mutt/mailboxrc'
 source '~/.config/mutt/bindings'
 source '~/.config/mutt/macros'
 source '~/.config/mutt/colors'
 source '~/.config/mutt/sidebar'
+# }}}
 
 set signature = '~/.config/mutt/signature'
 
@@ -17,6 +19,7 @@ set index_format="%2C %Z %d %-15.15F %s (%-4.4c)"
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
-# headers
+# Headers {{{
 my_hdr X-Message-Flag: WARNING!! Outlook sucks
+# }}}
 
