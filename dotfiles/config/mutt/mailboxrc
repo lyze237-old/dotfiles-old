@@ -1,5 +1,5 @@
 # vim: filetype=muttrc
-set imap_user = "lyze@mailbox.org"
+set imap_user = {{@@ env['mailbox_username'] @@}}
 set realname = "Michael Weinberger"                                  
 set mbox_type = Maildir
 set sendmail = "/usr/bin/msmtp -a mailbox"
