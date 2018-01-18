@@ -108,9 +108,6 @@ sudo chsh -s `which fish`
 mkdir ~/.dotfiles
 cd ~/.dotfiles
 
-# install pip via pythons pm
-sudo easy_install3 pip
-
 # clone public dotfiles
 git clone --recursive git@gitlab.com:lyze237/dotfiles-public.git
 chmod u+x dotfiles-public/*.sh
@@ -119,11 +116,13 @@ chmod u+x dotfiles-public/*.sh
 git clone --recursive git@gitlab.com:lyze237/dotfiles-private.git
 chmod u+x dotfiles-private/*.sh
 
-# installs dotdrop dependencies
-cd dotfiles-public
-sudo pip install -r dotdrop/requirements.txt
-
 # installs dotfiles
+cd dotfiles-public
+read -p "Please enter the correct values in ~/.dotfiles/dotfiles-public/secure.env and press a key" -n 1 -r
+echo
+
+source secure.env
+
 ./dotdrop.sh install --force --profile=ovo
 sudo ./dotdrop.sh install --force --profile=sudo
 cd ../dotfiles-private
