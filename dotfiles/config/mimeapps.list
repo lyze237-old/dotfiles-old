@@ -5,6 +5,7 @@ x-scheme-handler/tg=telegramdesktop.desktop
 text/plain=mousepad.desktop
 application/x-shellscript=mousepad.desktop
 x-scheme-handler/discord-384215522050572288=discord-384215522050572288.desktop
+application/pdf=firefox.desktop
 
 [Added Associations]
 text/plain=mousepad.desktop;
@@ -17,3 +18,4 @@ text/x-csharp=mousepad.desktop;vim.desktop;
 video/mp4=vlc.desktop;
 application/gzip=xarchiver.desktop;
 application/zip=xarchiver.desktop;
+application/pdf=firefox.desktop;
