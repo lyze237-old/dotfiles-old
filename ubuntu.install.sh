@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# run script with: wget -O - https://gitlab.com/lyze237/dotfiles-public/raw/master/install.ubuntu_mini_17.10.awesome.sh | bash
+# run script with: wget -O - https://gitlab.com/lyze237/dotfiles-public/raw/master/install.ubuntu.sh | bash
 
 echo Installing curl n co
 sudo apt install -y curl git jq
@@ -39,11 +39,6 @@ sudo add-apt-repository -y ppa:webupd8team/indicator-kdeconnect
 echo Adding nextcloud client repo
 sudo add-apt-repository -y ppa:nextcloud-devs/client
 
-# albert
-wget -nv -O Release.key "https://build.opensuse.org/projects/home:manuelschneid3r/public_key"
-sudo apt-key add - < Release.key
-sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_17.10/ /' > /etc/apt/sources.list.d/albert.list"
-
 
 #############################################
 # Installation
@@ -53,7 +48,7 @@ echo Updating apt cache
 sudo apt update
 
 echo Installing everything possible
-sudo apt install -f -y xorg corebird fish python3-setuptools arc-theme numix-icon-theme-circle mopidy ncmpcpp rofi g++ build-essential qt5-qmake qt5-default dotnet-sdk-2.0.* mono-devel xdotool htop indicator-kdeconnect nextcloud-client compton mopidy-spotify steam mpc mpdris2 redshift redshift-gtk ffmpeg obs-studio mpv vlc python3-socks gimp wmctrl feh awesome i3lock arandr lxappearance ranger w3m xfce4-terminal thunar unzip pulseaudio pavucontrol thunar scrot imagemagick libnotify-bin ubuntu-restricted-extras urlview xclip weechat neovim numlockx thunderbird breeze-cursor-theme firefox python3-docopt python3-jinja2 xarchiver albert urlview w3m gpgsm msmtp offlineimap mutt
+sudo apt install -f -y xorg corebird fish python3-setuptools arc-theme numix-icon-theme-circle mopidy ncmpcpp rofi g++ build-essential qt5-qmake qt5-default dotnet-sdk-2.0.* mono-devel xdotool htop indicator-kdeconnect nextcloud-client compton mopidy-spotify steam mpc mpdris2 redshift redshift-gtk ffmpeg obs-studio mpv vlc python3-socks gimp wmctrl feh awesome i3lock arandr lxappearance ranger w3m xfce4-terminal thunar unzip pulseaudio pavucontrol thunar scrot imagemagick libnotify-bin ubuntu-restricted-extras urlview xclip weechat neovim numlockx thunderbird breeze-cursor-theme firefox python3-docopt python3-jinja2 xarchiver urlview w3m gpgsm msmtp offlineimap mutt
 
 #############################################
 # Manual Website Installation

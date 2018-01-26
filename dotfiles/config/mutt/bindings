@@ -11,6 +11,8 @@ bind attach,index gg first-entry
 
 macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
 macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+macro attach S <save-entry><kill-line>~/Downloads/
 # }}}
 
 # Sidebar {{{
