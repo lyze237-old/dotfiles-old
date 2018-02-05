@@ -107,14 +107,14 @@ local function factory(args)
                     }
 
                     if not string.match(mpd_now.file, "http.*://") then -- local file instead of http stream
-                        local path   = string.format("%s/%s", music_dir, string.match(mpd_now.file, ".*/"))
-                        local cover  = string.format("find '%s' -maxdepth 1 -type f | egrep -i -m1 '%s'",
-                                       path:gsub("'", "'\\''"), cover_pattern)
-                        helpers.async({ shell, "-c", cover }, function(current_icon)
-                            common.icon = current_icon:gsub("\n", "")
-                            if #common.icon == 0 then common.icon = nil end
-                            mpd.id = naughty.notify(common).id
-                        end)
+                        --local path   = string.format("%s/%s", music_dir, string.match(mpd_now.file, ".*/"))
+                        --local cover  = string.format("find '%s' -maxdepth 1 -type f | egrep -i -m1 '%s'",
+                        --               path:gsub("'", "'\\''"), cover_pattern)
+                        --helpers.async({ shell, "-c", cover }, function(current_icon)
+                        --    common.icon = current_icon:gsub("\n", "")
+                        --    if #common.icon == 0 then common.icon = nil end
+                        --    mpd.id = naughty.notify(common).id
+                        --end)
                     else
                         mpd.id = naughty.notify(common).id
                     end

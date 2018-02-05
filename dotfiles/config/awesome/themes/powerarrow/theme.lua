@@ -17,24 +17,60 @@ local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow"
 theme.wallpaper                                 = theme.dir .. "/wall.png"
 theme.font                                      = "Ubuntu Mono Regular 12"
-theme.fg_normal                                 = "#FEFEFE"
-theme.fg_focus                                  = "#32D6FF"
-theme.fg_urgent                                 = "#C83F11"
-theme.bg_normal                                 = "#222222"
-theme.bg_focus                                  = "#1E2320"
-theme.bg_urgent                                 = "#3F3F3F"
-theme.taglist_fg_focus                          = "#00CCFF"
-theme.tasklist_bg_focus                         = "#222222"
-theme.tasklist_fg_focus                         = "#00CCFF"
+
+theme.colors = {}
+theme.colors.bg1                                = "#1D2021"
+theme.colors.bg2                                = "#3C3836"
+theme.colors.bg3                                = "#504945"
+theme.colors.fg1                                = "#EBDBB2"
+theme.colors.fg2                                = "#A89984"
+theme.colors.fg3                                = "#7C6F64"
+theme.colors.pink                               = "#D3869B"
+theme.colors.red                                = "#FB4934"
+theme.colors.orange                             = "#FE8019"
+theme.colors.yellow                             = "#FABD2F"
+theme.colors.lime                               = "#B8BB26"
+theme.colors.green                              = "#8EC07C"
+theme.colors.blue                               = "#83A598"
+
+theme.bg_normal                                 = theme.colors.bg1
+theme.bg_focus                                  = theme.bg_normal
+theme.bg_urgent                                 = theme.bg_normal
+theme.bg_minimize                               = theme.bg_normal
+
+theme.bg_systray                                = theme.colors.bg3
+theme.bg_music                                  = theme.colors.bg2
+theme.bg_clock                                  = theme.colors.bg1
+theme.fg_clock                                  = theme.colors.blue
+theme.bg_layout                                 = theme.colors.red
+
+theme.fg_normal                                 = theme.colors.fg1
+theme.fg_focus                                  = theme.colors.blue
+theme.fg_urgent                                 = theme.colors.orange
+theme.fg_minimize                               = theme.colors.fg3
+
+
+theme.border_normal                             = theme.colors.bg1
+theme.border_focus                              = theme.colors.orange
+theme.border_marked                             = theme.colors.red
+
+theme.bg_prompt                                 = theme.colors.red
+
+theme.taglist_bg_empty                          = theme.colors.bg3
+theme.taglist_bg_occupied                       = theme.colors.bg3
+theme.taglist_bg_focus                          = theme.colors.bg1
+theme.taglist_bg_urgent                         = theme.colors.bg3
+theme.taglist_fg_empty                          = theme.colors.fg3
+theme.taglist_fg_occupied                       = theme.colors.fg1
+theme.taglist_fg_focus                          = theme.colors.red
+theme.taglist_fg_urgent                         = theme.colors.orange
+
+theme.titlebar_bg_normal                        = theme.border_normal
+theme.titlebar_bg_focus                         = theme.border_focus
+theme.titlebar_fg_normal                        = theme.colors.fg1
+theme.titlebar_fg_focus                         = theme.colors.fg1
+
 theme.border_width                              = 2
-theme.border_normal                             = "#3F3F3F"
-theme.border_focus                              = "#6F6F6F"
-theme.border_marked                             = "#CC9393"
-theme.titlebar_bg_focus                         = "#3F3F3F"
-theme.titlebar_bg_normal                        = "#3F3F3F"
-theme.titlebar_bg_focus                         = theme.bg_focus
-theme.titlebar_bg_normal                        = theme.bg_normal
-theme.titlebar_fg_focus                         = theme.fg_focus
 theme.menu_height                               = 16
 theme.menu_width                                = 140
 theme.menu_submenu_icon                         = theme.dir .."/icons/submenu.png"
@@ -121,7 +157,7 @@ theme.cal = lain.widget.calendar({
 -- Mail IMAP check
 local mailicon = wibox.widget.imagebox(theme.widget_mail)
 local mail = awful.widget.watch(
-    "~/.config/owl/scripts/unreadEmails.sh '' 'unread mails' 'No unread mails'", 60,
+    "bash -c \"~/.config/owl/scripts/unreadEmails.sh '' '' '0'\"", 60,
     function(widget, stdout)
         widget:set_markup(" " .. markup.font(theme.font, stdout))
     end
@@ -146,8 +182,8 @@ mpdicon:buttons(my_table.join(
 theme.mpd = lain.widget.mpd({
     settings = function()
         if mpd_now.state == "play" then
-            artist = " " .. mpd_now.artist .. " "
-            title  = mpd_now.title  .. " "
+            artist = " " .. string.sub(mpd_now.artist, 0, 20) .. " "
+            title  = string.sub(mpd_now.title, 0, 30)  .. " "
             mpdicon:set_image(theme.widget_music_on)
             widget:set_markup(markup.font(theme.font, markup("#FF8466", artist) .. " " .. title))
         elseif mpd_now.state == "pause" then
@@ -164,7 +200,7 @@ theme.mpd = lain.widget.mpd({
 local memicon = wibox.widget.imagebox(theme.widget_mem)
 local mem = lain.widget.mem({
     settings = function()
-        widget:set_markup(markup.font(theme.font, " " .. mem_now.used .. "MB "))
+        widget:set_markup(markup.font(theme.font, " " .. string.format("%6.2f", mem_now.used) .. "MB "))
     end
 })
 
@@ -172,14 +208,14 @@ local mem = lain.widget.mem({
 local cpuicon = wibox.widget.imagebox(theme.widget_cpu)
 local cpu = lain.widget.cpu({
     settings = function()
-        widget:set_markup(markup.font(theme.font, " " .. cpu_now.usage .. "% "))
+        widget:set_markup(markup.font(theme.font, " " .. string.format("%02d", cpu_now.usage) .. "% "))
     end
 })
 
 -- Coretemp (lain, average)
 local temp = lain.widget.temp({
     settings = function()
-        widget:set_markup(markup.font(theme.font, " " .. coretemp_now .. "°C "))
+        widget:set_markup(markup.font(theme.font, " " .. string.format("%5.2f", coretemp_now) .. "°C "))
     end
 })
 local tempicon = wibox.widget.imagebox(theme.widget_temp)
@@ -209,7 +245,7 @@ function theme.at_screen_connect(s)
     s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, awful.util.taglist_buttons)
 
     -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
+    s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.focused, awful.util.tasklist_buttons)
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s, height = 22, bg = theme.bg_normal, fg = theme.fg_normal })
@@ -222,11 +258,11 @@ function theme.at_screen_connect(s)
             s.mytaglist,
             s.mypromptbox,
             spr,
+            separators.arrow_right("#504945", theme.bg_normal)
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            wibox.widget.systray(),
             separators.arrow_left(theme.bg_normal, "#343434"),
             wibox.container.background(wibox.container.margin(wibox.widget { mailicon, mail, layout = wibox.layout.align.horizontal }, 4, 7), "#343434"),
             separators.arrow_left("#343434", theme.bg_normal),
@@ -241,9 +277,9 @@ function theme.at_screen_connect(s)
             wibox.container.background(wibox.container.margin(wibox.widget { nil, neticon, net.widget, layout = wibox.layout.align.horizontal }, 3, 3), "#C0C0A2"),
             separators.arrow_left("#C0C0A2", "#777E76"),
             wibox.container.background(wibox.container.margin(clock, 4, 8), "#777E76"),
-            separators.arrow_left("#777E76", "alpha"),
+            separators.arrow_left("#777E76", "#D65D0E"),
             --]]
-            s.mylayoutbox,
+            wibox.container.background(wibox.container.margin(s.mylayoutbox, 3, 3), "#D65D0E"),
         },
     }
 end
