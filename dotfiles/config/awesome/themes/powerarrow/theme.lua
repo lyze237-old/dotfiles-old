@@ -148,7 +148,7 @@ theme.cal = lain.widget.calendar({
     attach_to = { clock },
 	followtag = true,
     notification_preset = {
-        font = "Ubuntu Mono Regular 10",
+        font = theme.font,
         fg   = theme.fg_normal,
         bg   = theme.bg_normal
     }
@@ -157,7 +157,7 @@ theme.cal = lain.widget.calendar({
 -- Mail IMAP check
 local mailicon = wibox.widget.imagebox(theme.widget_mail)
 local mail = awful.widget.watch(
-    "bash -c \"~/.config/owl/scripts/unreadEmails.sh '' '' '0'\"", 60,
+    "bash -c \"~/.config/owl/scripts/unreadEmails.sh '' '' '0'\"", 30,
     function(widget, stdout)
         widget:set_markup(" " .. markup.font(theme.font, stdout))
     end
@@ -200,7 +200,7 @@ theme.mpd = lain.widget.mpd({
 local memicon = wibox.widget.imagebox(theme.widget_mem)
 local mem = lain.widget.mem({
     settings = function()
-        widget:set_markup(markup.font(theme.font, " " .. string.format("%6.2f", mem_now.used) .. "MB "))
+        widget:set_markup(markup.font(theme.font, " " .. string.format("%5.0f", mem_now.used) .. "MB "))
     end
 })
 
@@ -215,7 +215,7 @@ local cpu = lain.widget.cpu({
 -- Coretemp (lain, average)
 local temp = lain.widget.temp({
     settings = function()
-        widget:set_markup(markup.font(theme.font, " " .. string.format("%5.2f", coretemp_now) .. "°C "))
+        widget:set_markup(markup.font(theme.font, " " .. string.format("%5.1f", coretemp_now) .. "°C "))
     end
 })
 local tempicon = wibox.widget.imagebox(theme.widget_temp)
@@ -224,7 +224,7 @@ local tempicon = wibox.widget.imagebox(theme.widget_temp)
 local neticon = wibox.widget.imagebox(theme.widget_net)
 local net = lain.widget.net({
     settings = function()
-        widget:set_markup(markup.fontfg(theme.font, "#FEFEFE", " " .. string.format("%8.2f", net_now.received) .. " ↓↑ " .. string.format("%8.2f", net_now.sent) .. " "))
+        widget:set_markup(markup.fontfg(theme.font, "#FEFEFE", " " .. string.format("%8.1f", net_now.received) .. " ↓↑ " .. string.format("%8.1f", net_now.sent) .. " "))
     end
 })
 	
