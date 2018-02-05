@@ -58,6 +58,16 @@ local themes = {
     "vertex",          -- 10
 }
 
+awful.util.terminal = terminal
+awful.layout.layouts = {
+    awful.layout.suit.fair, -- 1
+    awful.layout.suit.tile, -- 2
+    awful.layout.suit.tile.bottom, -- 3
+    awful.layout.suit.floating, -- 4
+    awful.layout.suit.max, -- 5
+    awful.layout.suit.magnifier -- 6
+}
+
 -- Tags
 layouts = awful.layout.layouts
 awful.tag({ "", "", "3", "4", "5", "6", "7", "8", "9" }, 2, 
@@ -81,15 +91,6 @@ local editor       = os.getenv("EDITOR") or "vim"
 local browser      = "firefox"
 local scrlocker    = os.getenv("HOME") .. "/.config/owl/scripts/lock/lock.sh"
 
-awful.util.terminal = terminal
-awful.layout.layouts = {
-    awful.layout.suit.fair, -- 1
-    awful.layout.suit.tile, -- 2
-    awful.layout.suit.tile.bottom, -- 3
-    awful.layout.suit.floating, -- 4
-    awful.layout.suit.max, -- 5
-    awful.layout.suit.magnifier -- 6
-}
 awful.util.taglist_buttons = my_table.join(
                     awful.button({ }, 1, function(t) t:view_only() end),
                     awful.button({ modkey }, 1, function(t)
