@@ -16,7 +16,7 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow"
 theme.wallpaper                                 = theme.dir .. "/wall.png"
-theme.font                                      = "Ubuntu Mono Regular 12"
+theme.font                                      = "UbuntuMonoDerivativePowerline Nerd Font Regular 12"
 
 theme.colors = {}
 theme.colors.bg1                                = "#1D2021"
@@ -224,7 +224,7 @@ local tempicon = wibox.widget.imagebox(theme.widget_temp)
 local neticon = wibox.widget.imagebox(theme.widget_net)
 local net = lain.widget.net({
     settings = function()
-        widget:set_markup(markup.fontfg(theme.font, "#FEFEFE", " " .. net_now.received .. " ↓↑ " .. net_now.sent .. " "))
+        widget:set_markup(markup.fontfg(theme.font, "#FEFEFE", " " .. string.format("%8.2f", net_now.received) .. " ↓↑ " .. string.format("%8.2f", net_now.sent) .. " "))
     end
 })
 	
