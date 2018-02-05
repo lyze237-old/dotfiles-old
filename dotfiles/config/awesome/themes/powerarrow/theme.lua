@@ -30,19 +30,24 @@ theme.colors.red                                = "#FB4934"
 theme.colors.orange                             = "#FE8019"
 theme.colors.yellow                             = "#FABD2F"
 theme.colors.lime                               = "#B8BB26"
-theme.colors.green                              = "#8EC07C"
+theme.colors.green                              = "#B8BB26"
 theme.colors.blue                               = "#83A598"
+
+theme.colors.dark_red                           = "#CC241D"
+theme.colors.dark_green                         = "#98971A"
+theme.colors.dark_yellow                        = "#D79921"
+theme.colors.dark_blue                          = "#458588"
+theme.colors.dark_purple                        = "#B16286"
+theme.colors.dark_aqua                          = "#689D6A"
+theme.colors.dark_orange                        = "#D65D0E"
+
+theme.colors.gray_1                             = "#A89984"
+theme.colors.gray_2                             = "#928374"
 
 theme.bg_normal                                 = theme.colors.bg1
 theme.bg_focus                                  = theme.bg_normal
 theme.bg_urgent                                 = theme.bg_normal
 theme.bg_minimize                               = theme.bg_normal
-
-theme.bg_systray                                = theme.colors.bg3
-theme.bg_music                                  = theme.colors.bg2
-theme.bg_clock                                  = theme.colors.bg1
-theme.fg_clock                                  = theme.colors.blue
-theme.bg_layout                                 = theme.colors.red
 
 theme.fg_normal                                 = theme.colors.fg1
 theme.fg_focus                                  = theme.colors.blue
@@ -69,6 +74,15 @@ theme.titlebar_bg_normal                        = theme.border_normal
 theme.titlebar_bg_focus                         = theme.border_focus
 theme.titlebar_fg_normal                        = theme.colors.fg1
 theme.titlebar_fg_focus                         = theme.colors.fg1
+
+theme.colors.mail                               = theme.colors.blue
+theme.colors.music                              = theme.colors.dark_blue
+theme.colors.mem                                = theme.colors.green
+theme.colors.cpu                                = theme.colors.dark_green
+theme.colors.temp                               = theme.colors.yellow
+theme.colors.net                                = theme.colors.dark_yellow
+theme.colors.clock                              = theme.colors.red
+theme.colors.layout                             = theme.colors.dark_red
 
 theme.border_width                              = 2
 theme.menu_height                               = 16
@@ -185,7 +199,7 @@ theme.mpd = lain.widget.mpd({
             artist = " " .. string.sub(mpd_now.artist, 0, 20) .. " "
             title  = string.sub(mpd_now.title, 0, 30)  .. " "
             mpdicon:set_image(theme.widget_music_on)
-            widget:set_markup(markup.font(theme.font, markup("#FF8466", artist) .. " " .. title))
+            widget:set_markup(markup.font(theme.font, artist .. " - " .. title))
         elseif mpd_now.state == "pause" then
             widget:set_markup(markup.font(theme.font, " mpd paused "))
             mpdicon:set_image(theme.widget_music_pause)
@@ -263,23 +277,23 @@ function theme.at_screen_connect(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            separators.arrow_left(theme.bg_normal, "#343434"),
-            wibox.container.background(wibox.container.margin(wibox.widget { mailicon, mail, layout = wibox.layout.align.horizontal }, 4, 7), "#343434"),
-            separators.arrow_left("#343434", theme.bg_normal),
-            wibox.container.background(wibox.container.margin(wibox.widget { mpdicon, theme.mpd.widget, layout = wibox.layout.align.horizontal }, 3, 6), theme.bg_focus),
-            separators.arrow_left(theme.bg_normal, "#777E76"),
-            wibox.container.background(wibox.container.margin(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, 2, 3), "#777E76"),
-            separators.arrow_left("#777E76", "#4B696D"),
-            wibox.container.background(wibox.container.margin(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, 3, 4), "#4B696D"),
-            separators.arrow_left("#4B696D", "#4B3B51"),
-            wibox.container.background(wibox.container.margin(wibox.widget { tempicon, temp.widget, layout = wibox.layout.align.horizontal }, 4, 4), "#4B3B51"),
-            separators.arrow_left("#4B3B51", "#C0C0A2"),
-            wibox.container.background(wibox.container.margin(wibox.widget { nil, neticon, net.widget, layout = wibox.layout.align.horizontal }, 3, 3), "#C0C0A2"),
-            separators.arrow_left("#C0C0A2", "#777E76"),
-            wibox.container.background(wibox.container.margin(clock, 4, 8), "#777E76"),
-            separators.arrow_left("#777E76", "#D65D0E"),
+            separators.arrow_left(theme.bg_normal, theme.colors.mail),
+            wibox.container.background(wibox.container.margin(wibox.widget { mailicon, mail, layout = wibox.layout.align.horizontal }, 4, 7), theme.colors.mail),
+            separators.arrow_left(theme.colors.mail, theme.colors.music),
+            wibox.container.background(wibox.container.margin(wibox.widget { mpdicon, theme.mpd.widget, layout = wibox.layout.align.horizontal }, 3, 6), theme.colors.music),
+            separators.arrow_left(theme.colors.music, theme.colors.mem),
+            wibox.container.background(wibox.container.margin(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, 2, 3), theme.colors.mem),
+            separators.arrow_left(theme.colors.mem, theme.colors.cpu),
+            wibox.container.background(wibox.container.margin(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, 3, 4), theme.colors.cpu),
+            separators.arrow_left(theme.colors.cpu, theme.colors.temp),
+            wibox.container.background(wibox.container.margin(wibox.widget { tempicon, temp.widget, layout = wibox.layout.align.horizontal }, 4, 4), theme.colors.temp),
+            separators.arrow_left(theme.colors.temp, theme.colors.net),
+            wibox.container.background(wibox.container.margin(wibox.widget { nil, neticon, net.widget, layout = wibox.layout.align.horizontal }, 3, 3), theme.colors.net),
+            separators.arrow_left(theme.colors.net, theme.colors.clock),
+            wibox.container.background(wibox.container.margin(clock, 4, 8), theme.colors.clock),
+            separators.arrow_left(theme.colors.clock, theme.colors.layout),
             --]]
-            wibox.container.background(wibox.container.margin(s.mylayoutbox, 3, 3), "#D65D0E"),
+            wibox.container.background(wibox.container.margin(s.mylayoutbox, 3, 3), theme.colors.layout),
         },
     }
 end
