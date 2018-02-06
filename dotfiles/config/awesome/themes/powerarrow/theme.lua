@@ -260,7 +260,10 @@ function theme.at_screen_connect(s)
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
     -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, awful.util.taglist_buttons)
+    s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, awful.util.taglist_buttons, { 
+        font = "UbuntuMonoDerivativePowerline Nerd Font Regular 16",
+        spacing = 4,
+    })
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.focused, awful.util.tasklist_buttons)
@@ -273,7 +276,7 @@ function theme.at_screen_connect(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            s.mytaglist,
+            wibox.container.background(wibox.container.margin(wibox.widget { nil, s.mytaglist, layout = wibox.layout.align.horizontal }, 4, 7), "#504945"),
             s.mypromptbox,
             spr,
             separators.arrow_right("#504945", theme.bg_normal)
