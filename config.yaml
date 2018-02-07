@@ -51,6 +51,9 @@ dotfiles:
   f_mimeapps.list:
     dst: ~/.config/mimeapps.list
     src: config/mimeapps.list
+  f_mopidy.conf:
+    dst: ~/.config/mopidy/mopidy.conf
+    src: config/mopidy/mopidy.conf
   f_mpv.conf:
     dst: ~/.config/mpv/mpv.conf
     src: config/mpv/mpv.conf
@@ -121,6 +124,7 @@ profiles:
     - f_msmtprc
     - f_offlineimaprc
     - d_functions
+    - f_mopidy.conf
   sudo:
     dotfiles:
     - f_issue
