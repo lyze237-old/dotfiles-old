@@ -6,6 +6,7 @@ case "$1" in
     "full" | "fullscreen")
         echo fullscreen
         flameshot full -p /tmp
+        sleep 0.5
         ;;
     "region")
         echo region
