@@ -30,7 +30,6 @@ end
 set fish_greeting ""
 # }}}
 
-
 # {{{ Fish Prompt
 
     # {{{ Source
@@ -53,7 +52,7 @@ set fish_greeting ""
         if test $global_status -ne 0
             printf "$prompt\n$prompt_pwd >v< "
         else
-            printf "$prompt\n$prompt_pwd >v> "
+            printf "$prompt\n$prompt_pwd ovo "
         end
     end
     # }}}
