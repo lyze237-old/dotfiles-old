@@ -1,5 +1,7 @@
 #/!usr/bin/fish
 
+fish_vi_key_bindings
+
 sleep 0.1
 # {{{ Weather Function 
 function weather
@@ -33,67 +35,30 @@ set fish_greeting ""
 
 # {{{ Fish Prompt
 
-    # {{{ Colors
-    set -l normal (set_color normal)
-    set -l cyan (set_color cyan)
-    set -l yellow (set_color yellow)
-    set -l bpurple (set_color -o purple)
-    set -l bred (set_color -o red)
-    set -l bcyan (set_color -o cyan)
-    set -l bwhite (set_color -o white)
+    # {{{ Source
+    set curDir (dirname (status -f))
+    source $curDir/promt/colors.fish
+    source $curDir/promt/git.fish
     # }}}
-
-    # {{{ Git Stuff
-    function _git_branch_name -d "Display current branch name"
-        echo (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
-    end
-
-    function _git_ahead -d "git repository is ahead or behind origin"
-      set -l commits (command git rev-list --left-right '@{upstream}...HEAD' ^/dev/null)
-    
-      if [ $status != 0 ]
-        return
-      end
-
-      set -l behind (count (for arg in $commits; echo $arg; end | grep '^<'))
-      set -l ahead (count (for arg in $commits; echo $arg; end | grep -v '^<'))
-    
-      switch "$ahead $behind"
-        case '' # no upstream
-            ;
-        case '0 0' # equal to upstream
-            ;
-        case '* 0' # ahead of upstream
-            echo "[>]"
-        case '0 *' # behind upstream
-            echo "[<]"
-        case '*' # diverged from upstream
-            echo "[<>]"
-      end
-    end
-    # }}}
-
 
     # {{{ Fish Prompt
     function fish_prompt
-
-        set global_status (echo $status)
+        
+        # init
+        set global_status $status
         set prompt ""
 
+        # pwd
+        set prompt $prompt(prompt_pwd)
+
         # git stuff
-        set -l branch (_git_branch_name)
-        set -l ahead (_git_ahead)
-        if test -n "$branch"
-            set prompt (echo $prompt  $branch $ahead)
-        end
+        set prompt $prompt (_owlshell_git)
 
         if test $global_status -ne 0
-            set prompt (echo $prompt ">v< ")
+            printf "$prompt\n>v< "
         else
-            set prompt (echo $prompt "ovo ")
+            printf "$prompt\n>v> "
         end
-
-        echo $prompt
     end
     # }}}
 
