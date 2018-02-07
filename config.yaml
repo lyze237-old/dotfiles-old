@@ -18,6 +18,9 @@ dotfiles:
   d_owl:
     dst: ~/.config/owl
     src: config/owl
+  d_promt:
+    dst: ~/.config/fish/promt
+    src: config/fish/promt
   d_themes:
     dst: ~/.themes
     src: themes
@@ -125,6 +128,7 @@ profiles:
     - f_offlineimaprc
     - d_functions
     - f_mopidy.conf
+    - d_promt
   sudo:
     dotfiles:
     - f_issue
