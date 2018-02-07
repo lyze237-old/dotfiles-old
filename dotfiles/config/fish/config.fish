@@ -31,14 +31,12 @@ set fish_greeting ""
 # }}}
 
 
-
-
 # {{{ Fish Prompt
 
     # {{{ Source
     set curDir (dirname (status -f))
-    source $curDir/promt/colors.fish
-    source $curDir/promt/git.fish
+    source $curDir/prompt/colors.fish
+    source $curDir/prompt/git.fish
     # }}}
 
     # {{{ Fish Prompt
@@ -48,16 +46,14 @@ set fish_greeting ""
         set global_status $status
         set prompt ""
 
-        # pwd
-        set prompt $prompt(prompt_pwd)
-
         # git stuff
         set prompt $prompt (_owlshell_git)
 
+        set prompt_pwd (prompt_pwd)
         if test $global_status -ne 0
-            printf "$prompt\n>v< "
+            printf "$prompt\n$prompt_pwd>v< "
         else
-            printf "$prompt\n>v> "
+            printf "$prompt\n$prompt_pwd>v> "
         end
     end
     # }}}
