@@ -51,9 +51,9 @@ set fish_greeting ""
 
         set prompt_pwd (prompt_pwd)
         if test $global_status -ne 0
-            printf "$prompt\n$prompt_pwd>v< "
+            printf "$prompt\n$prompt_pwd >v< "
         else
-            printf "$prompt\n$prompt_pwd>v> "
+            printf "$prompt\n$prompt_pwd >v> "
         end
     end
     # }}}
