@@ -40,20 +40,22 @@ set fish_greeting ""
 
     # {{{ Fish Prompt
     function fish_prompt
-        
+        if test $status -ne 0
+            echo (prompt_pwd) ">v< "
+        else
+            echo (prompt_pwd) "ovo "
+        end
+    end
+    # }}}
+
+    # {{{
+    function fish_right_prompt
         # init
-        set global_status $status
         set prompt ""
 
         # git stuff
         set prompt $prompt (_owlshell_git)
-
-        set prompt_pwd (prompt_pwd)
-        if test $global_status -ne 0
-            printf "$prompt\n$prompt_pwd >v< "
-        else
-            printf "$prompt\n$prompt_pwd ovo "
-        end
+        printf "$prompt"
     end
     # }}}
 
