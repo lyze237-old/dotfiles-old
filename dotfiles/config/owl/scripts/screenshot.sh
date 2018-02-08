@@ -6,7 +6,6 @@ case "$1" in
     "full" | "fullscreen")
         echo fullscreen
         flameshot full -p /tmp
-        sleep 0.5
         ;;
     "region")
         echo region
@@ -25,7 +24,15 @@ do
     sleep 0.1
 done
 
+sleep 0.1
+
 xclip -selection clipboard -t image/png < /tmp/screenshot.png
-curl -F'file=@/tmp/screenshot.png' https://0x0.st | xargs echo -n |xclip -selection clipboard
+
+url="500 Internal Server Error"
+while [[ $url = *"500 Internal Server Error" ]] ; do
+    url=$(curl -F'file=@/tmp/screenshot.png' https://0x0.st)
+done
+
+echo $url | xargs echo -n |xclip -selection clipboard
 
 notify-send Screenshot "Uploaded to 0x0.st"
