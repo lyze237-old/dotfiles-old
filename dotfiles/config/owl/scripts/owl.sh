@@ -2,12 +2,25 @@
 
 echo "Running owl.sh with arguments '$*'"
 
+voidDir="/tmp/void-packages/"
+
 case "$1" in
 	"install")
 		echo "Running xbps-install -S ${*:2}"
 		
 		if ! xbps-install -S "${@:2}" ; then
 			exit 20
+		fi
+		;;
+	"install-src")
+		if [ -d "$voidDir" ] ; then
+			echo "Couldn't find void-packages directory. Run 'owl.sh init' and 'owl.sh build $2' first"
+			exit 20
+		fi
+		
+		echo "Running xbps-install --repository=hostdir/binpkgs/master $2"
+		if ! xbps-install --repository=hostdir/binpkgs/master "$2" ; then
+			exit 21
 		fi
 		;;
 	"update")
@@ -46,35 +59,19 @@ case "$1" in
 		fi
 		;;
 	"init")
-		echo "Initializing void-packages repo"
-		curDir=$(pwd)
-		cd /tmp/ || exit 80
-		
-		echo "Cloning void-packages to /tmp/void-packages/"
-		
-		if ! git clone https://github.com/voidlinux/void-packages.git ; then
-			echo "Couldn't download void packages to /tmp/"
-			exit 81
-		fi
-		
-		cd /tmp/void-packages/ || exit 82
-		
-		echo "Executing binary-bootstrap"
-		
-		
-		if ! ./xbps-src binary-bootstrap	 ; then
-			cd "$curDir" || exit 83
-			exit 84
-		fi
-		
-		cd "$curDir" || exit 85
+		initsrc
 		;;
 	"build")
 		echo "Building $2 with xbps-src"
-		curDir=$(pwd)
-		cd /tmp/void-packages/ || exit 90
 		
-		echo "Running ./xbps-src -f pkg $2"
+		if [ -d "$voidDir" ] ; then
+			initsrc
+		fi
+		
+		curDir="$(pwd)"
+		cd "$voidDir" || exit 90
+		
+		echo "Running ./xbps-src pkg $2 -j5"
 		
 		if ! ./xbps-src -f pkg "$2" ; then
 			cd "$curDir" || exit 91
@@ -95,3 +92,27 @@ case "$1" in
 		exit 10
 		;;
 esac
+
+
+function initsrc {
+	echo "Initializing void-packages repo"
+	curDir="$(pwd)"
+	
+	echo "Cloning void-packages to $voidDir"
+	
+	if ! git clone https://github.com/voidlinux/void-packages.git "$voidDir" ; then
+		echo "Couldn't download void packages to $voidDir"
+		exit 81
+	fi
+	
+	cd "$voidDir" || exit 82
+	
+	echo "Executing binary-bootstrap"
+	
+	if ! ./xbps-src binary-bootstrap ; then
+		cd "$curDir" || exit 83
+		exit 84
+	fi
+	
+	cd "$curDir" || exit 85
+}
