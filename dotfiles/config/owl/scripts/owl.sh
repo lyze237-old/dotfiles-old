@@ -5,13 +5,6 @@ echo "Running owl.sh with arguments '$*'"
 voidDir="/tmp/void-packages/"
 
 case "$1" in
-	"install")
-		echo "Running xbps-install -S ${*:2}"
-		
-		if ! xbps-install -S "${@:2}" ; then
-			exit 20
-		fi
-		;;
 	"install-src")
 		if [ -d "$voidDir" ] ; then
 			echo "Couldn't find void-packages directory. Run 'owl.sh init' and 'owl.sh build $2' first"
@@ -21,6 +14,13 @@ case "$1" in
 		echo "Running xbps-install --repository=hostdir/binpkgs/master $2"
 		if ! xbps-install --repository=hostdir/binpkgs/master "$2" ; then
 			exit 21
+		fi
+		;;
+	"install")
+		echo "Running xbps-install -S ${*:2}"
+		
+		if ! xbps-install -S "${@:2}" ; then
+			exit 20
 		fi
 		;;
 	"update")
