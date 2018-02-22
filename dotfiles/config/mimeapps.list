@@ -9,9 +9,9 @@ application/pdf=firefox.desktop
 
 [Added Associations]
 text/plain=mousepad.desktop;
-application/x-shellscript=mousepad.desktop;vim.desktop;
+application/x-shellscript=userapp-bash-KDLSEZ.desktop;userapp-bash-66RTEZ.desktop;mousepad.desktop;vim.desktop;
 image/png=feh.desktop;gimp.desktop;
-image/jpeg=gimp.desktop;display-im6.q16.desktop;feh.desktop;
+image/jpeg=feh.desktop;display-im6.q16.desktop;gimp.desktop;
 application/json=mousepad.desktop;
 application/vnd.android.package-archive=openjdk-8-java.desktop;
 text/x-csharp=mousepad.desktop;vim.desktop;

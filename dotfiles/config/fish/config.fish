@@ -1,8 +1,9 @@
 #/!usr/bin/fish
 
-fish_vi_key_bindings
+if test (tty) = "/dev/tty1"
+    startx
+end
 
-sleep 0.1
 # {{{ Weather Function 
 function weather
     set cols (tput cols)

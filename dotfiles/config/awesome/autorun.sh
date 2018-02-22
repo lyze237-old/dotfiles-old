@@ -37,7 +37,7 @@ redshift-gtk &
 ~/.config/owl/scripts/offlineimap-notifications.sh &
 
 # chat desktop 
-/opt/lyze/Telegram/Telegram &
+/opt/Telegram/Telegram &
 sleep 0.5 && corebird &
 sleep 1 && discord &
 
