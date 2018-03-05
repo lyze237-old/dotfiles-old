@@ -42,6 +42,9 @@ dotfiles:
   f_gtkrc-2.0:
     dst: ~/.gtkrc-2.0
     src: gtkrc-2.0
+  f_init.vim:
+    dst: ~/.config/nvim/init.vim
+    src: config/nvim/init.vim
   f_issue:
     dst: /etc/issue
     src: etc/issue
@@ -129,6 +132,7 @@ profiles:
     - d_functions
     - f_mopidy.conf
     - d_prompt
+    - f_init.vim
   sudo:
     dotfiles:
     - f_issue
