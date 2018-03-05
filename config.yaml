@@ -100,8 +100,12 @@ dotfiles:
     dst: ~/.xinitrc
     src: xinitrc
 profiles:
+  mac:
+    dotfiles:
+    - f_init.vim
   ovo:
     dotfiles:
+    - f_init.vim
     - f_xinitrc
     - f_ssh_config
     - f_known_hosts
@@ -132,7 +136,6 @@ profiles:
     - d_functions
     - f_mopidy.conf
     - d_prompt
-    - f_init.vim
   sudo:
     dotfiles:
     - f_issue
