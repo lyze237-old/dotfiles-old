@@ -20,3 +20,4 @@ application/gzip=xarchiver.desktop;
 application/zip=xarchiver.desktop;
 application/pdf=firefox.desktop;
 text/markdown=mousepad.desktop;
+text/csv=libreoffice-calc.desktop;

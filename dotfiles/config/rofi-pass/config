@@ -1,0 +1,14 @@
+URL_field='url'
+USERNAME_field='user'
+AUTOTYPE_field='autotype'
+
+delay=3
+
+EDITOR='termite -e nvim'
+
+BROWSER='xdg-open'
+
+notify=true
+
+clip='clipboard'
+

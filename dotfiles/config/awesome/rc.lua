@@ -278,8 +278,8 @@ globalkeys = my_table.join(
     awful.key({ modkey }, "e", function() awful.spawn("exo-open --launch FileManager") end,
         {description = "file manager", group = "launcher"}),
 
-    awful.key({ modkey }, "p", function() awful.spawn("arandr") end,
-        {description = "display settings", group = "launcher"})
+    awful.key({ modkey }, "p", function() awful.spawn("rofi-pass") end,
+        {description = "opens the password manager with rofi", group = "launcher"})
 )
 
 clientkeys = my_table.join(
@@ -420,7 +420,8 @@ awful.rules.rules = {
             }
         }, 
         properties = { 
-            floating = true
+            floating = true,
+            ontop = true
         }
     },
 

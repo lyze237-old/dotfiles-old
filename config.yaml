@@ -72,6 +72,9 @@ dotfiles:
   f_offlineimaprc:
     dst: ~/.offlineimaprc
     src: offlineimaprc
+  f_rofi-pass_config:
+    dst: ~/.config/rofi-pass/config
+    src: config/rofi-pass/config
   f_rofi_config:
     dst: ~/.config/rofi/config
     src: config/rofi/config
@@ -139,6 +142,7 @@ profiles:
     - d_functions
     - f_mopidy.conf
     - d_prompt
+    - f_rofi-pass_config
   sudo:
     dotfiles:
     - f_issue
