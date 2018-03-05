@@ -384,7 +384,7 @@ awful.rules.rules = {
             keys = clientkeys,
             buttons = clientbuttons,
             screen = awful.screen.preferred,
-            placement = awful.placement.under_mouse,
+            placement = awful.placement.under_mouse+awful.placement.no_offscreen,
             size_hints_honor = false 
         }
     },
