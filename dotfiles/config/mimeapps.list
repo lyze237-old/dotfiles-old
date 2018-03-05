@@ -9,7 +9,7 @@ application/pdf=firefox.desktop
 
 [Added Associations]
 text/plain=mousepad.desktop;
-application/x-shellscript=userapp-bash-KDLSEZ.desktop;userapp-bash-66RTEZ.desktop;mousepad.desktop;vim.desktop;
+application/x-shellscript=mousepad.desktop;userapp-bash-KDLSEZ.desktop;userapp-bash-66RTEZ.desktop;vim.desktop;
 image/png=feh.desktop;gimp.desktop;
 image/jpeg=feh.desktop;display-im6.q16.desktop;gimp.desktop;
 application/json=mousepad.desktop;
