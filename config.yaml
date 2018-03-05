@@ -102,6 +102,9 @@ dotfiles:
 profiles:
   mac:
     dotfiles:
+    - f_gitattributes
+    - f_gitconfig
+    - f_gitignore
     - f_init.vim
   ovo:
     dotfiles:
