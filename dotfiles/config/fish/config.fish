@@ -4,6 +4,8 @@ if test (tty) = "/dev/tty1"
     startx
 end
 
+export GPG_TTY=(tty)
+
 # {{{ Weather Function 
 function weather
     set cols (tput cols)
