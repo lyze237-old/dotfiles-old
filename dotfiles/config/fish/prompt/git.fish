@@ -16,7 +16,7 @@ function _owlshell_git
 
     # print branch name
     set branch (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
-    printf "$cyan $branch $normal"
+    printf "$blue $branch$normal"
 
     # branch is ahead
     if echo $index\n | command grep -E '^## .* \[.*ahead' > /dev/null
@@ -47,7 +47,7 @@ function _owlshell_git
         set eyeRight "^"
     end
 
-    printf "$yellow$eyeLeft$normal$beak$yellow$eyeRight$normal"
+    printf "$cyan\\$red\"$cyan\\$yellow$eyeLeft$normal$beak$yellow$eyeRight$normal"
 
     set state ""
     # untracked files
@@ -98,6 +98,6 @@ function _owlshell_git
     end    
 
     if test -n "$state"
-        printf "$cyan/$red\"$cyan/$purple%s$normal" "$state"
+        printf "$cyan/$red\"$cyan/$blue%s$normal" "$state"
     end
 end

@@ -7,6 +7,7 @@ set red (set_color red)
 set cyan (set_color cyan)
 set yellow (set_color yellow)
 set green (set_color green)
+set blue (set_color blue)
 
 set bpurple (set_color -o purple)
 set bred (set_color -o red)

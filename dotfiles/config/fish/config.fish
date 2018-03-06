@@ -40,6 +40,7 @@ set fish_greeting ""
     set curDir (dirname (status -f))
     source $curDir/prompt/colors.fish
     source $curDir/prompt/git.fish
+    source $curDir/prompt/dotnet.fish
     # }}}
 
     # {{{ Fish Prompt
@@ -56,6 +57,9 @@ set fish_greeting ""
     function fish_right_prompt
         # init
         set prompt ""
+
+        # get stuff
+        set prompt $prompt (_owlshell_dotnet)
 
         # git stuff
         set prompt $prompt (_owlshell_git)

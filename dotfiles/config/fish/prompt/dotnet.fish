@@ -7,9 +7,9 @@ function _owlshell_dotnet
          return
     end   
 
-    if test (find . -maxdepth 1 -name "*.csproj" | wc -l) -eq 0
+    if test (find . -maxdepth 1 -name "*.csproj" | wc -l) -eq 0 -a (find . -maxdepth 1 -name "*.sln" | wc -l) -eq 0
         return
     end
     
-    echo (dotnet --version)
+    echo $blue""$normal 
 end
