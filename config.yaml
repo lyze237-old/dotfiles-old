@@ -109,6 +109,9 @@ profiles:
     - f_gitconfig
     - f_gitignore
     - f_init.vim
+    - f_config.fish
+    - d_functions
+    - d_prompt
   ovo:
     dotfiles:
     - f_init.vim

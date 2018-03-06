@@ -1,6 +1,6 @@
 function dotdrop
     set dir (pwd)
-    cd /home/lyze/.dotfiles/dotfiles-public
+    cd ~/.dotfiles/dotfiles-public
     if test -e secrets.env
         posix-source secrets.env
     end
