@@ -5,6 +5,7 @@ if test (tty) = "/dev/tty1"
 end
 
 export GPG_TTY=(tty)
+export EDITOR=nvim
 
 # {{{ Weather Function 
 function weather
@@ -44,9 +45,9 @@ set fish_greeting ""
     # {{{ Fish Prompt
     function fish_prompt
         if test $status -ne 0
-            echo (prompt_pwd) ">v< "
+            echo (prompt_pwd) $yellow">"$normal"v"$yellow"<"$normal" "
         else
-            echo (prompt_pwd) "ovo "
+            echo (prompt_pwd) $yellow"O"$normal"v"$yellow"O"$normal" "
         end
     end
     # }}}
