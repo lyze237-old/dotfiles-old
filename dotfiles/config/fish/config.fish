@@ -46,10 +46,15 @@ set fish_greeting ""
     # {{{ Fish Prompt
     function fish_prompt
         if test $status -ne 0
-            echo (prompt_pwd) $yellow">"$normal"v"$yellow"<"$normal" "
+            set eyeLeft ">"
+            set beak "v"
+            set eyeRight "<"
         else
-            echo (prompt_pwd) $yellow"O"$normal"v"$yellow"O"$normal" "
+            set eyeLeft "O"
+            set beak "v"
+            set eyeRight "O"
         end
+        echo $blue(prompt_pwd) $yellow$eyeLeft$normal$beak$yellow$eyeRight$normal"$cyan/$red\"$cyan/$normal "
     end
     # }}}
 
