@@ -103,6 +103,15 @@ dotfiles:
     dst: ~/.xinitrc
     src: xinitrc
 profiles:
+  wsl:
+    dotfiles:
+    - f_gitattributes
+    - f_gitconfig
+    - f_gitignore
+    - f_init.vim
+    - f_config.fish
+    - d_functions
+    - d_prompt
   mac:
     dotfiles:
     - f_gitattributes
