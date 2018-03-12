@@ -7,9 +7,11 @@ function _owlshell_dotnet
          return
     end   
 
-    if test (find . -maxdepth 1 -name "*.csproj" | wc -l) -eq 0 -a (find . -maxdepth 1 -name "*.sln" | wc -l) -eq 0
-        return
+    # check if we are in a project or in a solution directory
+    if test (find . -maxdepth 1 -name "*.csproj" | wc -l) -gt 0
+        set version (grep -oE '<RuntimeFrameworkVersion>(.*)<\/RuntimeFrameworkVersion>' *.csproj | sed -e 's/^<RuntimeFrameworkVersion>//g' -e 's/<\/RuntimeFrameworkVersion>$//g')
+        echo $blue" "$version$normal
+    else if test (find . -maxdepth 1 -name "*.sln" | wc -l) -gt 0
+        echo $blue""$normal 
     end
-    
-    echo $blue""$normal 
 end
