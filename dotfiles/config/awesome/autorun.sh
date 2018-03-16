@@ -5,7 +5,6 @@
 setxkbmap gb
 numlockx on
 xsetroot -cursor_name Breeze_Obsidian &
-flameshot &
 
 # music desktop 
 termite --title pulsemixer -e 'fish -c "while true; pulsemixer; end"' &

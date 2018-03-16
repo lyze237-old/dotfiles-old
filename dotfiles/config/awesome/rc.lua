@@ -173,11 +173,33 @@ root.buttons(my_table.join(
 globalkeys = my_table.join(
     -- Take a screenshot
     -- https://github.com/lcpz/dots/blob/master/bin/screenshot
-    awful.key({ }, "Print", function() awful.spawn.with_shell(os.getenv("HOME") .. "/.config/owl/scripts/screenshot.sh full") end,
-        {description = "take a fullscreen screenshot", group = "hotkeys"}),
+    awful.key({ }, "Print", function() 
+        awful.spawn.with_shell("maim -b 5 /tmp/screenshot.png " .. 
+            "; echo \"\" " .. 
+            "| xclip -selection clipboard " ..
+            "; " .. os.getenv("HOME") .. "/.config/owl/scripts/0x0 /tmp/screenshot.png " ..
+            "| xargs echo -n " ..
+            "| xclip -selection clipboard", false) 
+        naughty.notify({
+            title = "Screenshot",
+            text = "Uploaded to 0x0"
+        })
+    end,
+    {description = "take a fullscreen screenshot", group = "hotkeys"}),
 
-    awful.key({ "Control" }, "Print", function() awful.spawn.with_shell(os.getenv("HOME") .. "/.config/owl/scripts/screenshot.sh region") end,
-        {description = "take a region screenshot", group = "hotkeys"}),
+    awful.key({ "Control" }, "Print", function() 
+        awful.spawn.with_shell("maim -s -b 5 /tmp/screenshot.png " .. 
+            "; echo \"\" " .. 
+            "| xclip -selection clipboard " ..
+            "; " .. os.getenv("HOME") .. "/.config/owl/scripts/0x0 /tmp/screenshot.png " ..
+            "| xargs echo -n " ..
+            "| xclip -selection clipboard", false) 
+        naughty.notify({
+            title = "Screenshot",
+            text = "Uploaded to 0x0"
+        })
+    end,
+    {description = "take a region screenshot", group = "hotkeys"}),
 
     -- Hotkeys
     awful.key({ modkey }, "s",      hotkeys_popup.show_help,

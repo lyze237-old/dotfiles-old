@@ -146,13 +146,13 @@ sudo chsh -s `which fish`
 # rtv
 sudo pip install rtv
 
-# flameshot
+# maim
 cd /tmp
-git clone https://github.com/lupoDharkael/flameshot
-cd flameshot
-qmake
-make
-sudo make install
+sudo apt install -y slop libjpeg-dev libgl1-mesa-dev cmake libglm-dev
+git clone https://github.com/naelstrof/maim.git
+cd maim
+cmake -DCMAKE_INSTALL_PREFIX="/usr" ./
+make && sudo make install
 
 # termite install
 cd /tmp
