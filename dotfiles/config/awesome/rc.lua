@@ -179,11 +179,8 @@ globalkeys = my_table.join(
             "| xclip -selection clipboard " ..
             "; " .. os.getenv("HOME") .. "/.config/owl/scripts/0x0 /tmp/screenshot.png " ..
             "| xargs echo -n " ..
-            "| xclip -selection clipboard", false) 
-        naughty.notify({
-            title = "Screenshot",
-            text = "Uploaded to 0x0"
-        })
+            "| xclip -selection clipboard " ..
+            "; notify-send Screenshot Uploaded to 0x0", false) 
     end,
     {description = "take a fullscreen screenshot", group = "hotkeys"}),
 
@@ -193,7 +190,8 @@ globalkeys = my_table.join(
             "| xclip -selection clipboard " ..
             "; " .. os.getenv("HOME") .. "/.config/owl/scripts/0x0 /tmp/screenshot.png " ..
             "| xargs echo -n " ..
-            "| xclip -selection clipboard", false) 
+            "| xclip -selection clipboard "..
+            "; notify-send Screenshot Uploaded to 0x0", false) 
         naughty.notify({
             title = "Screenshot",
             text = "Uploaded to 0x0"
