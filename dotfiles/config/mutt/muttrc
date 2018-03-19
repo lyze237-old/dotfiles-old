@@ -24,6 +24,14 @@ set index_format="%2C %Z %d %-15.15F %s (%-4.4c)"
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
+# {{{ Notifications
+{%@@ if profile == "ovo"@@%}
+set new_mail_command="notify-send 'New Email' '%n new messages, %u unread.' &"
+{%@@ elif profile == "mac" @@%} 
+set new_mail_command="terminal-notifier -title '%v' -subtitle 'New Mail' -message '%n new messages, %u unread.' -activate 'com.apple.Terminal'"
+{%@@ endif @@%}
+# }}}
+
 # Headers {{{
 my_hdr X-Message-Flag: WARNING!! Outlook sucks
 # }}}

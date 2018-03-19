@@ -120,6 +120,7 @@ profiles:
     - f_config.fish
     - d_functions
     - d_prompt
+    - d_mutt
   mac:
     dotfiles:
     - f_gitattributes
@@ -129,6 +130,7 @@ profiles:
     - f_config.fish
     - d_functions
     - d_prompt
+    - d_mutt
   ovo:
     dotfiles:
     - f_init.vim
