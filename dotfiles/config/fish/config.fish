@@ -6,6 +6,7 @@ end
 
 export GPG_TTY=(tty)
 export EDITOR=nvim
+export LANG=en_US.UTF-8 mutt
 
 # {{{ Weather Function 
 function weather
