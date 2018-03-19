@@ -1,5 +1,4 @@
 [alias]
-
     a   = commit --amend
     br  = branch
     c   = commit
@@ -86,40 +85,30 @@
 
 
 [color "branch"]
-
     current = green bold
     local = green
     remote = yellow
 
 [color "diff"]
-
     frag = magenta
     meta = yellow
     new = green
     old = red
 
 [color "status"]
-
     added = green reverse
     changed = yellow reverse
     untracked = red reverse
 
 [core]
-
     abbrev = 12
     attributesfile = ~/.gitattributes
     autocrlf = input
     editor = vim
     excludesfile = ~/.gitignore
 
-[diff "bin"]
-
-    # Use `hexdump` to diff binary files.
-
-    textconv = hexdump -v -C
 
 [pretty]
-
     custom = "%C(magenta)%h%C(red)%d %C(yellow)%ar %C(green)%s %C(yellow)(%an)"
     #                     ¦        ¦            ¦            ¦             +- author name
     #                     ¦        ¦            ¦            +- message
@@ -129,37 +118,40 @@
 
 
 [push]
-
-    # Make `git push` automatically push relevant
-    # annotated tags when pushing branches out.
-
     followTags = true
 
 [user]
-
-    # Don't guess the user's identity.
-    # https://github.com/git/git/blob/90f7b16b3adc78d4bbabbd426fb69aa78c714f71/Documentation/config.txt#L2847-L2855
-
     useConfigOnly = true
 	name = "Michael Weinberger"
 	email = lyze@owl.sh
 
-[include]
-
-    # Load local configs.
-    # https://git-scm.com/docs/git-config#_includes
-    #
-    # [!] The following needs to remain at the end of this file in
-    #     order to allow any of the above configs to be overwritten
-    #     by the local ones
-
-    path = ~/.gitconfig.local
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 
-
 [commit]
-	gpgsign = true
+    gpgsign = true
+
+[difftool]
+    prompt = true
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+[mergetool]
+    prompt = true
+[merge]
+    tool = nvimdiff
+[mergetool "nvimdiff"]
+    cmd = "nvim -d \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\" -c '$wincmd w' -c 'wincmd J'"
+
+[diff "bin"]
+    # Use `hexdump` to diff binary files.
+    textconv = hexdump -v -C
+
+[include]
+    # Load local configs.
+    path = ~/.gitconfig.local
