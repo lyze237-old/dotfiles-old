@@ -1,0 +1,17 @@
+# vim: filetype=muttrc
+set realname = "Michael Weinberger" 
+set from = {{@@ env['mailbox_from'] @@}}
+set imap_user = {{@@ env['mailbox_username'] @@}}
+set imap_pass = {{@@ env['mailbox_password'] @@}}
+set folder = imaps://imap.mailbox.org/
+
+set smtp_url = smtps://{{@@ env['mailbox_from'] @@}}:{{@@ env['mailbox_smtp_host'] @@}}:{{@@ env['mailbox_smtp_port'] @@}}
+set smtp_pass = {{@@ env['mailbox_password'] @@}}
+
+set spoolfile = +INBOX 
+set record = +Sent
+set postponed = +Drafts
+
+set ssl_starttls = yes
+set ssl_force_tls = yes
+# mailboxes +INBOX +Drafts +Sent +Catchall +Rss +Rss.FA +Rss.Youtube +Archive.2017 +Archive.2018 +Archive.2018.Rss +Archive.2018.Rss.FA +Archive.2018.Rss.Youtube +Pending
