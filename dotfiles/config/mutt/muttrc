@@ -1,9 +1,5 @@
 # Sources {{{
-{%@@ if profile == "ovo"@@%}
-source '~/.config/mutt/offlinemailboxrc'
-{%@@ else @@%}
 source '~/.config/mutt/onlinemailboxrc'
-{%@@ endif @@%}
 source '~/.config/mutt/bindings'
 source '~/.config/mutt/macros'
 source '~/.config/mutt/colors'
@@ -17,22 +13,20 @@ set sort = 'reverse-date'
 set editor = "vim -c 'set spell spelllang=en,de'"
 set timeout = "5"
 set mail_check = "10"
-set mailcap_path = ~/.mailcap
 set date_format="%d.%m %I:%M"
 set index_format="%2C %Z %d %-15.15F %s (%-4.4c)"
+
+set mailcap_path = '~/.config/mutt/mailcap'
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
 # {{{ Notifications
-{%@@ if profile == "ovo"@@%}
-set new_mail_command="notify-send 'New Email' '%n new messages, %u unread.' &"
-{%@@ elif profile == "mac" @@%} 
+ 
 set new_mail_command="terminal-notifier -title '%v' -subtitle 'New Mail' -message '%n new messages, %u unread.' -activate 'com.apple.Terminal'"
-{%@@ endif @@%}
 # }}}
 
 # Headers {{{
-my_hdr X-Message-Flag: WARNING!! Outlook sucks
+my_hdr X-Message-Flag: WARNING! Outlook is not fun! 
 # }}}
 
