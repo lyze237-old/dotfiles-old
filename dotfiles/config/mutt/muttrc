@@ -21,6 +21,8 @@ set mailcap_path = ~/.mailcap
 set date_format="%d.%m %I:%M"
 set index_format="%2C %Z %d %-15.15F %s (%-4.4c)"
 
+set mailcap_path = ~/.mutt/mailcap
+
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
@@ -31,6 +33,6 @@ set new_mail_command="terminal-notifier -title '%v' -subtitle 'New Mail' -messag
 # }}}
 
 # Headers {{{
-my_hdr X-Message-Flag: WARNING!! Outlook sucks
+my_hdr X-Message-Flag: WARNING! Outlook is not fun! 
 # }}}
 
