@@ -1,12 +1,12 @@
 # vim: filetype=muttrc
 set realname = "Michael Weinberger" 
-set from = {{@@ env['mailbox_from'] @@}}
-set imap_user = {{@@ env['mailbox_username'] @@}}
-set imap_pass = {{@@ env['mailbox_password'] @@}}
-set folder = imaps://{{@@ env['mailbox_imap_host'] @@}}/
+set from = lyze@owl.sh
+set imap_user = lyze@mailbox.org
+set imap_pass = o7AvcfuOl4uw
+set folder = imaps://imap.mailbox.org/
 
-set smtp_url = smtps://{{@@ env['mailbox_username'] @@}}@{{@@ env['mailbox_smtp_host'] @@}}:465
-set smtp_pass = {{@@ env['mailbox_password'] @@}}
+set smtp_url = smtps://lyze@mailbox.org@smtp.mailbox.org:465
+set smtp_pass = o7AvcfuOl4uw
 set smtp_authenticators = PLAIN
 
 set spoolfile = +INBOX 
