@@ -172,7 +172,6 @@ root.buttons(my_table.join(
 -- {{{ Key bindings
 globalkeys = my_table.join(
     -- Take a screenshot
-    -- https://github.com/lcpz/dots/blob/master/bin/screenshot
     awful.key({ }, "Print", function() 
         awful.spawn.with_shell("maim -b 5 /tmp/screenshot.png " .. 
             "; echo \"\" " .. 
@@ -192,10 +191,6 @@ globalkeys = my_table.join(
             "| xargs echo -n " ..
             "| xclip -selection clipboard "..
             "; notify-send Screenshot Uploaded to 0x0", false) 
-        naughty.notify({
-            title = "Screenshot",
-            text = "Uploaded to 0x0"
-        })
     end,
     {description = "take a region screenshot", group = "hotkeys"}),
 

@@ -5,6 +5,7 @@
 setxkbmap gb
 numlockx on
 xsetroot -cursor_name Breeze_Obsidian &
+parcellite &
 
 # music desktop 
 termite --title pulsemixer -e 'fish -c "while true; pulsemixer; end"' &
@@ -24,7 +25,7 @@ termite --title rtv -e rtv &
 termite --title weechat -e weechat &
 
 # mail desktop 
-termite --title mutt -e mutt &
+termite --title mutt -e 'fish -c "mutt ; offlineimap"' &
 # other
 bash -c 'sleep 5 ; steam' &
 firefox &
