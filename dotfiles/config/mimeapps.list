@@ -6,12 +6,13 @@ text/plain=mousepad.desktop
 application/x-shellscript=mousepad.desktop
 x-scheme-handler/discord-384215522050572288=discord-384215522050572288.desktop
 application/pdf=firefox.desktop
+inode/directory=Thunar.desktop
 
 [Added Associations]
 text/plain=mousepad.desktop;
-application/x-shellscript=mousepad.desktop;userapp-bash-KDLSEZ.desktop;userapp-bash-66RTEZ.desktop;vim.desktop;
+application/x-shellscript=mousepad.desktop;
 image/png=feh.desktop;gimp.desktop;
-image/jpeg=feh.desktop;display-im6.q16.desktop;gimp.desktop;
+image/jpeg=gimp.desktop;feh.desktop;
 application/json=mousepad.desktop;
 application/vnd.android.package-archive=openjdk-8-java.desktop;
 text/x-csharp=mousepad.desktop;vim.desktop;
@@ -21,3 +22,5 @@ application/zip=xarchiver.desktop;
 application/pdf=firefox.desktop;
 text/markdown=mousepad.desktop;
 text/csv=libreoffice-calc.desktop;
+application/x-theme=mousepad.desktop;panel-desktop-handler.desktop;
+text/x-python=mousepad.desktop;
