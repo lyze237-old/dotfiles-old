@@ -1,5 +1,9 @@
 # Sources {{{
+{%@@ if profile == "ovo"@@%}
+source '~/.config/mutt/offlinemailboxrc'
+{%@@ else @@%}
 source '~/.config/mutt/onlinemailboxrc'
+{%@@ endif @@%}
 source '~/.config/mutt/bindings'
 source '~/.config/mutt/macros'
 source '~/.config/mutt/colors'
@@ -22,8 +26,9 @@ auto_view text/html
 alternative_order text/plain text/enriched text/html
 
 # {{{ Notifications
- 
+{%@@ if profile == "mac" @@%} 
 set new_mail_command="terminal-notifier -title '%v' -subtitle 'New Mail' -message '%n new messages, %u unread.' -activate 'com.apple.Terminal'"
+{%@@ endif @@%}
 # }}}
 
 # Headers {{{

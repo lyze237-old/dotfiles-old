@@ -28,7 +28,6 @@ termite --title weechat -e weechat &
 termite --title mutt -e 'fish -c "mutt ; offlineimap"' &
 # other
 bash -c 'sleep 5 ; steam' &
-firefox &
 bash -c 'sleep 5 ; nextcloud' &
 compton &
 redshift-gtk &
