@@ -427,7 +427,8 @@ awful.rules.rules = {
             },
             name = {
                 "Event Tester",  -- xev.
-                "PlayOnLinux"
+                "PlayOnLinux",
+                "Computers & Contacts"
             },
             role = {
                 "AlarmWindow",  -- Thunderbird's calendar.
