@@ -1,4 +1,8 @@
 #!/bin/bash
+
+echo "Installing xcode cli tools"
+/usr/bin/xcode-select --install<Paste>
+
 echo Download and install iterm2 from https://iterm2.com/downloads.html
 
 # install brew
@@ -8,3 +12,10 @@ brew install urlview
 brew install w3m
 brew install neomutt
 brew install terminal-notifier
+brew install git
+
+brew cask install discord
+brew cask install spotify
+brew cask install firefox
+brew cask install vlc
+
