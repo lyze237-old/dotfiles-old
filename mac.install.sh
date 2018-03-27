@@ -12,3 +12,10 @@ brew install urlview
 brew install w3m
 brew install neomutt
 brew install terminal-notifier
+brew install git
+
+brew cask install discord
+brew cask install spotify
+brew cask install firefox
+brew cask install vlc
+
