@@ -1,4 +1,8 @@
 #!/bin/bash
+
+echo "Installing xcode cli tools"
+/usr/bin/xcode-select --install<Paste>
+
 echo Download and install iterm2 from https://iterm2.com/downloads.html
 
 # install brew
