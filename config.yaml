@@ -106,9 +106,15 @@ dotfiles:
   f_termite_config:
     dst: ~/.config/termite/config
     src: config/termite/config
-  f_urlview:
+  f_urlview_lin:
     dst: ~/.urlview
-    src: urlview
+    src: urlview_lin
+  f_urlview_mac:
+    dst: ~/.urlview
+    src: urlview_mac
+  f_urlview_wsl:
+    dst: ~/.urlview
+    src: urlview_wsl
   f_vimrc:
     dst: ~/.vimrc
     src: vimrc
@@ -128,6 +134,7 @@ profiles:
     - d_mutt
     - f_skhdrc
     - f_chunkwmrc
+    - f_urlview_mac
   ovo:
     dotfiles:
     - f_init.vim
@@ -155,7 +162,7 @@ profiles:
     - d_owl
     - d_awesome
     - d_mutt
-    - f_urlview
+    - f_urlview_lin
     - f_msmtprc
     - f_offlineimaprc
     - d_functions
@@ -175,3 +182,4 @@ profiles:
     - d_functions
     - d_prompt
     - d_mutt
+    - f_urlview_wsl
