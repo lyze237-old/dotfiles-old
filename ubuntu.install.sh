@@ -197,3 +197,8 @@ cd /tmp
 git clone https://github.com/carnager/rofi-pass.git
 cd rofi-pass
 sudo make install
+
+# fix mouse cursor in unity and co
+cd /usr/share/icons/breeze_cursors/cursors/
+sudo ln -s left_ptr arrow
+
