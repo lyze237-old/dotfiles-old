@@ -14,4 +14,4 @@ set record = +Sent
 set postponed = +Drafts
 
 set ssl_force_tls = yes
-mailboxes +INBOX +Drafts +Sent +Catchall +Rss +Rss.FA +Rss.Youtube +Archive.2018 +Archive.2018.Rss +Archive.2018.Rss.FA +Archive.2018.Rss.Youtube +Pending
+mailboxes +INBOX +Drafts +Sent +Catchall +Rss +Rss.Youtube +Archive.2018 +Archive.2018.Rss +Archive.2018.Rss.Youtube +Pending +Streams
