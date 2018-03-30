@@ -34,7 +34,7 @@
 alt - return : open -na /Applications/iTerm.app
 
 # close focused window
-shift + cmd - q : chunkc tiling::window --close
+shift + alt - q : chunkc tiling::window --close
 
 # focus window
 alt - h : chunkc tiling::window --focus west
