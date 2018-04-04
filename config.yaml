@@ -58,6 +58,9 @@ dotfiles:
   f_issue:
     dst: /etc/issue
     src: etc/issue
+  f_kitty.conf:
+    dst: ~/.config/kitty/kitty.conf
+    src: config/kitty/kitty.conf
   f_known_hosts:
     dst: ~/.ssh/known_hosts
     src: ssh/known_hosts
@@ -135,6 +138,7 @@ profiles:
     - f_skhdrc
     - f_chunkwmrc
     - f_urlview_mac
+    - f_kitty.conf
   ovo:
     dotfiles:
     - f_init.vim
@@ -169,6 +173,7 @@ profiles:
     - f_mopidy.conf
     - d_prompt
     - f_rofi-pass_config
+    - f_kitty.conf
   sudo:
     dotfiles:
     - f_issue
