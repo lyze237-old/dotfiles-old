@@ -20,6 +20,8 @@ set mail_check = "10"
 set date_format="%d.%m %I:%M"
 set index_format="%2C %Z %d %-15.15F %s (%-4.4c)"
 
+set header_cache = '~/.cache/mutt_header_cache'
+
 set mailcap_path = '~/.config/mutt/mailcap'
 
 auto_view text/html
