@@ -7,6 +7,9 @@ config:
   create: true
   dotpath: dotfiles
 dotfiles:
+  d_owlbin:
+    dst: ~/.config/owl/scripts/bin
+    src: config/owl/scripts/bin
   d_awesome:
     dst: ~/.config/awesome
     src: config/awesome
@@ -127,6 +130,7 @@ dotfiles:
 profiles:
   mac:
     dotfiles:
+    - d_owlbin
     - f_gitattributes
     - f_gitconfig
     - f_gitignore
@@ -188,3 +192,4 @@ profiles:
     - d_prompt
     - d_mutt
     - f_urlview_wsl
+    - d_owlbin

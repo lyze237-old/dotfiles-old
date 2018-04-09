@@ -31,7 +31,7 @@
 
 
 # open terminal, blazingly fast compared to iTerm/Hyper
-alt - return : open -na /Applications/iTerm.app
+alt - return : open -na /Applications/kitty.app
 
 # close focused window
 shift + alt - q : chunkc tiling::window --close

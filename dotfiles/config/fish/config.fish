@@ -1,4 +1,4 @@
-#/!usr/bin/fish
+#!/usr/bin/fish
 
 if test (tty) = "/dev/tty1"
     startx
