@@ -56,7 +56,7 @@ theme.fg_minimize                               = theme.colors.fg3
 
 
 theme.border_normal                             = theme.colors.bg1
-theme.border_focus                              = theme.colors.blue
+theme.border_focus                              = theme.colors.orange
 theme.border_marked                             = theme.colors.red
 
 theme.bg_prompt                                 = theme.colors.red
