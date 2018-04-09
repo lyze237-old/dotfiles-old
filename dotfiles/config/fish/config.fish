@@ -8,6 +8,8 @@ export GPG_TTY=(tty)
 export EDITOR=nvim
 export LANG=en_US.UTF-8 mutt
 
+set PATH $HOME/.config/owl/scripts/bin $PATH
+
 # {{{ Weather Function 
 function weather
     set cols (tput cols)
