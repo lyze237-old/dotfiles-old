@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+
+hc keyunbind --all
+
+hc keybind $Mod-Shift-r reload
+hc keybind $Mod-Shift-q close
+hc keybind $Mod-Return spawn $terminal
+
+# basic movement
+# focusing clients
+hc keybind $Mod-h     focus left
+hc keybind $Mod-j     focus down
+hc keybind $Mod-k     focus up
+hc keybind $Mod-l     focus right
+
+# moving clients
+hc keybind $Mod-Shift-h or / shift left / \
+    chain , lock , shift_to_monitor -l , focus_monitor -l , unlock
+hc keybind $Mod-Shift-j or / shift down / \
+    chain , lock , shift_to_monitor -d , focus_monitor -d , unlock
+hc keybind $Mod-Shift-k or / shift up / \
+    chain , lock , shift_to_monitor -u , focus_monitor -u , unlock
+hc keybind $Mod-Shift-l or / shift right / \
+    chain , lock , shift_to_monitor -r , focus_monitor -r , unlock
+
+# splitting frames
+splitstep=0.5
+# create an empty frame at the specified direction
+hc keybind $Mod-Alt-h       split   left $splitstep
+hc keybind $Mod-Alt-j       split   bottom $splitstep
+hc keybind $Mod-Alt-k       split   top $splitstep
+hc keybind $Mod-Alt-l       split   right $splitstep
+# let the current frame explode into subframes
+hc keybind $Mod-Control-space split explode
+
+# resizing frames
+resizestep=0.05
+hc keybind $Mod-Control-h       resize left +$resizestep
+hc keybind $Mod-Control-j       resize down +$resizestep
+hc keybind $Mod-Control-k       resize up +$resizestep
+hc keybind $Mod-Control-l       resize right +$resizestep
+
+# focus
+hc keybind $Mod-BackSpace   cycle_monitor
+hc keybind $Mod-Tab         cycle_all +1
+hc keybind $Mod-Shift-Tab   cycle_all -1
+hc keybind $Mod-c cycle
+hc keybind $Mod-i jumpto urgent
+
+# cycle through tags
+hc keybind $Mod-period or , substitute NEXT tags.focus.my_next_tag use NEXT  \
+                          , use_index +1 --skip-visible
+hc keybind $Mod-comma  or , substitute PREV tags.focus.my_previous_tag use PREV  \
+                          , use_index +1 --skip-visible
+
+# layouting
+hc keybind $Mod-r remove
+hc keybind $Mod-s floating toggle
+hc keybind $Mod-f fullscreen toggle
+hc keybind $Mod-p pseudotile toggle
+# The following cycles through the available layouts within a frame, but skips
+# layouts, if the layout change wouldn't affect the actual window positions.
+# I.e. if there are two windows within a frame, the grid layout is skipped.
+hc keybind $Mod-space                                                           \
+            or , and . compare tags.focus.curframe_wcount = 2                   \
+                     . cycle_layout +1 vertical horizontal max vertical grid    \
+               , cycle_layout +1
+
+hc keybind $Mod-d spawn rofi -show drun

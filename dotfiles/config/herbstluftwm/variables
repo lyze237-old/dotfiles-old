@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+Mod=Mod4
+terminal=xfce4-terminal
+
+tagKeys=( {0..9} )                                                                                                            
+tagAmount=${#tagKeys[@]}
+

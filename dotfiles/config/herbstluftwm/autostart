@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+source ~/.config/herbstluftwm/variables
+
+# function
+source ~/.config/herbstluftwm/helpers/hc.sh
+source ~/.config/herbstluftwm/helpers/getMonitorCount.sh
+
+hc emit_hook reload
+xsetroot -solid '#5A8E3A'
+
+source ~/.config/herbstluftwm/keybindings
+source ~/.config/herbstluftwm/mousebindings
+
+source ~/.config/herbstluftwm/settings
+
+echo $DISPLAY
+
+if hc silent ! get_attr my_not_first_autostart ; then
+    source ~/.config/herbstluftwm/monitorSetup
+    source ~/.config/herbstluftwm/specifics/global
+    echo "executing ~/.config/herbstluftwm/specifics/$HOSTNAME if found"
+    if [ -f ~/.config/herbstluftwm/specifics/$HOSTNAME ]; then
+        echo "found"
+        source ~/.config/herbstluftwm/specifics/$HOSTNAME &
+    fi
+fi
+
+~/.config/herbstluftwm/lemonbar/panel.sh &
+
+hc unlock
+
+hc silent new_attr bool my_not_first_autostart
