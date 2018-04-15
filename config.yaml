@@ -7,9 +7,6 @@ config:
   create: true
   dotpath: dotfiles
 dotfiles:
-  d_owlbin:
-    dst: ~/.config/owl/scripts/bin
-    src: config/owl/scripts/bin
   d_awesome:
     dst: ~/.config/awesome
     src: config/awesome
@@ -19,12 +16,18 @@ dotfiles:
   d_functions:
     dst: ~/.config/fish/functions
     src: config/fish/functions
+  d_herbstluftwm:
+    dst: ~/.config/herbstluftwm
+    src: config/herbstluftwm
   d_mutt:
     dst: ~/.config/mutt
     src: config/mutt
   d_owl:
     dst: ~/.config/owl
     src: config/owl
+  d_owlbin:
+    dst: ~/.config/owl/scripts/bin
+    src: config/owl/scripts/bin
   d_prompt:
     dst: ~/.config/fish/prompt
     src: config/fish/prompt
@@ -178,6 +181,7 @@ profiles:
     - d_prompt
     - f_rofi-pass_config
     - f_kitty.conf
+    - d_herbstluftwm
   sudo:
     dotfiles:
     - f_issue
