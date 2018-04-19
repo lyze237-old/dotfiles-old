@@ -1,33 +1,56 @@
 #!/usr/bin/env bash
 
+# Functions {{{
+function tryExecute {
+    file="$1"
+
+    echo "Trying to execute $file"
+    cat "$file"
+    if [ -f "$file" ] ; then
+        source "$file"
+    fi
+}
+# }}}
+
+echo Running on "$DISPLAY"
+
+echo "Sourcing variables"
+source ~/.config/herbstluftwm/helpers/gruvbox.sh
 source ~/.config/herbstluftwm/variables
 
-# function
+echo "Sourcing functions"
 source ~/.config/herbstluftwm/helpers/hc.sh
 source ~/.config/herbstluftwm/helpers/getMonitorCount.sh
 
+
+echo "Sending reload hook"
 hc emit_hook reload
-xsetroot -solid '#5A8E3A'
 
-source ~/.config/herbstluftwm/keybindings
-source ~/.config/herbstluftwm/mousebindings
-
+echo "Setting settings"
 source ~/.config/herbstluftwm/settings
 
-echo $DISPLAY
+tryExecute "$HOME/.config/herbstluftwm/specifics/${HOSTNAME}_pre"
 
 if hc silent ! get_attr my_not_first_autostart ; then
+    echo "First time run, setting up tags"
     source ~/.config/herbstluftwm/monitorSetup
-    source ~/.config/herbstluftwm/specifics/global
-    echo "executing ~/.config/herbstluftwm/specifics/$HOSTNAME if found"
-    if [ -f ~/.config/herbstluftwm/specifics/$HOSTNAME ]; then
-        echo "found"
-        source ~/.config/herbstluftwm/specifics/$HOSTNAME &
-    fi
 fi
 
+echo "Running global setup"
+source ~/.config/herbstluftwm/specifics/global
+
+tryExecute "$HOME/.config/herbstluftwm/specifics/${HOSTNAME}_post"
+
+echo "Setting up keybinds"
+source ~/.config/herbstluftwm/keybindings
+echo "Setting up mousebinds"
+source ~/.config/herbstluftwm/mousebindings
+
+echo "Setting up panel"
 ~/.config/herbstluftwm/lemonbar/panel.sh &
 
+echo "Unlocking"
 hc unlock
 
 hc silent new_attr bool my_not_first_autostart
+
