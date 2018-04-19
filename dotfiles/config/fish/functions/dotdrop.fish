@@ -2,8 +2,9 @@ function dotdrop
     set dir (pwd)
     cd ~/.dotfiles/dotfiles-public
     if test -e secrets.env
-        posix-source secrets.env
+        bash -c "cat secrets.env ; source secrets.env ; ./dotdrop.sh $argv"
+    else
+        ./dotdrop.sh $argv
     end
-    ./dotdrop.sh $argv
     cd $dir
 end 
