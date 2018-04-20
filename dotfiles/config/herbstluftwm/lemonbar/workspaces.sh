@@ -21,22 +21,22 @@ function updateWorkspaces() {
 
             case $tag in
             .${monitorIndex}_*) # tag is empty.
-                tagsOutput="$tagsOutput%{F$emptyTagFgColor A:$cmd:} $emptyTag %{A}"
+                tagsOutput="$tagsOutput%{F$emptyTagFgColor A:$cmd:}$emptyTag%{A} "
                 ;;
             :${monitorIndex}_*) # tag is not empty.
-                tagsOutput="$tagsOutput%{F$tagFgColor A:$cmd:} $fullTag %{A}"
+                tagsOutput="$tagsOutput%{F$tagFgColor A:$cmd:}$fullTag%{A} "
                 ;;
             +${monitorIndex}_*) # tag is viewed on the monitor but monitor is not focused.
-                tagsOutput="$tagsOutput%{F$focusedTagOtherFgColor A:$cmd:} $fullTag %{A}"
+                tagsOutput="$tagsOutput%{F$focusedTagOtherFgColor A:$cmd:}$fullTag%{A} "
                 ;;
             \#${monitorIndex}_*) # tag is viewed on the monitor and it is focused.
-                tagsOutput="$tagsOutput%{F$focusedTagFgColor A:$cmd:} $fullTag %{A}"
+                tagsOutput="$tagsOutput%{F$focusedTagFgColor A:$cmd:}$fullTag%{A} "
                 ;; 
             !${monitorIndex}_*) # the tag contains an urgent window
-                tagsOutput="$tagsOutput%{F$urgentTagFgColor A:$cmd:} $fullTag %{A}"
+                tagsOutput="$tagsOutput%{F$urgentTagFgColor A:$cmd:}$fullTag%{A} "
                 ;;
             *)
-                tagsOutput="$tagsOutput%{F$unknownTagFgColor A:$cmd:} ${emptyCircleMapping[${tag:$tagHelperIndex}]} %{A}"
+                tagsOutput="$tagsOutput%{F$unknownTagFgColor A:$cmd:}$emptyTag%{A} "
                 ;;
             esac
         done
