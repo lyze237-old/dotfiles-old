@@ -14,11 +14,6 @@ Plug 'nathanaelkane/vim-indent-guides' " Guidelines for indention
 
 Plug 'ryanoasis/vim-devicons' " Better icons for nerdtree n co
 
-{%@@ if profile == "ovo"@@%}
-" python-dev python3-dev mono-devel build-essentials cmake 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --cs-completer --clang-completer' }
-Plug 'kovetskiy/ycm-sh'
-{%@@ endif @@%}
 
 Plug 'kovetskiy/sxhkd-vim'
 call plug#end()
@@ -42,7 +37,6 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Settings {{{
 " Generic {{{
-set shell=sh
 syntax on
 set cursorline
 set showcmd
