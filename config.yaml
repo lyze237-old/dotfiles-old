@@ -75,7 +75,6 @@ dotfiles:
     - vim-plug-run
     dst: ~/.config/nvim/init.vim
     src: config/nvim/init.vim
-    link: true
   f_issue:
     dst: /etc/issue
     src: etc/issue
