@@ -8,7 +8,7 @@
 * Termina: Termite ( Currently in migration to kitty )
 * Terminal Font: Ubuntu Mono Powerline Nerdfont
 
-# Screenshost:
+# Screenshots:
 
 ## Empty
 ![](empty.png)
@@ -40,7 +40,7 @@ Similar to wsl, this also contains a minimal installation, though a bit more com
 ## sudo
 Right now only contains one file, /etc/issues, which gets installed on my home pc. 
 
-A friend of mine made a nice greeter for me and it makes me really happe whenever I see it!
+A friend of mine made a nice greeter for me and it makes me really happy whenever I see it!
 
 ## Mutt explanation
 If you open my [muttrc](https://gitlab.com/lyze237/dotfiles-public/blob/master/dotfiles/config/mutt/muttrc) file, you'll notice a couple things:
