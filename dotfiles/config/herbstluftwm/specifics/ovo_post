@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+if hc silent ! get_attr my_not_first_autostart ; then
+    hc load 2_1 '(split horizontal:0.650000:1 (clients vertical:0) (split vertical:0.500000:0 (clients vertical:0) (clients vertical:0)))'
+
+    hc rule class=discord tag=2_1 index=0
+    hc rule class=Corebird tag=3_1 index=10
+    hc rule class=TelegramDesktop tag=2_1 index=11
+
+    discord &
+    corebird &
+    /opt/Telegram/Telegram &
+
+    hc focus_monitor 2
+    hc use 2_1
+fi
