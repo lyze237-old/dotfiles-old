@@ -13,6 +13,9 @@ Plug 'jiangmiao/auto-pairs' " Add auto brackets
 Plug 'nathanaelkane/vim-indent-guides' " Guidelines for indention
 
 Plug 'ryanoasis/vim-devicons' " Better icons for nerdtree n co
+
+
+Plug 'kovetskiy/sxhkd-vim'
 call plug#end()
 
 " Settings {{{
@@ -34,13 +37,32 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Settings {{{
 " Generic {{{
-set shell=sh
 syntax on
 set cursorline
 set showcmd
 set wildmenu
 set showmatch  "highlights brackets
 set encoding=utf8
+" }}}
+
+" Keybindings {{{
+map <C-h> :call WinMove('h')<cr>
+map <C-j> :call WinMove('j')<cr>
+map <C-k> :call WinMove('k')<cr>
+map <C-l> :call WinMove('l')<cr>
+set splitbelow
+set splitright
+
+" Terminal mode:
+tnoremap <C-h> <C-\><C-n>:call WinMove('h')<cr>
+tnoremap <C-j> <C-\><C-n>:call WinMove('j')<cr>
+tnoremap <C-k> <C-\><C-n>:call WinMove('k')<cr>
+tnoremap <C-l> <C-\><C-n>:call WinMove('l')<cr>
+
+if has ('nvim')
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <C-v><Esc> <Esc>
+endif
 " }}}
 
 " Searching {{{
@@ -66,6 +88,21 @@ set modelines=1
 " }}}
 
 " Functions {{{
+ 
+" move between windows or make the split if it doesn't exist.
+function! WinMove(key)
+  let t:curwin = winnr()
+  exec "wincmd ".a:key
+  if (t:curwin == winnr())
+    if (match(a:key,'[jk]'))
+      wincmd v
+    else
+      wincmd s
+    endif
+    exec "wincmd ".a:key
+  endif
+endfunction
+
 " Set line numbers {{{
 nmap <silent> <leader>ln :exec &nu==&rnu? "se nu!" : "se rnu!"<cr>
 set nu

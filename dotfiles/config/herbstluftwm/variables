@@ -3,6 +3,6 @@
 Mod=Mod4
 terminal=xfce4-terminal
 
-tagKeys=( {0..9} )                                                                                                            
+tagKeys=( {1..9} )                                                                                                            
 tagAmount=${#tagKeys[@]}
 

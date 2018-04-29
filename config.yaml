@@ -10,51 +10,65 @@ dotfiles:
   d_awesome:
     dst: ~/.config/awesome
     src: config/awesome
+    link: true
   d_fonts:
     dst: ~/.fonts
     src: fonts
+    link: true
   d_functions:
     dst: ~/.config/fish/functions
     src: config/fish/functions
+    link: true
   d_herbstluftwm:
     dst: ~/.config/herbstluftwm
     src: config/herbstluftwm
+    link: true
   d_mutt:
     dst: ~/.config/mutt
     src: config/mutt
   d_owl:
     dst: ~/.config/owl
     src: config/owl
+    link: true
   d_owlbin:
     dst: ~/.config/owl/scripts/bin
     src: config/owl/scripts/bin
+    link: true
   d_prompt:
     dst: ~/.config/fish/prompt
     src: config/fish/prompt
+    link: true
   d_themes:
     dst: ~/.themes
     src: themes
+    link: true
   f_chunkwmrc:
     dst: ~/.chunkwmrc
     src: chunkwmrc
   f_compton.conf:
     dst: ~/.config/compton.conf
     src: config/compton.conf
+    link: true
   f_config.fish:
     dst: ~/.config/fish/config.fish
     src: config/fish/config.fish
+    link: true
   f_gitattributes:
     dst: ~/.gitattributes
     src: gitattributes
+    link: true
   f_gitconfig:
     dst: ~/.gitconfig
     src: gitconfig
+    link: true
   f_gitignore:
     dst: ~/.gitignore
     src: gitignore
+    link: true
   f_gtkrc-2.0:
     dst: ~/.gtkrc-2.0
     src: gtkrc-2.0
+    link: true
   f_init.vim:
     actions:
     - vim-plug-setup
@@ -67,69 +81,84 @@ dotfiles:
   f_kitty.conf:
     dst: ~/.config/kitty/kitty.conf
     src: config/kitty/kitty.conf
+    link: true
   f_known_hosts:
     dst: ~/.ssh/known_hosts
     src: ssh/known_hosts
+    link: true
   f_mailcap:
     dst: ~/.mailcap
     src: mailcap
+    link: true
   f_mimeapps.list:
     dst: ~/.config/mimeapps.list
     src: config/mimeapps.list
+    link: true
   f_mopidy.conf:
     dst: ~/.config/mopidy/mopidy.conf
     src: config/mopidy/mopidy.conf
   f_mpv.conf:
     dst: ~/.config/mpv/mpv.conf
     src: config/mpv/mpv.conf
+    link: true
   f_msmtprc:
     dst: ~/.msmtprc
     src: msmtprc
   f_ncmpcpp_config:
     dst: ~/.ncmpcpp/config
     src: ncmpcpp/config
+    link: true
   f_offlineimaprc:
     dst: ~/.offlineimaprc
     src: offlineimaprc
   f_rofi-pass_config:
     dst: ~/.config/rofi-pass/config
     src: config/rofi-pass/config
+    link: true
   f_rofi_config:
     dst: ~/.config/rofi/config
     src: config/rofi/config
+    link: true
   f_rtv.cfg:
     dst: ~/.config/rtv/rtv.cfg
     src: config/rtv/rtv.cfg
+    link: true
   f_settings.ini:
     dst: ~/.config/gtk-3.0/settings.ini
     src: config/gtk-3.0/settings.ini
+    link: true
   f_skhdrc:
     dst: ~/.skhdrc
     src: skhdrc
+    link: true
   f_ssh_config:
     dst: ~/.ssh/config
     src: ssh/config
+    link: true
   f_streamlink_config:
     dst: ~/.config/streamlink/config
     src: config/streamlink/config
+    link: true
   f_termite_config:
     dst: ~/.config/termite/config
     src: config/termite/config
+    link: true
   f_urlview_lin:
     dst: ~/.urlview
     src: urlview_lin
+    link: true
   f_urlview_mac:
     dst: ~/.urlview
     src: urlview_mac
+    link: true
   f_urlview_wsl:
     dst: ~/.urlview
     src: urlview_wsl
-  f_vimrc:
-    dst: ~/.vimrc
-    src: vimrc
+    link: true
   f_xinitrc:
     dst: ~/.xinitrc
     src: xinitrc
+    link: true
 profiles:
   mac:
     dotfiles:
@@ -163,7 +192,6 @@ profiles:
     - f_gitignore
     - f_ncmpcpp_config
     - f_mailcap
-    - f_vimrc
     - f_rtv.cfg
     - f_streamlink_config
     - f_rofi_config

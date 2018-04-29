@@ -15,6 +15,7 @@ brew install terminal-notifier
 brew install git
 brew install youtube-dl
 brew install streamlink
+brew install coreutils
 
 brew cask install discord
 brew cask install spotify
