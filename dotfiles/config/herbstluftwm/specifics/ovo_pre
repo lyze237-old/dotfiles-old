@@ -6,4 +6,9 @@ if hc silent ! get_attr my_not_first_autostart ; then
     numlockx on # enable numlock
     xsetroot -cursor_name Breeze_Obsidian & # set correct cursor theme
     parcellite & # clipboard manager
+
+    allow_rgb10_configs=false compton &
+
+    mopidy &
+    dunst &
 fi

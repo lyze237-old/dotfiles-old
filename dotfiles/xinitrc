@@ -1,8 +1,6 @@
 #!/bin/bash
 
-mkdir $HOME/.cache
-mkdir $HOME/.cache/awesome
-sleep 2 && $HOME/.config/awesome/autorun.sh &
+mkdir -p $HOME/.cache/herbstluftwm
 
 export XDG_DESKTOP_DIR="${HOME}"
 export XDG_CONFIG_HOME="${HOME}/.config"
@@ -13,4 +11,5 @@ export XDG_PICTURES_DIR="${HOME}/files/images"
 export XDG_VIDEOS_DIR="${HOME}/files/videos"
 export XDG_PUBLICSHARE_DIR="/non/existent"
 
-exec awesome >> $HOME/.cache/awesome/stdout 2>> $HOME/.cache/awesome/stderr
+exec herbstluftwm  >> $HOME/.cache/herbstluftwm/stdout 2>> $HOME/.cache/herbstluftwm/stderr
+
