@@ -46,7 +46,7 @@ yay -S mopidy-spotify pulsemixer neovim
 
 # install gui programs
 sudo pacman -S i3lock feh dunst firefox steam rofi arandr thunar obs-studio lxappearance pavucontrol 
-yay -S redshift-gtk-git discord-ptb nextcloud-client
+yay -S redshift-gtk-git discord-ptb nextcloud-client mstdn
 
 # create custom install dir
 sudo mkdir /opt/lyze

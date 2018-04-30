@@ -18,11 +18,11 @@ if hc silent ! get_attr my_not_first_autostart ; then
     # right desktop
 
     hc rule class=discord tag=2_1 index=0
-    hc rule class=Corebird tag=2_1 index=10
+    hc rule class=Mstdn tag=2_1 index=10
     hc rule class=TelegramDesktop tag=2_1 index=11
 
     discord-ptb &
-    corebird &
+    open-mstdn-app &
     /opt/lyze/Telegram/Telegram &
 
     hc focus_monitor 2
