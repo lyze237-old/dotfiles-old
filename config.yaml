@@ -53,6 +53,10 @@ dotfiles:
     dst: ~/.config/fish/config.fish
     link: true
     src: config/fish/config.fish
+  f_config.json:
+    dst: ~/.config/Mstdn/config.json
+    link: true
+    src: config/Mstdn/config.json
   f_dunstrc:
     dst: ~/.config/dunst/dunstrc
     link: true
@@ -215,6 +219,7 @@ profiles:
     - f_kitty.conf
     - d_herbstluftwm
     - f_dunstrc
+    - f_config.json
   sudo:
     dotfiles:
     - f_issue
