@@ -14,11 +14,12 @@ function shutdown() {
     systemctl poweroff
 }
 
+function quitWm() {
+    $HOME/.config/herbstluftwm/rofi/closeAll.sh
+    herbstclient quit
+}
 
-
-
-
-ret=$(echo -e "Lock\nShutdown\nRestart" | rofi -dmenu)
+ret=$(echo -e "Lock\nShutdown\nQuit\nRestart" | rofi -dmenu)
 case "$ret" in
     "Lock")
         lock
@@ -28,5 +29,8 @@ case "$ret" in
         ;;
     "Restart")
         restart
+        ;;
+    "Quit")
+        quitWm
         ;;
 esac

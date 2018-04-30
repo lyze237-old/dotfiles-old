@@ -2,15 +2,31 @@
 
 if hc silent ! get_attr my_not_first_autostart ; then
     hc load 2_1 '(split horizontal:0.650000:1 (clients vertical:0) (split vertical:0.500000:0 (clients vertical:0) (clients vertical:0)))'
+    hc load 1_1 '(split vertical:0.500000:0 (clients vertical:0 0x4200014) (clients horizontal:1 0x3800014 0x3e00014))'
+
+    # left desktop
+    hc rule class=ncmpcpp tag=1_1 index=0
+    hc rule class=htop tag=1_1 index=11
+    hc rule class=pulsemixer tag=1_1 index=10
+
+    kitty --class ncmpcpp ncmpcpp &
+    kitty --class htop htop & 
+    kitty --class pulsemixer pulsemixer &
+
+    # middle desktop
+
+    # right desktop
 
     hc rule class=discord tag=2_1 index=0
-    hc rule class=Corebird tag=3_1 index=10
+    hc rule class=Corebird tag=2_1 index=10
     hc rule class=TelegramDesktop tag=2_1 index=11
 
-    discord &
+    discord-ptb &
     corebird &
-    /opt/Telegram/Telegram &
+    /opt/lyze/Telegram/Telegram &
 
     hc focus_monitor 2
     hc use 2_1
 fi
+
+feh --bg-scale "$HOME/.config/herbstluftwm/specifics/wallpapers/middle.png" --bg-scale "$HOME/.config/herbstluftwm/specifics/wallpapers/left.png" --bg-scale "$HOME/.config/herbstluftwm/specifics/wallpapers/right.png"

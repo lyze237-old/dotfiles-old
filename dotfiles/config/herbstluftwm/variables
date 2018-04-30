@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 Mod=Mod4
-terminal=xfce4-terminal
+terminal=kitty
 
 tagKeys=( {1..9} )                                                                                                            
 tagAmount=${#tagKeys[@]}

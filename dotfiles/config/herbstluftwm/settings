@@ -31,6 +31,7 @@ hc set frame_padding 0
 hc set smart_window_surroundings 0
 hc set smart_frame_surroundings 0
 hc set mouse_recenter_gap 0
+hc set default_frame_layout 3
 
 # monitor settings
 hc set swap_monitors_to_get_tag 0

@@ -24,7 +24,7 @@ fullTag="●"
 #emptyCircleMapping=( "⓪" "①" "②" "③" "④" "⑤" "⑥" "⑦" "⑧" "⑨" )
 #filledCircleMapping=( "⓿" "❶" "❷" "❸" "❹" "❺" "❻" "❼" "❽" "❾" )
 
-fontSize=16
+fontSize=14
 fontName="UbuntuMonoDerivativePowerline Nerd Font"
 # }}}
 # }}}
