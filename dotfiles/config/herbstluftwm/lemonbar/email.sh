@@ -2,7 +2,7 @@
 
 emails=""
 function updateEmail() {
-    newEmails="1"
+    newEmails="0"
 
     symbol=""
     if [[ "$newEmails" -eq 0 ]] ; then

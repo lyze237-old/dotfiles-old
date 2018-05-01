@@ -2,7 +2,7 @@
 
 function restart() {
     $HOME/.config/herbstluftwm/rofi/closeAll.sh
-    systemctl restart 
+    systemctl reboot 
 }
 
 function lock() {
