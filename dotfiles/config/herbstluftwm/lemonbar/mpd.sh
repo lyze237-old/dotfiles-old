@@ -12,8 +12,8 @@ function updateMpd() {
     if [ "$state" == "playing" ] ; then
         local song="$(mpc current -f '%title%')"
         local artist="$(mpc current -f '%artist%')"
+        local newMusic=$(printf "%.50s - %.50s" "$song" "$artist")
 
-        local toDisplay="$song - $artist"
         if [ -z "$song" ] || [ -z "$artist" ] ; then
             local file="$(mpc current -f '%file%')"
             newMusic="$(basename "$file")"
