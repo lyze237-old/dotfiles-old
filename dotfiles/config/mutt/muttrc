@@ -1,9 +1,5 @@
 # Sources {{{
-{%@@ if profile == "ovo"@@%}
-source '~/.config/mutt/offlinemailboxrc'
-{%@@ else @@%}
 source '~/.config/mutt/onlinemailboxrc'
-{%@@ endif @@%}
 source '~/.config/mutt/bindings'
 source '~/.config/mutt/macros'
 source '~/.config/mutt/colors'
