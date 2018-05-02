@@ -13,7 +13,6 @@ source ~/.config/herbstluftwm/helpers/getMonitorCount.sh
 echo "Sourcing bar specifics"
 source ~/.config/herbstluftwm/lemonbar/mpd.sh
 source ~/.config/herbstluftwm/lemonbar/date.sh
-source ~/.config/herbstluftwm/lemonbar/email.sh
 source ~/.config/herbstluftwm/lemonbar/divider.sh
 source ~/.config/herbstluftwm/lemonbar/workspaces.sh 
 source ~/.config/herbstluftwm/lemonbar/email.sh
@@ -31,9 +30,6 @@ function fetchData() {
 
     echo "Subscribing to date events"
     registerDateHook &
-
-    echo "Subscribing to email events"
-    registerEmailHook &
 
     echo "Spawning big/small data refresh events"
     # Emit hooks to keep it updating
@@ -73,10 +69,6 @@ function setupBar() {
                     date="$newDate"
                     needToUpdate="true"
                 fi 
-                if [ "$email" != "$newEmail" ] ; then
-                    email="$newEmail"
-                    needToUpdate="true"
-                fi 
                 if [ "$mpd" != "$newMpd" ] ; then
                     mpd="$newMpd"
                     needToUpdate="true"
@@ -85,7 +77,7 @@ function setupBar() {
                     (>&2 echo "Updating bar for real ...")
                     barLeft="$workspaces%{B- F-}$(dividerLeft "$tagBgColor" "$barBgColor")"
                     barCenter="%{F$blueColor}\\%{F$redColor}\"%{F$blueColor}\\%{F$yellowColor}^%{F$fg1Color}v%{F$yellowColor}^%{F$blueColor}/%{F$redColor}\"%{F$blueColor}/%{B- F-}" # \"\OvO/"/
-                    barRight="$(dividerRight "$barBgColor" "$otherBgColor")$mpd$(smallDividerRight "$barBgColor" "$otherBgColor")$email$(smallDividerRight "$barBgColor" "$otherBgColor")$date%{B- F-}"
+                    barRight="$(dividerRight "$barBgColor" "$otherBgColor")$mpd$(smallDividerRight "$barBgColor" "$otherBgColor")$date%{B- F-}"
 
                     echo -e "%{l}$barLeft %{c}$barCenter %{r}$barRight"
                 fi
