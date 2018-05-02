@@ -109,16 +109,10 @@ dotfiles:
     dst: ~/.config/mpv/mpv.conf
     link: true
     src: config/mpv/mpv.conf
-  f_msmtprc:
-    dst: ~/.msmtprc
-    src: msmtprc
   f_ncmpcpp_config:
     dst: ~/.ncmpcpp/config
     link: true
     src: ncmpcpp/config
-  f_offlineimaprc:
-    dst: ~/.offlineimaprc
-    src: offlineimaprc
   f_rofi-pass_config:
     dst: ~/.config/rofi-pass/config
     link: true
@@ -210,8 +204,6 @@ profiles:
     - d_awesome
     - d_mutt
     - f_urlview_lin
-    - f_msmtprc
-    - f_offlineimaprc
     - d_functions
     - f_mopidy.conf
     - d_prompt
