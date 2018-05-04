@@ -1,0 +1,7 @@
+# Static table lookup for hostnames.
+# See hosts(5) for details.
+#
+192.168.0.1	gateway.local
+192.168.0.100	falcon.local
+192.168.0.101	owl.local
+192.168.0.102	fox.local
