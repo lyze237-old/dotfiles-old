@@ -14,6 +14,7 @@ Plug 'nathanaelkane/vim-indent-guides' " Guidelines for indention
 
 Plug 'ryanoasis/vim-devicons' " Better icons for nerdtree n co
 
+Plug 'mhinz/vim-startify' " Start page
 
 Plug 'kovetskiy/sxhkd-vim'
 call plug#end()
