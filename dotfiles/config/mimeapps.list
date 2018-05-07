@@ -1,0 +1,25 @@
+[Added Associations]
+application/x-shellscript=mousepad.desktop;nvim.desktop;userapp-xfce4-terminal-Z7408Y.desktop;userapp-nano-PASZ8Y.desktop;userapp-xfce4-terminal-RQU58Y.desktop;userapp-bash-D3C88Y.desktop;vim.desktop;
+text/plain=nvim.desktop;userapp-xfce4-terminal-Z7408Y.desktop;vim.desktop;
+application/x-theme=userapp-xfce4-terminal-Z7408Y.desktop;
+image/png=gimp.desktop;ristretto.desktop;
+x-scheme-handler/http=exo-web-browser.desktop
+x-scheme-handler/https=exo-web-browser.desktop
+image/jpeg=ristretto.desktop;feh.desktop;
+text/x-java=mousepad.desktop;nvim.desktop;
+image/gif=qutebrowser.desktop;ristretto.desktop;
+
+[Default Applications]
+x-scheme-handler/mailto=thunderbird.desktop
+message/rfc822=thunderbird.desktop
+application/x-shellscript=userapp-xfce4-terminal-RQU58Y.desktop
+text/plain=userapp-xfce4-terminal-Z7408Y.desktop
+text/html=owlWeb.desktop
+x-scheme-handler/http=owlWeb.desktop
+x-scheme-handler/https=owlWeb.desktop
+x-scheme-handler/about=owlWeb.desktop
+x-scheme-handler/unknown=owlWeb.desktop
+x-scheme-handler/tg=telegramdesktop.desktop
+image/png=ristretto.desktop
+image/jpeg=ristretto.desktop
+image/gif=ristretto.desktop

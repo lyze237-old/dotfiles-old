@@ -1,0 +1,7 @@
+
+[Default Applications]
+text/html=owlWeb.desktop
+x-scheme-handler/http=owlWeb.desktop
+x-scheme-handler/https=owlWeb.desktop
+x-scheme-handler/about=owlWeb.desktop
+x-scheme-handler/unknown=owlWeb.desktop
