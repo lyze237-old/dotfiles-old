@@ -1,0 +1,87 @@
+#!/bin/sh
+
+# start keyboard hotkey thing
+export SXHKD_SHELL='/usr/bin/sh'
+sxhkd &
+
+# autostart
+xsetroot -cursor_name left_ptr
+xsetroot -cursor_name Breeze_Obsidian &
+
+compton &
+setxkbmap gb
+numlockx on
+mopidy &
+
+# autostart custom scripts
+$HOME/.config/owl/scripts/screenlayout.sh
+$HOME/.config/owl/scripts/updateFishWeather.sh &
+feh --bg-scale "$HOME/.config/owl/wallpaper/middle.png" --bg-scale "$HOME/.config/owl/wallpaper/left.png" --bg-scale "$HOME/.config/awesome/wallpaper/right.png" &
+$HOME/.config/owl/scripts/updateFishWeather.sh &
+
+# workspaces
+
+# left HDMI-0
+bspc monitor HDMI-0 -d "" "" "3" "4" "5" "6" "7" "8" "9"
+# middle monitor
+bspc monitor DisplayPort-0 -d "" "" "" "4" "5" "" "" "" ""
+# right monitor
+bspc monitor DVI-0 -d "" "" "3" "4" "5" "6" "7" "8" "9"
+
+# gaps
+bspc config border_width         3 
+bspc config window_gap          18
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+# other config
+bspc config split_ratio          0.5
+
+# mouse
+bspc config focus_follows_pointer true
+
+# colors
+bspc config focused_border_color "#fe8019"
+
+# rules
+bspc rule -a discord desktop=''
+bspc rule -a Corebird desktop=''
+bspc rule -a TelegramDesktop desktop=''
+bspc rule -a Steam desktop=''
+bspc rule -a obs desktop=''
+bspc rule -a Thunderbird desktop=''
+
+# autostart gui programs
+/opt/lyze/Telegram/Telegram &
+corebird &
+discord-ptb &
+redshift-gtk &
+steam-native &
+thunderbird &
+
+# terminal programs
+
+# music desktop  
+bspc rule -a Termite desktop=''
+termite --title pulsemixer -e 'fish -c "while true; pulsemixer; end"' &
+sleep 1 && termite --title htop -e 'fish -c "while true; htop; end"' &
+sleep 2 && termite --title ncmpcpp -e 'fish -c "while true; ncmpcpp; end"' &
+sleep 3 && bspc rule -r Termite
+
+sleep 4 
+
+# bspwm desktop 
+bspc rule -a Termite desktop=''
+termite --title dotfiles -d $HOME/.dotfiles/dotfiles-public &
+sleep 1 && termite --title shell -d $HOME/.config/ &
+sleep 2 && termite --title bspwm -e 'fish -c "cd ~/.config/bspwm/ ; vim bspwmrc ; fish"' &
+sleep 3 && bspc rule -r Termite
+
+sleep 4
+
+# reddit desktop 
+bspc rule -a Termite desktop=''
+termite --title rtv -e rtv &
+sleep 0.5 && bspc rule -r Termite
+
+dunst &

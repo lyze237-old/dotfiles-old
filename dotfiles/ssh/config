@@ -1,0 +1,5 @@
+# GitLab.com server
+Host gitlab.com
+	IdentityFile ~/.ssh/gitlab_rsa
+
+
