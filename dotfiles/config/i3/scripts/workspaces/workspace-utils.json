@@ -1,0 +1,112 @@
+// vim:ts=4:sw=4:et
+{
+    // splitv split container with 2 children
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 1,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 482,
+               "width": 814,
+               "x": 0,
+               "y": 0
+            },
+            "name": "ncmpcpp",
+            "percent": 0.5,
+            "swallows": [
+               {
+                 "class": "^Xfce4\\-terminal$",
+                 "title": "^ncmpcpp$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            // splith split container with 1 children
+            "border": "normal",
+            "floating": "auto_off",
+            "layout": "splith",
+            "percent": 0.5,
+            "type": "con",
+            "nodes": [
+                {
+                    // splith split container with 3 children
+                    "border": "normal",
+                    "floating": "auto_off",
+                    "layout": "splith",
+                    "percent": 1,
+                    "type": "con",
+                    "nodes": [
+                        {
+                            "border": "normal",
+                            "current_border_width": 2,
+                            "floating": "auto_off",
+                            "geometry": {
+                               "height": 482,
+                               "width": 814,
+                               "x": 0,
+                               "y": 0
+                            },
+                            "name": "htop",
+                            "percent": 0.333333333333333,
+                            "swallows": [
+                               {
+                                 "class": "^Xfce4\\-terminal$",
+                                 "title": "^htop$"
+                               }
+                            ],
+                            "type": "con"
+                        },
+                        {
+                            "border": "normal",
+                            "current_border_width": 2,
+                            "floating": "auto_off",
+                            "geometry": {
+                               "height": 482,
+                               "width": 814,
+                               "x": 0,
+                               "y": 0
+                            },
+                            "name": "cava",
+                            "percent": 0.333333333333333,
+                            "swallows": [
+                               {
+                                 "class": "^Xfce4\\-terminal$",
+                                 "title": "^cava$"
+                               }
+                            ],
+                            "type": "con"
+                        },
+                        {
+                            "border": "normal",
+                            "current_border_width": 2,
+                            "floating": "auto_off",
+                            "geometry": {
+                               "height": 1007,
+                               "width": 1888,
+                               "x": 0,
+                               "y": 0
+                            },
+                            "name": "pulsemixer",
+                            "percent": 0.333333333333333,
+                            "swallows": [
+                               {
+                                 "class": "^Xfce4\\-terminal$",
+                                 "title": "^pulsemixer$"
+                               }
+                            ],
+                            "type": "con"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+

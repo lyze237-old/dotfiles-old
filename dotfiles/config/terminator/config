@@ -1,0 +1,79 @@
+[global_config]
+  focus = mouse
+  suppress_multiple_term_dialog = True
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+  [[music]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_window = True
+      maximised = True
+      order = 0
+      parent = ""
+      position = 1920:27
+      size = 1920, 1025
+      title = fish  /home/lyze
+      type = Window
+    [[[child1]]]
+      active_page = 0
+      labels = None, None
+      last_active_term = 3a27a57d-a744-446c-a9d0-f1540824e60d, 339d95a6-4fd2-4729-9a9e-07db45fb22e1
+      order = 0
+      parent = child0
+      type = Notebook
+    [[[child3]]]
+      order = 1
+      parent = child1
+      position = 493
+      ratio = 0.498987854251
+      type = VPaned
+    [[[child5]]]
+      order = 1
+      parent = child3
+      position = 957
+      ratio = 0.500261369577
+      type = HPaned
+    [[[terminal2]]]
+      command = 'bash -c "while true; do mopidy; done"'
+      order = 0
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = 3a27a57d-a744-446c-a9d0-f1540824e60d
+    [[[terminal4]]]
+      command = 'bash -c "while true; do ncmpcpp; done"'
+      order = 0
+      parent = child3
+      profile = default
+      type = Terminal
+      uuid = 339d95a6-4fd2-4729-9a9e-07db45fb22e1
+    [[[terminal6]]]
+      command = 'bash -c "while true; do htop; done"'
+      order = 0
+      parent = child5
+      profile = default
+      type = Terminal
+      uuid = 1f6287de-4750-43f1-91e0-0ad6fe0e2380
+    [[[terminal7]]]
+      command = 'bash -c "while true; do pulsemixer; done"'
+      order = 1
+      parent = child5
+      profile = default
+      type = Terminal
+      uuid = e166f8d5-aa14-44c5-8a85-13987f8006c2
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.85
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    palette = "#282828:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
+    scrollback_infinite = True
+    show_titlebar = False

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+NoDisplay=true
+Exec=xfce4-terminal -x nano %f
+Name=xfce4-terminal
+Comment=Custom definition for xfce4-terminal

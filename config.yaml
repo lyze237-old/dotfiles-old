@@ -1,0 +1,248 @@
+config:
+  backup: true
+  create: true
+  dotpath: dotfiles
+dotfiles:
+  d_awesome:
+    dst: ~/.config/awesome
+    src: config/awesome
+  d_breeze-obsidian:
+    dst: /usr/share/icons/Breeze-Obsidian
+    src: usr/share/icons/Breeze-Obsidian
+  d_colors:
+    dst: ~/.config/colors
+    src: config/colors
+  d_colorschemes:
+    dst: ~/.config/xfce4/terminal/colorschemes
+    src: config/xfce4/terminal/colorschemes
+  d_custom2:
+    dst: ~/.config/xfce4/custom
+    src: config/xfce4/custom
+  d_fonts:
+    dst: ~/.fonts
+    src: fonts
+  d_i3:
+    dst: ~/.config/i3
+    src: config/i3
+  d_mpv:
+    dst: ~/.config/mpv
+    src: config/mpv
+  d_owl:
+    dst: ~/.config/owl
+    src: config/owl
+  d_panel:
+    dst: ~/.config/xfce4/panel
+    src: config/xfce4/panel
+  d_python:
+    dst: ~/.weechat/python
+    src: weechat/python
+  d_ranger:
+    dst: ~/.config/ranger
+    src: config/ranger
+  d_streamlink:
+    dst: ~/.config/streamlink
+    src: config/streamlink
+  d_terminator:
+    dst: ~/.config/terminator
+    src: config/terminator
+  d_themes:
+    dst: ~/.themes
+    src: themes
+  d_xfce-perchannel-xml:
+    dst: ~/.config/xfce4/xfconf/xfce-perchannel-xml
+    src: config/xfce4/xfconf/xfce-perchannel-xml
+  d_xfce4:
+    dst: ~/.local/share/xfce4
+    src: local/share/xfce4
+  f_99-steam-controller-permission.rules:
+    dst: /etc/udev/rules.d/99-steam-controller-permission.rules
+    src: etc/udev/rules.d/99-steam-controller-permission.rules
+  f_alias.conf:
+    dst: ~/.weechat/alias.conf
+    src: weechat/alias.conf
+  f_aspell.conf:
+    dst: ~/.weechat/aspell.conf
+    src: weechat/aspell.conf
+  f_buflist.conf:
+    dst: ~/.weechat/buflist.conf
+    src: weechat/buflist.conf
+  f_cava_config:
+    dst: ~/.config/cava/config
+    src: config/cava/config
+  f_charset.conf:
+    dst: ~/.weechat/charset.conf
+    src: weechat/charset.conf
+  f_compton.conf:
+    dst: ~/.config/compton.conf
+    src: config/compton.conf
+  f_compton2.conf:
+    dst: ~/.compton.conf
+    src: compton.conf
+  f_config.fish:
+    dst: ~/.config/fish/config.fish
+    src: config/fish/config.fish
+  f_exec.conf:
+    dst: ~/.weechat/exec.conf
+    src: weechat/exec.conf
+  f_fifo.conf:
+    dst: ~/.weechat/fifo.conf
+    src: weechat/fifo.conf
+  f_generateissue.sh:
+    dst: /etc/generateIssue.sh
+    src: etc/generateIssue.sh
+  f_gitattributes:
+    dst: ~/.gitattributes
+    src: gitattributes
+  f_gitconfig:
+    dst: ~/.gitconfig
+    src: gitconfig
+  f_gitignore:
+    dst: ~/.gitignore
+    src: gitignore
+  f_gtkrc-2.0:
+    dst: ~/.gtkrc-2.0
+    src: gtkrc-2.0
+  f_helpers.rc:
+    dst: ~/.config/xfce4/helpers.rc
+    src: config/xfce4/helpers.rc
+  f_index.theme:
+    dst: /usr/share/icons/default/index.theme
+    src: usr/share/icons/default/index.theme
+  f_irc.conf:
+    dst: ~/.weechat/irc.conf
+    src: weechat/irc.conf
+  f_issue:
+    dst: /etc/issue
+    src: etc/issue
+  f_logger.conf:
+    dst: ~/.weechat/logger.conf
+    src: weechat/logger.conf
+  f_mailcap:
+    dst: ~/.mailcap
+    src: mailcap
+  f_mimeapps.list:
+    dst: ~/.config/mimeapps.list
+    src: config/mimeapps.list
+  f_mimeapps.list2:
+    dst: ~/.local/share/applications/mimeapps.list
+    src: local/share/applications/mimeapps.list
+  f_nanorc:
+    dst: ~/.nanorc
+    src: nanorc
+  f_ncmpcpp_config:
+    dst: ~/.ncmpcpp/config
+    src: ncmpcpp/config
+  f_owlweb.desktop:
+    dst: ~/.local/share/applications/owlWeb.desktop
+    src: local/share/applications/owlWeb.desktop
+  f_plugins.conf:
+    dst: ~/.weechat/plugins.conf
+    src: weechat/plugins.conf
+  f_powerline-shell.json:
+    dst: ~/.powerline-shell.json
+    src: powerline-shell.json
+  f_relay.conf:
+    dst: ~/.weechat/relay.conf
+    src: weechat/relay.conf
+  f_rtv.cfg:
+    dst: ~/.config/rtv/rtv.cfg
+    src: config/rtv/rtv.cfg
+  f_script.conf:
+    dst: ~/.weechat/script.conf
+    src: weechat/script.conf
+  f_settings.ini:
+    dst: ~/.config/gtk-3.0/settings.ini
+    src: config/gtk-3.0/settings.ini
+  f_ssh_config:
+    dst: ~/.ssh/config
+    src: ssh/config
+  f_terminalrc:
+    dst: ~/.config/xfce4/terminal/terminalrc
+    src: config/xfce4/terminal/terminalrc
+  f_trigger.conf:
+    dst: ~/.weechat/trigger.conf
+    src: weechat/trigger.conf
+  f_userapp-bash-d3c88y.desktop:
+    dst: ~/.local/share/applications/userapp-bash-D3C88Y.desktop
+    src: local/share/applications/userapp-bash-D3C88Y.desktop
+  f_userapp-xfce4-terminal-rqu58y.desktop:
+    dst: ~/.local/share/applications/userapp-xfce4-terminal-RQU58Y.desktop
+    src: local/share/applications/userapp-xfce4-terminal-RQU58Y.desktop
+  f_userapp-xfce4-terminal-z7408y.desktop:
+    dst: ~/.local/share/applications/userapp-xfce4-terminal-Z7408Y.desktop
+    src: local/share/applications/userapp-xfce4-terminal-Z7408Y.desktop
+  f_weechat.conf:
+    dst: ~/.weechat/weechat.conf
+    src: weechat/weechat.conf
+  f_xfer.conf:
+    dst: ~/.weechat/xfer.conf
+    src: weechat/xfer.conf
+  f_xinitrc:
+    dst: ~/.xinitrc
+    src: xinitrc
+  f_xresources:
+    dst: ~/.Xresources
+    src: Xresources
+profiles:
+  ovo:
+  - f_nanorc
+  - d_i3
+  - d_fonts
+  - f_ssh_config
+  - f_gitignore
+  - f_gitattributes
+  - f_gitconfig
+  - f_gtkrc-2.0
+  - f_settings.ini
+  - f_xresources
+  - f_compton.conf
+  - f_compton2.conf
+  - f_terminalrc
+  - d_themes
+  - f_config.fish
+  - d_colorschemes
+  - d_colors
+  - f_ncmpcpp_config
+  - f_cava_config
+  - d_xfce-perchannel-xml
+  - d_panel
+  - d_custom2
+  - f_helpers.rc
+  - d_streamlink
+  - d_xfce4
+  - d_mpv
+  - d_terminator
+  - d_awesome
+  - d_ranger
+  - f_xinitrc
+  - f_owlweb.desktop
+  - f_mimeapps.list
+  - f_mimeapps.list2
+  - f_userapp-bash-d3c88y.desktop
+  - f_userapp-xfce4-terminal-rqu58y.desktop
+  - f_userapp-xfce4-terminal-z7408y.desktop
+  - f_rtv.cfg
+  - f_mailcap
+  - f_alias.conf
+  - f_aspell.conf
+  - f_buflist.conf
+  - f_charset.conf
+  - f_exec.conf
+  - f_fifo.conf
+  - f_irc.conf
+  - f_logger.conf
+  - f_plugins.conf
+  - f_relay.conf
+  - f_script.conf
+  - f_trigger.conf
+  - f_weechat.conf
+  - f_xfer.conf
+  - d_python
+  - f_powerline-shell.json
+  - d_owl
+  sudo:
+  - f_issue
+  - f_generateissue.sh
+  - f_index.theme
+  - d_breeze-obsidian
+  - f_99-steam-controller-permission.rules
