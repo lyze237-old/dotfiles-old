@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-monitor="floatmon"
-tag=fl
-Mod=${Mod:-Mod4}
 Floatkey=${Floatkey:-Control-space}
 
 hc() { "${herbstclient_command[@]:-herbstclient}" "$@" ;}
@@ -25,15 +22,15 @@ else
 fi
 
 hc chain , add "$tag" , floating "$tag" on
-hc or , add_monitor "$size"+0+0 "$tag" "$monitor" \
-      , move_monitor "$monitor" "$size"+0+0
-hc raise_monitor "$monitor"
-hc lock_tag "$monitor"
+hc or , add_monitor "$size"+0+0 "$tag" "$floatingMonitorName" \
+      , move_monitor "$floatingMonitorName" "$size"+0+0
+hc raise_monitor "$floatingMonitorName"
+hc lock_tag "$floatingMonitorName"
 
 cmd=(
 or  case: and
         # if not on floating monitor
-        . compare monitors.focus.name != "$monitor"
+        . compare monitors.focus.name != "$floatingMonitorName"
         # and if a client is focused
         . get_attr clients.focus.winid
         # then remember the last monitor of the client
@@ -42,12 +39,12 @@ or  case: and
         . substitute M monitors.focus.index
             set_attr clients.focus.my_lastmon M
         # and then move the client to the floating tag
-        . shift_to_monitor "$monitor"
-        . focus_monitor "$monitor"
+        . shift_to_monitor "$floatingMonitorName"
+        . focus_monitor "$floatingMonitorName"
         . true
     case: and
         # if on the floating monitor
-        . compare monitors.focus.name = "$monitor"
+        . compare monitors.focus.name = "$floatingMonitorName"
         # and if a client is focused
         . get_attr clients.focus.winid
         # then send it back to the original monitor

@@ -13,14 +13,10 @@ hc keybind "$Mod-k"     focus up
 hc keybind "$Mod-l"     focus right
 
 # moving clients
-hc keybind "$Mod-Shift-h" or / shift left / \
-    chain , lock , shift_to_monitor -l , focus_monitor -l , unlock
-hc keybind "$Mod-Shift-j" or / shift down / \
-    chain , lock , shift_to_monitor -d , focus_monitor -d , unlock
-hc keybind "$Mod-Shift-k" or / shift up / \
-    chain , lock , shift_to_monitor -u , focus_monitor -u , unlock
-hc keybind "$Mod-Shift-l" or / shift right / \
-    chain , lock , shift_to_monitor -r , focus_monitor -r , unlock
+hc keybind "$Mod-Shift-h" or / shift left / chain , lock , shift_to_monitor -1 , focus_monitor -1 , unlock
+hc keybind "$Mod-Shift-j" or / shift down / chain , lock , shift_to_monitor -d , focus_monitor -d , unlock
+hc keybind "$Mod-Shift-k" or / shift up / chain , lock , shift_to_monitor -u , focus_monitor -u , unlock
+hc keybind "$Mod-Shift-l" or / shift right / chain , lock , shift_to_monitor +1 , focus_monitor +1 , unlock
 
 # splitting frames
 splitstep=0.5
