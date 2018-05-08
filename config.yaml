@@ -77,6 +77,9 @@ dotfiles:
     dst: ~/.gtkrc-2.0
     link: true
     src: gtkrc-2.0
+  f_hosts:
+    dst: /etc/hosts
+    src: etc/hosts
   f_init.vim:
     actions:
     - vim-plug-setup
@@ -215,6 +218,7 @@ profiles:
   sudo:
     dotfiles:
     - f_issue
+    - f_hosts
   wsl:
     dotfiles:
     - f_gitattributes
