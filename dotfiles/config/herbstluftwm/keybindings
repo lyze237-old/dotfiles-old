@@ -30,8 +30,6 @@ hc keybind "$Mod-Alt-h"       split   left $splitstep
 hc keybind "$Mod-Alt-j"       split   bottom $splitstep
 hc keybind "$Mod-Alt-k"       split   top $splitstep
 hc keybind "$Mod-Alt-l"       split   right $splitstep
-# let the current frame explode into subframes
-hc keybind "$Mod-Control-space" split explode
 
 # resizing frames
 resizestep=0.05
