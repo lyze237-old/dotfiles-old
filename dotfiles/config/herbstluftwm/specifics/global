@@ -27,8 +27,8 @@ function setupListeners() {
                     try true \
                 . substitute M monitors.focus.index \
                     set attr clients.$client.my_lastmon M \
-                . shift_to_monitor "floatmon" \
-                . focus_monitor "floatmon" 
+                . shift_to_monitor "$floatingMonitorName" \
+                . focus_monitor "$floatingMonitorName" 
         fi
     done
 } 

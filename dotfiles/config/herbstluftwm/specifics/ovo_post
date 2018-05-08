@@ -2,20 +2,20 @@
 
 if hc silent ! get_attr my_not_first_autostart ; then
     hc load 2_1 '(split horizontal:0.650000:1 (clients vertical:0) (split vertical:0.500000:0 (clients vertical:0) (clients vertical:0)))'
-    hc load 1_1 '(split vertical:0.500000:0 (clients vertical:0 0x4200014) (clients horizontal:1 0x3800014 0x3e00014))'
+    hc load 0_1 '(split vertical:0.500000:0 (clients vertical:0 0x4200014) (clients horizontal:1 0x3800014 0x3e00014))'
 
     # left desktop
-    hc rule class=ncmpcpp tag=1_1 index=0
-    hc rule class=htop tag=1_1 index=11
-    hc rule class=pulsemixer tag=1_1 index=10
+    hc rule class=ncmpcpp tag=0_1 index=0
+    hc rule class=htop tag=0_1 index=11
+    hc rule class=pulsemixer tag=0_1 index=10
 
     kitty --class ncmpcpp ncmpcpp &
     kitty --class htop htop & 
     kitty --class pulsemixer pulsemixer &
 
     # middle desktop
-    hc rule class=neomutt tag=0_8
-    hc rule class=obs tag=0_9
+    hc rule class=neomutt tag=1_8
+    hc rule class=obs tag=1_9
 
     kitty --class neomutt neomutt &
 

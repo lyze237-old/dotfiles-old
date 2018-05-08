@@ -5,7 +5,7 @@
 echo "Sourcing variables"
 source ~/.config/herbstluftwm/helpers/gruvbox.sh
 source ~/.config/herbstluftwm/lemonbar/variables.sh 
-
+source ~/.config/herbstluftwm/variables 
 echo "Sourcing functions"
 source ~/.config/herbstluftwm/helpers/hc.sh
 source ~/.config/herbstluftwm/helpers/getMonitorCount.sh
@@ -15,7 +15,6 @@ source ~/.config/herbstluftwm/lemonbar/mpd.sh
 source ~/.config/herbstluftwm/lemonbar/date.sh
 source ~/.config/herbstluftwm/lemonbar/divider.sh
 source ~/.config/herbstluftwm/lemonbar/workspaces.sh 
-source ~/.config/herbstluftwm/lemonbar/email.sh
 
 # Fetch all data
 function fetchData() {
@@ -24,9 +23,6 @@ function fetchData() {
 
     echo "Subscribing to workspace events"
     registerWorkspacesHook &
-
-    echo "Subscribing to email events"
-    registerEmailHook &
 
     echo "Subscribing to date events"
     registerDateHook &
@@ -74,11 +70,11 @@ function setupBar() {
                     needToUpdate="true"
                 fi 
                 if [ "$needToUpdate" == "true" ] ; then
-                    (>&2 echo "Updating bar for real ...")
                     barLeft="$workspaces%{B- F-}$(dividerLeft "$tagBgColor" "$barBgColor")"
                     barCenter="%{F$blueColor}\\%{F$redColor}\"%{F$blueColor}\\%{F$yellowColor}^%{F$fg1Color}v%{F$yellowColor}^%{F$blueColor}/%{F$redColor}\"%{F$blueColor}/%{B- F-}" # \"\OvO/"/
                     barRight="$(dividerRight "$barBgColor" "$otherBgColor")$mpd$(smallDividerRight "$barBgColor" "$otherBgColor")$date%{B- F-}"
 
+                    (>&2 echo -e "Updating ${monitorIndex}'s bar: %{l}$barLeft %{c}$barCenter %{r}$barRight")
                     echo -e "%{l}$barLeft %{c}$barCenter %{r}$barRight"
                 fi
                 ;;
@@ -97,9 +93,16 @@ function startEverything() {
     fetchData &
 
     echo "Spawning bars"
+
     while read -r line ; do
         monitorId=$(echo "$line" | cut -d':' -f1)
         monitorRegion=$(echo "$line" | cut -d' ' -f2)
+        monitorName=$(echo "$line" | cut -d' ' -f7)
+        echo "$monitorName" = "$floatingMonitorName"
+        if [[ "$monitorName" == "\"$floatingMonitorName\"" ]] ; then
+            continue
+        fi
+        echo "Spawning bar on id ${monitorId} region ${monitorRegion}"
         setupBar "$monitorId" "$monitorRegion"
     done <<< $(hc list_monitors)
 }
