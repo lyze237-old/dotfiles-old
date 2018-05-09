@@ -1,2 +1,9 @@
 Host gitlab.com
-	IdentityFile ~/.ssh/gitlab_rsa
+    IdentityFile ~/.ssh/gitlab_rsa
+    User git
+Host falcon.local
+    User pi
+Host owl.local
+    User pi
+Host fox.local
+    User pi

@@ -12,9 +12,16 @@ hc merge_tag default
 
 
 
-# detect monitors
+# detect monitors (bash magic)
 echo "Detecting monitors"
-hc detect_monitors
+# gets all monitors according to xrandr
+allMonitors=($(hc detect_monitors -l))
+# sorts them by xoffset (dunno, magic)
+allMonitors=($(printf "%s\n" "${allMonitors[@]}" | sort -t+ -k2))
+# again magic, passes them as arguments to set_monitors
+hc set_monitors ${allMonitors[*]// /|}
+
+
 
 
 
