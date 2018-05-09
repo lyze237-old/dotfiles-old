@@ -34,6 +34,7 @@ tryExecute "$HOME/.config/herbstluftwm/specifics/${HOSTNAME}_pre"
 if hc silent ! get_attr my_not_first_autostart ; then
     echo "First time run, setting up tags"
     source ~/.config/herbstluftwm/monitorSetup
+
 fi
 
 echo "Running global setup"
@@ -51,6 +52,11 @@ echo "Setting up panel"
 
 echo "Unlocking"
 hc unlock
+
+if hc silent ! get_attr my_not_first_autostart ; then
+    echo "Setting up floating tag"
+    source ~/.config/herbstluftwm/helpers/floatmon.sh
+fi
 
 hc silent new_attr bool my_not_first_autostart
 

@@ -141,3 +141,6 @@
 [include]
     # Load local configs.
     path = ~/.gitconfig.local
+
+[credential]
+	helper = !~/.config/owl/scripts/bin/pass-git-helper

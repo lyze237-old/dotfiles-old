@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 hc keyunbind --all
 
 hc keybind "$Mod-Shift-r" reload
@@ -8,20 +7,16 @@ hc keybind "$Mod-Shift-q" close
 # Wm Specific {{{
 # basic movement
 # focusing clients
-hc keybind "$Mod-h"     focus left
-hc keybind "$Mod-j"     focus down
-hc keybind "$Mod-k"     focus up
-hc keybind "$Mod-l"     focus right
+hc keybind "$Mod-h"       or / focus left / focus_monitor -1
+hc keybind "$Mod-j"       or / focus down / focus_monitor -d
+hc keybind "$Mod-k"       or / focus up / focus_monitor -u
+hc keybind "$Mod-l"       or / focus right / focus_monitor +1
 
 # moving clients
-hc keybind "$Mod-Shift-h" or / shift left / \
-    chain , lock , shift_to_monitor -l , focus_monitor -l , unlock
-hc keybind "$Mod-Shift-j" or / shift down / \
-    chain , lock , shift_to_monitor -d , focus_monitor -d , unlock
-hc keybind "$Mod-Shift-k" or / shift up / \
-    chain , lock , shift_to_monitor -u , focus_monitor -u , unlock
-hc keybind "$Mod-Shift-l" or / shift right / \
-    chain , lock , shift_to_monitor -r , focus_monitor -r , unlock
+hc keybind "$Mod-Shift-h" or / shift left / chain , lock , shift_to_monitor -1 , focus_monitor -1 , unlock
+hc keybind "$Mod-Shift-j" or / shift down / chain , lock , shift_to_monitor -d , focus_monitor -d , unlock
+hc keybind "$Mod-Shift-k" or / shift up / chain , lock , shift_to_monitor -u , focus_monitor -u , unlock
+hc keybind "$Mod-Shift-l" or / shift right / chain , lock , shift_to_monitor +1 , focus_monitor +1 , unlock
 
 # splitting frames
 splitstep=0.5
@@ -30,8 +25,6 @@ hc keybind "$Mod-Alt-h"       split   left $splitstep
 hc keybind "$Mod-Alt-j"       split   bottom $splitstep
 hc keybind "$Mod-Alt-k"       split   top $splitstep
 hc keybind "$Mod-Alt-l"       split   right $splitstep
-# let the current frame explode into subframes
-hc keybind "$Mod-Control-space" split explode
 
 # resizing frames
 resizestep=0.05
@@ -92,6 +85,7 @@ hc keybind XF86AudioPrev spawn mpc prev
 
 # Rofi
 hc keybind "$Mod-d" spawn rofi -show run
+hc keybind "$Mod-Shift-d" spawn rofi -show run
 hc keybind "$Mod-p" spawn rofi-pass
 hc keybind Alt+Pause spawn bash -c "$HOME/.config/herbstluftwm/rofi/power.sh"
 
