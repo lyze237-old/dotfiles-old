@@ -10,6 +10,11 @@ export LANG=en_US.UTF-8 mutt
 
 set PATH $HOME/.config/owl/scripts/bin $PATH
 
+command -v nvim> /dev/null
+if test $status -eq 0
+    export MANPAGER="nvim -c 'set ft=man' -"
+end
+
 # {{{ Weather Function 
 function weather
     set cols (tput cols)
@@ -76,6 +81,3 @@ set fish_greeting ""
     # }}}
 
 # }}}
-
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-
