@@ -7,10 +7,10 @@ hc keybind "$Mod-Shift-q" close
 # Wm Specific {{{
 # basic movement
 # focusing clients
-hc keybind "$Mod-h"     focus left
-hc keybind "$Mod-j"     focus down
-hc keybind "$Mod-k"     focus up
-hc keybind "$Mod-l"     focus right
+hc keybind "$Mod-h"       or / focus left / focus_monitor -1
+hc keybind "$Mod-j"       or / focus down / focus_monitor -d
+hc keybind "$Mod-k"       or / focus up / focus_monitor -u
+hc keybind "$Mod-l"       or / focus right / focus_monitor +1
 
 # moving clients
 hc keybind "$Mod-Shift-h" or / shift left / chain , lock , shift_to_monitor -1 , focus_monitor -1 , unlock
