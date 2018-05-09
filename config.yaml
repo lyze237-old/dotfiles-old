@@ -61,6 +61,9 @@ dotfiles:
     dst: ~/.config/dunst/dunstrc
     link: true
     src: config/dunst/dunstrc
+  f_git-pass-mapping.ini:
+    dst: ~/.config/pass-git-helper/git-pass-mapping.ini
+    src: config/pass-git-helper/git-pass-mapping.ini
   f_gitattributes:
     dst: ~/.gitattributes
     link: true
@@ -215,6 +218,7 @@ profiles:
     - d_herbstluftwm
     - f_dunstrc
     - f_config.json
+    - f_git-pass-mapping.ini
   sudo:
     dotfiles:
     - f_issue

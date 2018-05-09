@@ -37,7 +37,7 @@ sudo chsh -s `which fish`
 yay -S kitty
 
 # install base programs
-sudo pacman -S git xdg-utils xclip mpc imagemagick numlockx compton unzip xdotool python-yaml python-docopt python-jinja jq ttf-dejavu wmctrl parcellite maim networkmanager
+sudo pacman -S git xdg-utils xclip mpc imagemagick numlockx compton unzip xdotool python-yaml python-docopt python-jinja jq ttf-dejavu wmctrl parcellite maim networkmanager thunar-volman tumbler thunar-media-tags-plugin thunar-archive-plugin gvfs
 yay -S dotnet-sdk numix-circle-icon-theme-git breeze-obsidian-cursor-theme v4l2loopback-dkms-git ttf-twemoji-color urlview
 
 # install tui programs
@@ -45,7 +45,7 @@ sudo pacman -S ncmpcpp mopidy w3m htop pass pass-otp neomutt
 yay -S mopidy-spotify pulsemixer neovim
 
 # install gui programs
-sudo pacman -S i3lock feh dunst firefox steam rofi arandr thunar obs-studio lxappearance pavucontrol 
+sudo pacman -S i3lock feh dunst firefox steam rofi arandr thunar obs-studio lxappearance pavucontrol  ristretto
 yay -S redshift-gtk-git discord-ptb nextcloud-client mstdn neovim nougat
 
 # network manager fun
