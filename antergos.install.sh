@@ -45,7 +45,7 @@ sudo pacman -S ncmpcpp mopidy w3m htop pass pass-otp neomutt
 yay -S mopidy-spotify pulsemixer neovim
 
 # install gui programs
-sudo pacman -S i3lock feh dunst firefox steam rofi arandr thunar obs-studio lxappearance pavucontrol  ristretto
+sudo pacman -S i3lock feh dunst firefox steam rofi arandr thunar obs-studio lxappearance pavucontrol  ristretto vinagre
 yay -S redshift-gtk-git discord-ptb nextcloud-client mstdn neovim nougat
 
 # network manager fun

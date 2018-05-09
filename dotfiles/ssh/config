@@ -7,3 +7,7 @@ Host owl.local
     User pi
 Host fox.local
     User pi
+Host raptor.local
+    User pi
+Host bun.local
+    User pi
