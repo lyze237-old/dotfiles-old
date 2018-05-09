@@ -21,8 +21,8 @@ else
     exit 1
 fi
 
-hc chain , add "$tag" , floating "$tag" on
-hc or , add_monitor "$size"+0+0 "$tag" "$floatingMonitorName" \
+hc chain , add "$floatingTagName" , floating "$floatingTagName" on
+hc or , add_monitor "$size"+0+0 "$floatingTagName" "$floatingMonitorName" \
       , move_monitor "$floatingMonitorName" "$size"+0+0
 hc raise_monitor "$floatingMonitorName"
 hc lock_tag "$floatingMonitorName"
