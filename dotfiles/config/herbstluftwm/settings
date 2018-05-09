@@ -39,4 +39,5 @@ hc set swap_monitors_to_get_tag 0
 # other
 herbstclient set tree_style '╾│ ├└╼─┐'
 herbstclient set focus_follows_mouse 1
+herbstclient set focus_crosses_monitor_boundaries 0
 
