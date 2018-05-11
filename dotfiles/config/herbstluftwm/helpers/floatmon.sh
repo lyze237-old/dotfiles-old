@@ -33,11 +33,6 @@ or  case: and
         . compare monitors.focus.name != "$floatingMonitorName"
         # and if a client is focused
         . get_attr clients.focus.winid
-        # then remember the last monitor of the client
-        . chain try new_attr string clients.focus.my_lastmon
-                try true
-        . substitute M monitors.focus.index
-            set_attr clients.focus.my_lastmon M
         # and then move the client to the floating tag
         . shift_to_monitor "$floatingMonitorName"
         . focus_monitor "$floatingMonitorName"
@@ -48,9 +43,8 @@ or  case: and
         # and if a client is focused
         . get_attr clients.focus.winid
         # then send it back to the original monitor
-        . substitute M clients.focus.my_lastmon chain
-            , shift_to_monitor M
-            , focus_monitor M
+        . substitute WINDOW clients.focus.winid 
+            spawn $HOME/.config/herbstluftwm/helpers/shiftWindowToMonitor.sh WINDOW
         . true
     case: and
         # if the previous things fail,

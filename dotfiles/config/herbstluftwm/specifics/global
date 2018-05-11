@@ -7,10 +7,6 @@ if hc silent ! get_attr my_not_first_autostart ; then
     hc rule focus=on # normally focus new clients
     hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' focus=off hook=FLOAT_DIALOG monitor=$floatingMonitorName tag=$floatingTagName
     hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
-
-    # fix popup
-    # hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' manage=off focus=on
-    # hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off focus=off
 fi
 
 function setupListeners() {

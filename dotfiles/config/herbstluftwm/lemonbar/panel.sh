@@ -8,7 +8,7 @@ source ~/.config/herbstluftwm/lemonbar/variables.sh
 source ~/.config/herbstluftwm/variables 
 echo "Sourcing functions"
 source ~/.config/herbstluftwm/helpers/hc.sh
-source ~/.config/herbstluftwm/helpers/getMonitorCount.sh
+source ~/.config/herbstluftwm/helpers/monitorStuff.sh
 
 echo "Sourcing bar specifics"
 source ~/.config/herbstluftwm/lemonbar/mpd.sh
