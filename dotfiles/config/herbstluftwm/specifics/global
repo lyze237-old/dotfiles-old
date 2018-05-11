@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
-
 if hc silent ! get_attr my_not_first_autostart ; then
     # rules
     hc unrule -F
 
     hc rule focus=on # normally focus new clients
-    hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
-    hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on hook=FLOAT_DIALOG monitor=$floatingMonitorName tag=$floatingTagName
+    hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' focus=off hook=FLOAT_DIALOG monitor=$floatingMonitorName tag=$floatingTagName
     hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 
     # fix popup
@@ -16,20 +14,31 @@ if hc silent ! get_attr my_not_first_autostart ; then
 fi
 
 function setupListeners() {
-    echo "-------------------------              setup listeners"
     hc -i |
     while read -r line ; do
         if [[ "$line" = *"FLOAT_DIALOG"* ]] ; then
             client="$(echo $line | cut -d ' ' -f3)"
-            echo setting $client to floating
-            hc chain . \
-                chain try new_attr string clients.$client.my_lastmon \
-                    try true \
-                . substitute M monitors.focus.index \
-                    set attr clients.$client.my_lastmon M 
+            
+            # check if window is in proper area
+            eval $(xdotool getwindowgeometry --shell $client)
+            eval $(getActiveMonitorRegion)
+
+            echo $X $Y $WIDTH $HEIGHT
+            echo $MonitorX $MonitorY $MonitorWidth $MonitorHeight
+
+            # X, Y, WIDTH, HEIGHT => window coordinates
+            # MonitorX, MonitorY, MonitorWidth, MonitorHeight => monitor coordinates
+            if [[ $(($X + $WIDTH)) -gt $(($MonitorX + $MonitorWidth)) || \
+                $X -lt $MonitorX || \
+                $Y -lt $MonitorY || \
+                $(($Y + $HEIGHT)) -gt $(($MonitorY + $MonitorHeight)) ]] ; then
+                xdotool windowmove --sync $WINDOW $(($MonitorX + $MonitorWidth / 2 - $WIDTH / 2)) $(($MonitorY + $MonitorHeight / 2 - $HEIGHT / 2))
+                echo xdotool windowmove --sync $WINDOW $(($MonitorX + $MonitorWidth / 2 - $WIDTH / 2)) $(($MonitorY + $MonitorHeight / 2 - $HEIGHT / 2))
+            fi
+
+            hc jumpto $client 
         fi
     done
 } 
 
-echo "-----------------<>"
 setupListeners &

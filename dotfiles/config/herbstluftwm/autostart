@@ -20,7 +20,7 @@ source ~/.config/herbstluftwm/variables
 
 echo "Sourcing functions"
 source ~/.config/herbstluftwm/helpers/hc.sh
-source ~/.config/herbstluftwm/helpers/getMonitorCount.sh
+source ~/.config/herbstluftwm/helpers/monitorStuff.sh
 
 
 echo "Sending reload hook"
