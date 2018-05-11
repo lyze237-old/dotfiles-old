@@ -3,4 +3,4 @@
 source $HOME/.config/herbstluftwm/helpers/monitorStuff.sh
 
 echo $@
-shiftWindowToMonitor "$1"
+shiftWindowToItsMonitor "$1"

@@ -48,12 +48,46 @@ function getMonitorRegion() {
     echo MonitorHeight=$(echo $monRect | cut -d" " -f4)
 }
 
-function shiftWindowToMonitor() {
+function shiftWindowToItsMonitor() {
     windowId="$1"
     monitorId="$(getMonitorOfWindow $windowId)"
 
     echo Shifting $windowId to $monitorId
     
-    herbstclient chain , jumpto $windowId , shift_to_monitor $monitorId
+    herbstclient chain , jumpto $windowId , shift_to_monitor $monitorId , jumpto $windowId
 }
 
+function shiftWindowToFloatingMonitor() {
+    windowId="$1"
+    echo Shifting window $windowId to floating monitor
+    while read -r line ; do
+        monitorId=$(echo "$line" | cut -d':' -f1)
+        monitorName=$(echo "$line" | cut -d' ' -f7)
+        if [[ "$monitorName" == "\"$floatingMonitorName\"" ]] ; then
+
+            # check if window is in proper area
+            eval $(getActiveMonitorRegion)
+            herbstclient chain , jumpto $windowId , shift_to_monitor $monitorId
+            eval $(xdotool getwindowgeometry --shell $windowId)
+
+            echo $X $Y $WIDTH $HEIGHT
+            echo $MonitorX $MonitorY $MonitorWidth $MonitorHeight
+
+            # X, Y, WIDTH, HEIGHT => window coordinates
+            # MonitorX, MonitorY, MonitorWidth, MonitorHeight => monitor coordinates
+            if [[ $(($X + $WIDTH)) -gt $(($MonitorX + $MonitorWidth)) || \
+                $X -lt $MonitorX || \
+                $Y -lt $MonitorY || \
+                $(($Y + $HEIGHT)) -gt $(($MonitorY + $MonitorHeight)) ]] ; then
+                xdotool windowmove --sync $WINDOW $(($MonitorX + $MonitorWidth / 2 - $WIDTH /
+ 2)) $(($MonitorY + $MonitorHeight / 2 - $HEIGHT / 2))
+                echo xdotool windowmove --sync $WINDOW $(($MonitorX + $MonitorWidth / 2 - $WI
+DTH / 2)) $(($MonitorY + $MonitorHeight / 2 - $HEIGHT / 2))
+            fi
+
+            herbstclient jumpto $windowId
+
+            break
+        fi
+    done <<< $(hc list_monitors)
+}

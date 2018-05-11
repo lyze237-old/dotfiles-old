@@ -34,8 +34,8 @@ or  case: and
         # and if a client is focused
         . get_attr clients.focus.winid
         # and then move the client to the floating tag
-        . shift_to_monitor "$floatingMonitorName"
-        . focus_monitor "$floatingMonitorName"
+        . substitute WINDOW clients.focus.winid
+            spawn $HOME/.config/herbstluftwm/helpers/shiftWindowToFloatingMonitor.sh WINDOW
         . true
     case: and
         # if on the floating monitor
@@ -44,7 +44,7 @@ or  case: and
         . get_attr clients.focus.winid
         # then send it back to the original monitor
         . substitute WINDOW clients.focus.winid 
-            spawn $HOME/.config/herbstluftwm/helpers/shiftWindowToMonitor.sh WINDOW
+            spawn $HOME/.config/herbstluftwm/helpers/shiftWindowToItsMonitor.sh WINDOW
         . true
     case: and
         # if the previous things fail,
