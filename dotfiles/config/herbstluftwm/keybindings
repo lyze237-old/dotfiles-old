@@ -84,7 +84,7 @@ hc keybind XF86AudioNext spawn mpc next
 hc keybind XF86AudioPrev spawn mpc prev 
 
 # Rofi
-hc keybind "$Mod-d" spawn rofi -show run
+hc keybind "$Mod-d" spawn rofi -show drun
 hc keybind "$Mod-Shift-d" spawn rofi -show run
 hc keybind "$Mod-p" spawn rofi-pass
 hc keybind Alt+Pause spawn bash -c "$HOME/.config/herbstluftwm/rofi/power.sh"
