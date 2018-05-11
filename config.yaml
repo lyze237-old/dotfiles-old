@@ -172,6 +172,7 @@ profiles:
     dotfiles:
     - d_owlbin
     - f_gitattributes
+    - f_git-pass-mapping.ini
     - f_gitconfig
     - f_gitignore
     - f_init.vim
@@ -235,3 +236,4 @@ profiles:
     - d_mutt
     - f_urlview_wsl
     - d_owlbin
+    - f_git-pass-mapping.ini
