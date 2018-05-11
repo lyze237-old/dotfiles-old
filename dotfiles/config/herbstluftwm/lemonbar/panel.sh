@@ -74,7 +74,6 @@ function setupBar() {
                     barCenter="%{F$blueColor}\\%{F$redColor}\"%{F$blueColor}\\%{F$yellowColor}^%{F$fg1Color}v%{F$yellowColor}^%{F$blueColor}/%{F$redColor}\"%{F$blueColor}/%{B- F-}" # \"\OvO/"/
                     barRight="$(dividerRight "$barBgColor" "$otherBgColor")$mpd$(smallDividerRight "$barBgColor" "$otherBgColor")$date%{B- F-}"
 
-                    (>&2 echo -e "Updating ${monitorIndex}'s bar: %{l}$barLeft %{c}$barCenter %{r}$barRight")
                     echo -e "%{l}$barLeft %{c}$barCenter %{r}$barRight"
                 fi
                 ;;
