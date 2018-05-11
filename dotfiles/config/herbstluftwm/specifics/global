@@ -7,7 +7,7 @@ if hc silent ! get_attr my_not_first_autostart ; then
 
     hc rule focus=on # normally focus new clients
     hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
-    hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on hook=FLOAT_DIALOG
+    hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on hook=FLOAT_DIALOG monitor=$floatingMonitorName tag=$floatingTagName
     hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 
     # fix popup
@@ -26,9 +26,7 @@ function setupListeners() {
                 chain try new_attr string clients.$client.my_lastmon \
                     try true \
                 . substitute M monitors.focus.index \
-                    set attr clients.$client.my_lastmon M \
-                . shift_to_monitor "$floatingMonitorName" \
-                . focus_monitor "$floatingMonitorName" 
+                    set attr clients.$client.my_lastmon M 
         fi
     done
 } 
