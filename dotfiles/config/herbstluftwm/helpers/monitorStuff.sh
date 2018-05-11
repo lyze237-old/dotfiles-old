@@ -79,10 +79,8 @@ function shiftWindowToFloatingMonitor() {
                 $X -lt $MonitorX || \
                 $Y -lt $MonitorY || \
                 $(($Y + $HEIGHT)) -gt $(($MonitorY + $MonitorHeight)) ]] ; then
-                xdotool windowmove --sync $WINDOW $(($MonitorX + $MonitorWidth / 2 - $WIDTH /
- 2)) $(($MonitorY + $MonitorHeight / 2 - $HEIGHT / 2))
-                echo xdotool windowmove --sync $WINDOW $(($MonitorX + $MonitorWidth / 2 - $WI
-DTH / 2)) $(($MonitorY + $MonitorHeight / 2 - $HEIGHT / 2))
+                xdotool windowmove --sync $WINDOW $(($MonitorX + $MonitorWidth / 2 - $WIDTH / 2)) $(($MonitorY + $MonitorHeight / 2 - $HEIGHT / 2))
+                echo xdotool windowmove --sync $WINDOW $(($MonitorX + $MonitorWidth / 2 - $WIDTH / 2)) $(($MonitorY + $MonitorHeight / 2 - $HEIGHT / 2))
             fi
 
             herbstclient jumpto $windowId

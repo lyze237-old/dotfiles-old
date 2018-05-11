@@ -35,17 +35,16 @@ if hc silent ! get_attr my_not_first_autostart ; then
     echo "First time run, setting up tags"
     source ~/.config/herbstluftwm/monitorSetup
 
+    echo "Setting up keybinds"
+    source ~/.config/herbstluftwm/keybindings
+    echo "Setting up mousebinds"
+    source ~/.config/herbstluftwm/mousebindings
 fi
 
 echo "Running global setup"
 source ~/.config/herbstluftwm/specifics/global
 
 tryExecute "$HOME/.config/herbstluftwm/specifics/${HOSTNAME}_post"
-
-echo "Setting up keybinds"
-source ~/.config/herbstluftwm/keybindings
-echo "Setting up mousebinds"
-source ~/.config/herbstluftwm/mousebindings
 
 echo "Setting up panel"
 ~/.config/herbstluftwm/lemonbar/panel.sh &
