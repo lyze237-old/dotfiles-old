@@ -16,8 +16,11 @@ if hc silent ! get_attr my_not_first_autostart ; then
     # middle desktop
     hc rule class=neomutt tag=1_8
     hc rule class=obs tag=1_9
+    hc rule class=Pinetry-gtk-2 focus=off hook=FLOAT_DIALOG monitor=$floatingMonitorName tag=$floatingTagName
 
     kitty --class neomutt neomutt &
+    nextcloud &
+    pass -c private/cloud.owl.sh/lyze_token & # get nextcloud token
 
     # right desktop
 
