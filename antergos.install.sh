@@ -37,7 +37,7 @@ sudo chsh -s `which fish`
 yay -S kitty
 
 # install base programs
-sudo pacman -S git xdg-utils xclip mpc imagemagick numlockx compton unzip xdotool python-yaml python-docopt python-jinja jq ttf-dejavu wmctrl parcellite maim networkmanager thunar-volman tumbler thunar-media-tags-plugin thunar-archive-plugin gvfs noto-fonts-cjk noto-fonts-extra
+sudo pacman -S git xdg-utils xclip mpc imagemagick numlockx compton unzip xdotool python-yaml python-docopt python-jinja jq ttf-dejavu wmctrl parcellite maim networkmanager thunar-volman tumbler thunar-media-tags-plugin thunar-archive-plugin gvfs noto-fonts-cjk noto-fonts-extra imagemagick
 yay -S dotnet-sdk numix-circle-icon-theme-git breeze-obsidian-cursor-theme v4l2loopback-dkms-git ttf-twemoji-color urlview
 
 # install tui programs
