@@ -16,11 +16,11 @@ if hc silent ! get_attr my_not_first_autostart ; then
     # middle desktop
     hc rule class=neomutt tag=1_8
     hc rule class=obs tag=1_9
+    hc rule class=Nextcloud title="Enter Password" hook=NEXTCLOUD
     hc rule class=Pinetry-gtk-2 focus=off hook=FLOAT_DIALOG monitor=$floatingMonitorName tag=$floatingTagName
 
     kitty --class neomutt neomutt &
     nextcloud &
-    pass -c private/cloud.owl.sh/lyze_token & # get nextcloud token
 
     # right desktop
 
@@ -37,3 +37,17 @@ if hc silent ! get_attr my_not_first_autostart ; then
 fi
 
 feh --bg-scale "$HOME/.config/herbstluftwm/specifics/wallpapers/middle.png" --bg-scale "$HOME/.config/herbstluftwm/specifics/wallpapers/left.png" --bg-scale "$HOME/.config/herbstluftwm/specifics/wallpapers/right.png"
+
+function setupListeners() {
+    hc -i |
+    while read -r line ; do
+        if [[ "$line" = *"NEXTCLOUD"* ]] ; then
+            client="$(echo $line | cut -d ' ' -f3)"
+            
+            # automate nextcloud window
+            xdotool type --window $client $(pass private/cloud.owl.sh/lyze_token)
+        fi
+    done
+} 
+
+setupListeners &
