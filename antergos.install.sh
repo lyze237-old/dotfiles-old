@@ -41,11 +41,11 @@ sudo pacman -S git xdg-utils xclip mpc imagemagick numlockx compton unzip xdotoo
 yay -S dotnet-sdk numix-circle-icon-theme-git breeze-obsidian-cursor-theme v4l2loopback-dkms-git ttf-twemoji-color urlview
 
 # install tui programs
-sudo pacman -S ncmpcpp mopidy w3m htop pass pass-otp neomutt
+sudo pacman -S ncmpcpp mopidy w3m htop pass pass-otp neomutt youtube-dl
 yay -S mopidy-spotify pulsemixer neovim
 
 # install gui programs
-sudo pacman -S i3lock feh dunst firefox steam rofi arandr thunar obs-studio lxappearance pavucontrol  ristretto vinagre
+sudo pacman -S i3lock feh dunst firefox steam rofi arandr thunar obs-studio lxappearance pavucontrol  ristretto vinagre rhythmbox
 yay -S redshift-gtk-git discord-ptb nextcloud-client mstdn neovim nougat
 
 # network manager fun
