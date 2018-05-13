@@ -1,8 +1,8 @@
 #!/bin/bash
  
-sleep 0.1
-scrot /tmp/screen.png
-convert /tmp/screen.png -scale 10% -scale 1000% /tmp/screen.png
+sleep 0.5
+screenshot="$(nougat -t -b imagemagick -f)"
+convert "$screenshot" -scale 10% -scale 1000% "$screenshot"
  
 if [[ -f $HOME/.config/owl/scripts/lock/screen-lock.png ]]
 then
@@ -25,11 +25,11 @@ then
         PX=$(($SROX + $SRX/2 - $RX/2))
         PY=$(($SROY + $SRY/2 - $RY/2))
  
-        convert /tmp/screen.png $HOME/.config/owl/scripts/lock/screen-lock.png -geometry +$PX+$PY -composite -matte  /tmp/screen.png
+        convert "$screenshot" $HOME/.config/owl/scripts/lock/screen-lock.png -geometry +$PX+$PY -composite -matte "$screenshot"
         echo "done"
     done
 fi
 # dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify 
 #/org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
 # i3lock  -I 10 -d -e -u -n -i /tmp/screen.png
-i3lock -e -n -f -i /tmp/screen.png
+i3lock -e -n -f -i "$screenshot"
