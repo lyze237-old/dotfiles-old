@@ -5,6 +5,11 @@ source '~/.config/mutt/macros'
 source '~/.config/mutt/colors'
 source '~/.config/mutt/sidebar'
 source '~/.config/mutt/hooks'
+{%@@ if profile == "mac" @@%} 
+source '~/.config/mutt/gpg_mac.rc'
+{%@@ else @@%}
+source '~/.config/mutt/gpg.rc'
+{%@@ endif @@%}
 # }}}
 
 set signature = '~/.config/mutt/signature'
@@ -19,6 +24,10 @@ set index_format="%2C %Z %d %-15.15F %s (%-4.4c)"
 set header_cache = '~/.cache/mutt_header_cache'
 
 set mailcap_path = '~/.config/mutt/mailcap'
+
+set pgp_autosign = yes
+set pgp_sign_as = "lyze@owl.sh"
+set pgp_replyencrypt = yes
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html
