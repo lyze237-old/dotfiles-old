@@ -42,5 +42,6 @@ set new_mail_command="notify-send 'New Email' '%n new messages, %u unread.' &"
 
 # Headers {{{
 my_hdr X-Message-Flag: WARNING! Outlook is not fun! 
+my_hdr X-PGP-Key: https://keybase.io/lyze/pgp_keys.asc
 # }}}
 
