@@ -31,8 +31,6 @@ Do not install this repository on your pc, I heavily use stuff like `pass` and o
 ## ovo
 Generally contains nearly all dotfiles since it's my main pc. 
 
-(neo)mutt uses msmtp and offlineimap to sync emails instead of it's built in functions.
-
 ## wsl
 Just contains the most basic dotfiles for my linux subsystem on windows. 
 
