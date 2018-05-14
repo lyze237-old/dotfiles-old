@@ -76,6 +76,10 @@ dotfiles:
     dst: ~/.gitignore
     link: true
     src: gitignore
+  f_gpg.conf:
+    dst: ~/.gnupg/gpg.conf
+    src: gnupg/gpg.conf
+    link: true
   f_gtkrc-2.0:
     dst: ~/.gtkrc-2.0
     link: true
@@ -184,8 +188,10 @@ profiles:
     - f_chunkwmrc
     - f_urlview_mac
     - f_kitty.conf
+    - f_gpg.conf
   ovo:
     dotfiles:
+    - f_gpg.conf
     - f_init.vim
     - f_xinitrc
     - f_ssh_config
@@ -235,5 +241,6 @@ profiles:
     - d_prompt
     - d_mutt
     - f_urlview_wsl
+    - f_gpg.conf
     - d_owlbin
     - f_git-pass-mapping.ini
