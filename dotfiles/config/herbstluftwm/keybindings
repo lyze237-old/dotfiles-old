@@ -94,6 +94,6 @@ hc keybind "$Mod-e" spawn exo-open --launch FileManager
 hc keybind "$Mod-Return" spawn "$terminal"
 
 # Screenshot
-hc keybind Print spawn nougat -t -f -c -b imagemagick
-hc keybind Ctrl-Print spawn nougat -t -c -b imagemagick
+hc keybind Print spawn nougat -t -f -c -b maim 
+hc keybind Ctrl-Print spawn nougat -t -c -b maim
 # }}}

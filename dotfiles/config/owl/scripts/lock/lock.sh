@@ -32,4 +32,4 @@ fi
 # dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify 
 #/org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
 # i3lock  -I 10 -d -e -u -n -i /tmp/screen.png
-i3lock -e -n -f -i "$screenshot"
+i3lock -e -n -f -b maim -i "$screenshot"
