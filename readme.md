@@ -1,3 +1,7 @@
+# Note
+
+Do not install this repository on your pc, I heavily use stuff like `pass` and other things which only work with my setup and therefore please use this repository only to get inspiration or check how I did a specific thing!
+
 # My dotfiles
 
 * OS: Antergos
