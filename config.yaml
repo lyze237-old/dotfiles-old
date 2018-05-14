@@ -7,10 +7,6 @@ config:
   create: true
   dotpath: dotfiles
 dotfiles:
-  d_awesome:
-    dst: ~/.config/awesome
-    link: true
-    src: config/awesome
   d_fonts:
     dst: ~/.fonts
     link: true
@@ -115,10 +111,6 @@ dotfiles:
   f_mopidy.conf:
     dst: ~/.config/mopidy/mopidy.conf
     src: config/mopidy/mopidy.conf
-  f_mpv.conf:
-    dst: ~/.config/mpv/mpv.conf
-    link: true
-    src: config/mpv/mpv.conf
   f_ncmpcpp_config:
     dst: ~/.ncmpcpp/config
     link: true
@@ -131,10 +123,6 @@ dotfiles:
     dst: ~/.config/rofi/config
     link: true
     src: config/rofi/config
-  f_rtv.cfg:
-    dst: ~/.config/rtv/rtv.cfg
-    link: true
-    src: config/rtv/rtv.cfg
   f_settings.ini:
     dst: ~/.config/gtk-3.0/settings.ini
     link: true
@@ -147,14 +135,6 @@ dotfiles:
     dst: ~/.ssh/config
     link: true
     src: ssh/config
-  f_streamlink_config:
-    dst: ~/.config/streamlink/config
-    link: true
-    src: config/streamlink/config
-  f_termite_config:
-    dst: ~/.config/termite/config
-    link: true
-    src: config/termite/config
   f_urlview_lin:
     dst: ~/.urlview
     link: true
@@ -199,22 +179,17 @@ profiles:
     - f_compton.conf
     - f_config.fish
     - f_mimeapps.list
-    - f_mpv.conf
-    - f_termite_config
     - d_fonts
     - f_gitattributes
     - f_gitconfig
     - f_gitignore
     - f_ncmpcpp_config
     - f_mailcap
-    - f_rtv.cfg
-    - f_streamlink_config
     - f_rofi_config
     - f_settings.ini
     - f_gtkrc-2.0
     - d_themes
     - d_owl
-    - d_awesome
     - d_mutt
     - f_urlview_lin
     - d_functions
