@@ -12,7 +12,7 @@ set sidebar_visible = yes
 set sidebar_width = 30
 
 # Should the mailbox paths be abbreviated?
-set sidebar_short_path = yes 
+set sidebar_short_path = no 
 
 # When abbreviating mailbox path names, use any of these characters as path
 # separators.  Only the part after the last separators will be shown.
@@ -27,7 +27,7 @@ set sidebar_indent_string = '  '
 
 # Make the Sidebar only display mailboxes that contain new, or flagged,
 # mail.
-set sidebar_new_mail_only = no 
+set sidebar_new_mail_only = yes
 
 # Any mailboxes that are whitelisted will always be visible, even if the
 # sidebar_new_mail_only option is enabled.
@@ -41,11 +41,7 @@ set sidebar_next_new_wrap = no
 # The character to use as the divider between the Sidebar and the other Mutt
 # panels.
 # Note: Only the first character of this string is used.
-{%@@ if profile == "ovo"@@%}
-set sidebar_divider_char = '│'
-{%@@ else @@%}
 set sidebar_divider_char = '|'
-{%@@ endif @@%}
 
 # Enable extended buffy mode to calculate total, new, and flagged
 # message counts for each mailbox.
