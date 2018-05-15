@@ -3,10 +3,6 @@
 bind index,pager,attach v noop
 # delete-pattern - (delete messages matching a pattern)
 bind index,pager,attach D noop
-# delete-message - (delete the current entry)
-bind index,pager,attach d noop
-# undelete-message - (undelete the current entry)
-bind index,pager,attach u noop
 # undelete-pattern - (undelete messages matching a pattern)
 bind index,pager,attach U noop
 
@@ -146,8 +142,6 @@ bind index,pager,attach Z noop
 bind index,pager,attach [ noop
 # half-down - (scroll down 1/2 page)
 bind index,pager,attach ] noop
-# search-next - (search for next match)
-bind index,pager,attach n noop
 # next-page - (move to the next page)
 bind index,pager,attach z noop
 # }}}
@@ -162,6 +156,11 @@ bind pager g noop
 bind pager gg top
 bind attach,index g noop
 bind attach,index gg first-entry
+
+bind index,pager d delete-message
+bind index,pager u undelete-message
+
+bind index,pager,attach n noop
 
 macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
 macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
