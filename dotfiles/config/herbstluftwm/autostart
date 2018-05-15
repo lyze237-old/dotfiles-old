@@ -15,39 +15,39 @@ function tryExecute {
 echo Running on "$DISPLAY"
 
 echo "Sourcing variables"
-source ~/.config/herbstluftwm/helpers/gruvbox.sh
-source ~/.config/herbstluftwm/variables
+source $HOME/.config/herbstluftwm/helpers/gruvbox.sh
+source $HOME/.config/herbstluftwm/variables
 
 echo "Sourcing functions"
-source ~/.config/herbstluftwm/helpers/hc.sh
-source ~/.config/herbstluftwm/helpers/monitorStuff.sh
+source $HOM£/.config/herbstluftwm/helpers/hc.sh
+source $HOME/.config/herbstluftwm/helpers/monitorStuff.sh
 
 
 echo "Sending reload hook"
 hc emit_hook reload
 
 echo "Setting settings"
-source ~/.config/herbstluftwm/settings
+source $HOME/.config/herbstluftwm/settings
 
 tryExecute "$HOME/.config/herbstluftwm/specifics/${HOSTNAME}_pre"
 
 if hc silent ! get_attr my_not_first_autostart ; then
     echo "First time run, setting up tags"
-    source ~/.config/herbstluftwm/monitorSetup
+    source $HOME/.config/herbstluftwm/monitorSetup
 
     echo "Setting up keybinds"
-    source ~/.config/herbstluftwm/keybindings
+    source $HOME/.config/herbstluftwm/keybindings
     echo "Setting up mousebinds"
-    source ~/.config/herbstluftwm/mousebindings
+    source $HOME/.config/herbstluftwm/mousebindings
 fi
 
 echo "Running global setup"
-source ~/.config/herbstluftwm/specifics/global
+source $HOME/.config/herbstluftwm/specifics/global
 
 tryExecute "$HOME/.config/herbstluftwm/specifics/${HOSTNAME}_post"
 
 echo "Setting up panel"
-~/.config/herbstluftwm/lemonbar/panel.sh &
+$HOME/.config/herbstluftwm/lemonbar/panel.sh &
 
 echo "Unlocking"
 hc unlock
@@ -55,6 +55,7 @@ hc unlock
 if hc silent ! get_attr my_not_first_autostart ; then
     echo "Setting up floating tag"
     source ~/.config/herbstluftwm/helpers/floatmon.sh
+    $HOME/.config/herbstluftwm/helpers/floatingFocusFix.sh &
 fi
 
 hc silent new_attr bool my_not_first_autostart
