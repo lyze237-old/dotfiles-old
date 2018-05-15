@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 if hc silent ! get_attr my_not_first_autostart ; then
     # rules
     hc unrule -F
@@ -10,10 +9,40 @@ if hc silent ! get_attr my_not_first_autostart ; then
 fi
 
 function setupListeners() {
+    focus=()
     hc -i |
     while read -r line ; do
+        case $line in
+            tag_flags*)
+                focusedTag="$(herbstclient attr tags.focus.name)"
+                clientCount="$(herbstclient attr tags.by-name.fl.client_count)"
+
+                if [[ $clientCount -eq 0 && "$focusedTag" == "fl" ]] ; then
+                    for (( idx=${#focus[@]}-1 ; idx>=0 ; idx-- )) ; do
+                        client=$(echo "${focus[$idx]}")
+                        xdotool getwindowname $client
+
+                        if [[ $? -eq 0 ]] ; then
+                            echo switching back to $client
+                            hc jumpto $client
+                            focus=()
+                            break
+                        fi
+                    done
+                fi
+            ;;
+
+            focus_changed*)
+                client="$(echo $event | cut -d ' ' -f2)"
+                focus+=("$client")
+            ;;
+        esac
+
+
         if [[ "$line" = *"FLOAT_DIALOG"* ]] ; then
             client="$(echo $line | cut -d ' ' -f3)"
+            name="$(xdotool getwindowname $client)"
+            class="$(xprop -id $client | grep WM_CLASS | awk '{print $4}')"
             
             # check if window is in proper area
             eval $(xdotool getwindowgeometry --shell $client)
@@ -32,7 +61,13 @@ function setupListeners() {
                 echo xdotool windowmove --sync $WINDOW $(($MonitorX + $MonitorWidth / 2 - $WIDTH / 2)) $(($MonitorY + $MonitorHeight / 2 - $HEIGHT / 2))
             fi
 
-            hc jumpto $client 
+            if [[ "$class" != "\"jetbrains-rider\"" ]] ; then
+                echo "not jetbrains, jumping to ( $class )"
+                hc jumpto $client
+            elif [[ "$name" != "win"* ]] ; then
+                echo "jetbrains, but not a wrong popup, jumping to ( $name )"
+                hc jumpto $client
+            fi
         fi
     done
 } 
