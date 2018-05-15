@@ -106,7 +106,7 @@ dotfiles:
     src: mailcap
   f_mimeapps.list:
     dst: ~/.config/mimeapps.list
-    link: true
+    link: false
     src: config/mimeapps.list
   f_mopidy.conf:
     dst: ~/.config/mopidy/mopidy.conf
