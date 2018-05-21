@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # to run this program:
 # 1. install git
 # 2. mkdir ~/.dotfiles
@@ -16,17 +15,11 @@ sudo pacman -Syuu
 
 # fix windows
 sudo os-prober
-sudo grub-mkconfig-o /boot/grub/grub.cfg
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # install yay
 sudo pacman -S yaourt
 yaourt -S yay
-
-# install xorg
-sudo pacman -S xorg
-
-# install herbstluftwm 
-sudo pacman -S herbstluftwm lemonbar-xft-git
 
 # install fish
 sudo pacman -S fish
@@ -37,7 +30,7 @@ sudo chsh -s `which fish`
 yay -S kitty
 
 # install base programs
-sudo pacman -S git xdg-utils xclip mpc imagemagick numlockx compton unzip xdotool python-yaml python-docopt python-jinja jq ttf-dejavu wmctrl parcellite maim networkmanager thunar-volman tumbler thunar-media-tags-plugin thunar-archive-plugin gvfs noto-fonts-cjk noto-fonts-extra imagemagick maim
+sudo pacman -S git xdg-utils xclip mpc imagemagick numlockx compton unzip xdotool python-yaml python-docopt python-jinja jq ttf-dejavu wmctrl parcellite maim networkmanager thunar-volman tumbler thunar-media-tags-plugin thunar-archive-plugin gvfs noto-fonts-cjk noto-fonts-extra imagemagick maim python-xdg xorg xorg-xinit herbstluftwm 
 yay -S dotnet-sdk numix-circle-icon-theme-git breeze-obsidian-cursor-theme v4l2loopback-dkms-git ttf-twemoji-color urlview
 
 # install tui programs
@@ -45,8 +38,10 @@ sudo pacman -S ncmpcpp mopidy w3m htop pass pass-otp neomutt youtube-dl
 yay -S mopidy-spotify pulsemixer neovim
 
 # install gui programs
+yay -S libc++ --mflags --nocheck #install discord dependency without tests since they take 20 minutes or so
+
 sudo pacman -S i3lock feh dunst firefox steam rofi arandr thunar obs-studio lxappearance pavucontrol  ristretto vinagre rhythmbox
-yay -S redshift-gtk-git discord-ptb nextcloud-client mstdn neovim nougat
+yay -S redshift-gtk-git discord-ptb nextcloud-client mstdn neovim nougat-git lemonbar-xft-git
 
 # network manager fun
 systemctl enable NetworkManager
@@ -78,6 +73,8 @@ sudo chsh -s `which fish`
 cd ~/.dotfiles/dotfiles-public
 ./dotdrop install --profile=ovo
 sudo ./dotdrop install --profile=sudo
+chmod o-rwx ~/.gnugp
+chmod g-rwx ~/.gnugp
 
 # fix mouse cursor
 cd /usr/share/icons/Breeze_Obsidian/cursors/
