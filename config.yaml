@@ -74,8 +74,11 @@ dotfiles:
     src: gitignore
   f_gpg.conf:
     dst: ~/.gnupg/gpg.conf
-    src: gnupg/gpg.conf
     link: true
+    src: gnupg/gpg.conf
+  f_grub:
+    dst: /etc/default/grub
+    src: etc/default/grub
   f_gtkrc-2.0:
     dst: ~/.gtkrc-2.0
     link: true
@@ -108,6 +111,9 @@ dotfiles:
     dst: ~/.config/mimeapps.list
     link: false
     src: config/mimeapps.list
+  f_mkinitcpio.conf:
+    dst: /etc/mkinitcpio.conf
+    src: etc/mkinitcpio.conf
   f_mopidy.conf:
     dst: ~/.config/mopidy/mopidy.conf
     src: config/mopidy/mopidy.conf
@@ -115,6 +121,9 @@ dotfiles:
     dst: ~/.ncmpcpp/config
     link: true
     src: ncmpcpp/config
+  f_qemu.conf:
+    dst: /etc/libvirt/qemu.conf
+    src: etc/libvirt/qemu.conf
   f_rofi-pass_config:
     dst: ~/.config/rofi-pass/config
     link: true
@@ -147,6 +156,9 @@ dotfiles:
     dst: ~/.urlview
     link: true
     src: urlview_wsl
+  f_vfio.conf:
+    dst: /etc/modprobe.d/vfio.conf
+    src: etc/modprobe.d/vfio.conf
   f_xinitrc:
     dst: ~/.xinitrc
     link: true
@@ -201,10 +213,14 @@ profiles:
     - f_dunstrc
     - f_config.json
     - f_git-pass-mapping.ini
+    - f_mkinitcpio.conf
+    - f_vfio.conf
+    - f_grub
   sudo:
     dotfiles:
     - f_issue
     - f_hosts
+    - f_qemu.conf
   wsl:
     dotfiles:
     - f_gitattributes

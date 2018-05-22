@@ -10,8 +10,7 @@
 # enable networking
 sudo dhcpcd
 
-# update
-sudo pacman -Syuu
+# update sudo pacman -Syuu
 
 # fix windows
 sudo os-prober
@@ -92,3 +91,4 @@ echo pass git reset --hard origin/master
 
 echo cp ~/.dotfiles/dotfiles-public/secrets.env.template  ~/.dotfiles/dotfiles-public/secrets.env
 echo and then rerun dotdrop with fish and the "dotdrop" function
+echo edit /etc/makepkg.conf and set MAKEFLAGS="-j9 -l8"
