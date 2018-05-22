@@ -2,6 +2,7 @@ actions:
   vim-plug-run: nvim +PlugInstall
   vim-plug-setup: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  mkinitcpio: mkinitcpio -p linux
 config:
   backup: true
   create: true
@@ -114,6 +115,8 @@ dotfiles:
   f_mkinitcpio.conf:
     dst: /etc/mkinitcpio.conf
     src: etc/mkinitcpio.conf
+    actions:
+      - mkinitcpio
   f_mopidy.conf:
     dst: ~/.config/mopidy/mopidy.conf
     src: config/mopidy/mopidy.conf
@@ -213,12 +216,12 @@ profiles:
     - f_dunstrc
     - f_config.json
     - f_git-pass-mapping.ini
-    - f_mkinitcpio.conf
-    - f_vfio.conf
-    - f_grub
   sudo:
     dotfiles:
     - f_issue
+    - f_mkinitcpio.conf
+    - f_vfio.conf
+    - f_grub
     - f_hosts
     - f_qemu.conf
   wsl:
