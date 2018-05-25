@@ -3,6 +3,9 @@
 echo "Installing xcode cli tools"
 /usr/bin/xcode-select --install<Paste>
 
+echo tweaking settings
+defaults write com.apple.dock workspaces-auto-swoosh -bool NO
+
 echo Download and install iterm2 from https://iterm2.com/downloads.html
 
 # install brew
