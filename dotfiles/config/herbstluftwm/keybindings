@@ -79,9 +79,9 @@ hc keybind XF86AudioMute spawn pactl set-sink-mute @DEFAULT_SINK@ toggle
 hc keybind Pause spawn python ~/.config/owl/scripts/defaultSink.py
 
 # Music 
-hc keybind XF86AudioPlay spawn mpc toggle
-hc keybind XF86AudioNext spawn mpc next
-hc keybind XF86AudioPrev spawn mpc prev 
+hc keybind XF86AudioPlay spawn playerctl play-pause
+hc keybind XF86AudioNext spawn playerctl next
+hc keybind XF86AudioPrev spawn playerctl previous
 
 # Rofi
 hc keybind "$Mod-d" spawn rofi -show drun
