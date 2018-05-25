@@ -29,18 +29,18 @@ sudo chsh -s `which fish`
 yay -S kitty
 
 # install base programs
-sudo pacman -S git xdg-utils xclip mpc imagemagick numlockx compton unzip xdotool python-yaml python-docopt python-jinja jq ttf-dejavu wmctrl parcellite maim networkmanager thunar-volman tumbler thunar-media-tags-plugin thunar-archive-plugin gvfs noto-fonts-cjk noto-fonts-extra imagemagick maim python-xdg xorg xorg-xinit herbstluftwm 
+sudo pacman -S git xdg-utils xclip playerctl imagemagick numlockx compton unzip xdotool python-yaml python-docopt python-jinja jq ttf-dejavu wmctrl parcellite maim networkmanager thunar-volman tumbler thunar-media-tags-plugin thunar-archive-plugin gvfs noto-fonts-cjk noto-fonts-extra imagemagick maim python-xdg xorg xorg-xinit herbstluftwm 
 yay -S dotnet-sdk numix-circle-icon-theme-git breeze-obsidian-cursor-theme v4l2loopback-dkms-git ttf-twemoji-color urlview
 
 # install tui programs
-sudo pacman -S ncmpcpp mopidy w3m htop pass pass-otp neomutt youtube-dl
-yay -S mopidy-spotify pulsemixer neovim
+sudo pacman -S w3m htop pass pass-otp neomutt youtube-dl
+yay -S pulsemixer neovim
 
 # install gui programs
 yay -S libc++ --mflags --nocheck #install discord dependency without tests since they take 20 minutes or so
 
 sudo pacman -S i3lock feh dunst firefox steam rofi arandr thunar obs-studio lxappearance pavucontrol  ristretto vinagre rhythmbox
-yay -S redshift-gtk-git discord-ptb nextcloud-client mstdn neovim nougat-git lemonbar-xft-git
+yay -S redshift-gtk-git discord-ptb nextcloud-client mstdn neovim nougat-git lemonbar-xft-git spotify
 
 # network manager fun
 systemctl enable NetworkManager

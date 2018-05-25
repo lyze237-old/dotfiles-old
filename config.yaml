@@ -1,8 +1,8 @@
 actions:
+  mkinitcpio: mkinitcpio -p linux
   vim-plug-run: nvim +PlugInstall
   vim-plug-setup: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  mkinitcpio: mkinitcpio -p linux
 config:
   backup: true
   create: true
@@ -113,17 +113,17 @@ dotfiles:
     link: false
     src: config/mimeapps.list
   f_mkinitcpio.conf:
+    actions:
+    - mkinitcpio
     dst: /etc/mkinitcpio.conf
     src: etc/mkinitcpio.conf
-    actions:
-      - mkinitcpio
-  f_mopidy.conf:
-    dst: ~/.config/mopidy/mopidy.conf
-    src: config/mopidy/mopidy.conf
   f_ncmpcpp_config:
     dst: ~/.ncmpcpp/config
     link: true
     src: ncmpcpp/config
+  f_pacman.conf:
+    dst: /etc/pacman.conf
+    src: etc/pacman.conf
   f_qemu.conf:
     dst: /etc/libvirt/qemu.conf
     src: etc/libvirt/qemu.conf
@@ -208,7 +208,6 @@ profiles:
     - d_mutt
     - f_urlview_lin
     - d_functions
-    - f_mopidy.conf
     - d_prompt
     - f_rofi-pass_config
     - f_kitty.conf
@@ -224,6 +223,7 @@ profiles:
     - f_grub
     - f_hosts
     - f_qemu.conf
+    - f_pacman.conf
   wsl:
     dotfiles:
     - f_gitattributes

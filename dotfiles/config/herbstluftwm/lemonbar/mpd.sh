@@ -3,21 +3,16 @@
 
 music=""
 function updateMpd() {
-    local state="$(mpc status | awk -F '[][]' 'NR==2 {print $2}')"
+    local state="$(playerctl status)"
 
     local song=""
     local artist=""
     local newMusic="Paused"
 
-    if [ "$state" == "playing" ] ; then
-        local song="$(mpc current -f '%title%')"
-        local artist="$(mpc current -f '%artist%')"
+    if [ "$state" == "Playing" ] ; then
+        local song="$(mpc metadata title)"
+        local artist="$(mpc metadata artist)"
         local newMusic=$(printf "%.50s - %.50s" "$song" "$artist")
-
-        if [ -z "$song" ] || [ -z "$artist" ] ; then
-            local file="$(mpc current -f '%file%')"
-            newMusic="$(basename "$file")"
-        fi
     fi 
 
     if [ "$music" != "$newMusic" ] ; then
