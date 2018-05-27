@@ -39,7 +39,7 @@ yay -S pulsemixer neovim
 # install gui programs
 yay -S libc++ --mflags --nocheck #install discord dependency without tests since they take 20 minutes or so
 
-sudo pacman -S i3lock feh dunst firefox steam rofi arandr thunar obs-studio lxappearance pavucontrol  ristretto vinagre rhythmbox
+sudo pacman -S i3lock feh dunst firefox rofi arandr thunar obs-studio lxappearance pavucontrol  ristretto vinagre rhythmbox
 yay -S redshift-gtk-git discord-ptb nextcloud-client mstdn neovim nougat-git lemonbar-xft-git spotify
 
 # network manager fun
