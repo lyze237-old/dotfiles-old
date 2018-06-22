@@ -1,2 +1,2 @@
 REGEXP (((http|https|ftp|gopher)|mailto)[.:][^ >"\t]*|www\.[-a-z0-9.]+)[^ .,;\t>">\):]
-COMMAND /mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe %s
+COMMAND /mnt/c/Users/lyze/AppData/Local/Vivaldi/Application/vivaldi.exe %s

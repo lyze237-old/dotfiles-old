@@ -93,6 +93,9 @@ dotfiles:
     - vim-plug-run
     dst: ~/.config/nvim/init.vim
     src: config/nvim/init.vim
+  f_init_windows.vim:
+    dst: /mnt/c/Users/lyze/AppData/Local/nvim/init.vim
+    src: config/nvim/init.vim
   f_issue:
     dst: /etc/issue
     src: etc/issue
@@ -226,6 +229,7 @@ profiles:
     - f_pacman.conf
   wsl:
     dotfiles:
+    - f_init_windows.vim
     - f_gitattributes
     - f_gitconfig
     - f_gitignore
