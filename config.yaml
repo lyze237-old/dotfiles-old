@@ -16,10 +16,6 @@ dotfiles:
     dst: ~/.config/fish/functions
     link: true
     src: config/fish/functions
-  d_herbstluftwm:
-    dst: ~/.config/herbstluftwm
-    link: true
-    src: config/herbstluftwm
   d_mutt:
     dst: ~/.config/mutt
     src: config/mutt
@@ -42,22 +38,10 @@ dotfiles:
   f_chunkwmrc:
     dst: ~/.chunkwmrc
     src: chunkwmrc
-  f_compton.conf:
-    dst: ~/.config/compton.conf
-    link: true
-    src: config/compton.conf
   f_config.fish:
     dst: ~/.config/fish/config.fish
     link: true
     src: config/fish/config.fish
-  f_config.json:
-    dst: ~/.config/Mstdn/config.json
-    link: true
-    src: config/Mstdn/config.json
-  f_dunstrc:
-    dst: ~/.config/dunst/dunstrc
-    link: true
-    src: config/dunst/dunstrc
   f_git-pass-mapping.ini:
     dst: ~/.config/pass-git-helper/git-pass-mapping.ini
     src: config/pass-git-helper/git-pass-mapping.ini
@@ -77,24 +61,15 @@ dotfiles:
     dst: ~/.gnupg/gpg.conf
     link: true
     src: gnupg/gpg.conf
-  f_grub:
-    dst: /etc/default/grub
-    src: etc/default/grub
   f_gtkrc-2.0:
     dst: ~/.gtkrc-2.0
     link: true
     src: gtkrc-2.0
-  f_hosts:
-    dst: /etc/hosts
-    src: etc/hosts
   f_init.vim:
     actions:
     - vim-plug-setup
     - vim-plug-run
     dst: ~/.config/nvim/init.vim
-    src: config/nvim/init.vim
-  f_init_windows.vim:
-    dst: /mnt/c/Users/lyze/AppData/Local/nvim/init.vim
     src: config/nvim/init.vim
   f_issue:
     dst: /etc/issue
@@ -115,37 +90,13 @@ dotfiles:
     dst: ~/.config/mimeapps.list
     link: false
     src: config/mimeapps.list
-  f_mkinitcpio.conf:
-    actions:
-    - mkinitcpio
-    dst: /etc/mkinitcpio.conf
-    src: etc/mkinitcpio.conf
-  f_ncmpcpp_config:
-    dst: ~/.ncmpcpp/config
-    link: true
-    src: ncmpcpp/config
   f_pacman.conf:
     dst: /etc/pacman.conf
     src: etc/pacman.conf
-  f_qemu.conf:
-    dst: /etc/libvirt/qemu.conf
-    src: etc/libvirt/qemu.conf
-  f_rofi-pass_config:
-    dst: ~/.config/rofi-pass/config
-    link: true
-    src: config/rofi-pass/config
-  f_rofi_config:
-    dst: ~/.config/rofi/config
-    link: true
-    src: config/rofi/config
   f_settings.ini:
     dst: ~/.config/gtk-3.0/settings.ini
     link: true
     src: config/gtk-3.0/settings.ini
-  f_skhdrc:
-    dst: ~/.skhdrc
-    link: true
-    src: skhdrc
   f_ssh_config:
     dst: ~/.ssh/config
     link: true
@@ -158,17 +109,6 @@ dotfiles:
     dst: ~/.urlview
     link: true
     src: urlview_mac
-  f_urlview_wsl:
-    dst: ~/.urlview
-    link: true
-    src: urlview_wsl
-  f_vfio.conf:
-    dst: /etc/modprobe.d/vfio.conf
-    src: etc/modprobe.d/vfio.conf
-  f_xinitrc:
-    dst: ~/.xinitrc
-    link: true
-    src: xinitrc
 profiles:
   mac:
     dotfiles:
@@ -186,15 +126,11 @@ profiles:
     - f_chunkwmrc
     - f_urlview_mac
     - f_kitty.conf
-    - f_gpg.conf
-  ovo:
+  vbox:
     dotfiles:
-    - f_gpg.conf
     - f_init.vim
-    - f_xinitrc
     - f_ssh_config
     - f_known_hosts
-    - f_compton.conf
     - f_config.fish
     - f_mimeapps.list
     - d_fonts
@@ -203,7 +139,6 @@ profiles:
     - f_gitignore
     - f_ncmpcpp_config
     - f_mailcap
-    - f_rofi_config
     - f_settings.ini
     - f_gtkrc-2.0
     - d_themes
@@ -212,33 +147,9 @@ profiles:
     - f_urlview_lin
     - d_functions
     - d_prompt
-    - f_rofi-pass_config
-    - f_kitty.conf
-    - d_herbstluftwm
-    - f_dunstrc
-    - f_config.json
     - f_git-pass-mapping.ini
+    - f_gpg.conf
   sudo:
     dotfiles:
     - f_issue
-    - f_mkinitcpio.conf
-    - f_vfio.conf
-    - f_grub
-    - f_hosts
-    - f_qemu.conf
     - f_pacman.conf
-  wsl:
-    dotfiles:
-    - f_init_windows.vim
-    - f_gitattributes
-    - f_gitconfig
-    - f_gitignore
-    - f_init.vim
-    - f_config.fish
-    - d_functions
-    - d_prompt
-    - d_mutt
-    - f_urlview_wsl
-    - f_gpg.conf
-    - d_owlbin
-    - f_git-pass-mapping.ini

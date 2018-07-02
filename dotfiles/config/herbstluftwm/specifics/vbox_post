@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if hc silent ! get_attr my_not_first_autostart ; then
-    xfce4-terminal &
-fi
-
-feh --bg-scale "$HOME/.config/herbstluftwm/specifics/wallpapers/middle.png"
