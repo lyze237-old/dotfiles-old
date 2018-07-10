@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [[ $(pgrep X) ]] || [[ $(pgrep Xorg) ]] ; then
-    nohup firefox $@ -- > /dev/null 2>&1 &
-else
+if [ -z ${DISPLAY+x} ] ; then
     w3m $@
+else
+    nohup firefox $@ -- > /dev/null 2>&1 &
 fi
