@@ -31,7 +31,7 @@ sudo chsh -s `which fish`
 yay -S kitty
 
 # install base programs
-sudo pacman -S git xdg-utils xclip imagemagick unzip xdotool python-yaml python-docopt python-jinja jq ttf-dejavu wmctrl parcellite thunar-volman tumbler thunar-media-tags-plugin thunar-archive-plugin gvfs noto-fonts-cjk noto-fonts-extra imagemagick maim python-xdg xorg xorg-xinit
+sudo pacman -S git xdg-utils xclip imagemagick unzip xdotool python-yaml python-docopt python-jinja jq ttf-dejavu wmctrl parcellite thunar-volman tumbler thunar-media-tags-plugin thunar-archive-plugin gvfs noto-fonts-cjk noto-fonts-extra imagemagick maim python-xdg xorg xorg-xinit docker docker-compose git-lfs
 yay -S dotnet-sdk numix-circle-icon-theme-git breeze-obsidian-cursor-theme ttf-twemoji-color urlview
 
 # install tui programs
@@ -51,6 +51,17 @@ chmod g-rwx ~/.gnugp
 # fix mouse cursor
 cd /usr/share/icons/Breeze_Obsidian/cursors/
 sudo ln -s left_ptr arrow
+
+# add user to vbox group
+sudo usermod -a -G docker lyze
+sudo chgrp vboxsf /media
+sudo usermod -a -G vboxsf lyze
+
+# setup docker
+sudo systemctl enable docker.service
+sudo systemctl enable docker.socket
+sudo systemctl start docker.service
+sudo systemctl start docker.socket
 
 # pass instructions
 echo gpg --import <private key>
