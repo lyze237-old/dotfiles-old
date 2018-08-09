@@ -1,0 +1,1 @@
+code --list-extensions > dotfiles/CrossPlatform/Code/User/extensions.txt

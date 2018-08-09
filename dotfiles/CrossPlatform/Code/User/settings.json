@@ -1,0 +1,13 @@
+{
+    "workbench.colorTheme": "Gruvbox Dark (Medium)",
+    "files.associations": {
+        "*.pyp": "python"
+    },
+    "window.zoomLevel": 1,
+    "csv-preview.separator": ";",
+    "gitlens.advanced.messages": {
+        "suppressShowKeyBindingsNotice": true
+    },
+    "editor.lineNumbers": "relative",
+    "java.errors.incompleteClasspath.severity": "ignore"
+}
