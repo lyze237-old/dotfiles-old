@@ -1,5 +1,5 @@
 Import-Module PSReadLine
-Set-PSReadLineKeyHandler -Key Tab -Function Complete
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 
 function Prompt
 {
