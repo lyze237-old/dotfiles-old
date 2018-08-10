@@ -53,6 +53,9 @@ commands:
     home: gpg --recv-keys 0103354801C36F14
     work: gpg --recv-keys 0103354801C36F14
     vm: gpg --recv-keys 0103354801C36F14
+  InstallPowerShellModules:
+    home: ./dotfiles/Commands/InstallPowerShellModules.ps1
+    work: ./dotfiles/Commands/InstallPowerShellModules.ps1
 packages: {}
 files:
   PowerShellProfile:

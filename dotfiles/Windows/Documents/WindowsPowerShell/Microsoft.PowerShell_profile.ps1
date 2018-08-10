@@ -1,3 +1,6 @@
+Import-Module PSReadLine
+Set-PSReadLineKeyHandler -Key Tab -Function Complete
+
 function Prompt
 {
     $mywd = (Get-Location).Path
