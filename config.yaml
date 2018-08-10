@@ -59,11 +59,12 @@ files:
     source: Windows/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
     destinations:
       default: ${home}/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
+    exclude:
+    - vm
+    attribute: Generic
     commands:
     - EnablePsScripts
     - ImportPublicGpgKey
-    exclude:
-    - vm
     randoms:
       ATEC1531: {}
   CodeSettings:
@@ -71,19 +72,45 @@ files:
     destinations:
       vm: ${home}/.config/Code/User/settings.json
       default: ${home}/AppData/Roaming/Code/User/settings.json
+    exclude: []
+    attribute: Generic
     commands:
     - InstallVsCodeExtensions
-    exclude: []
     randoms:
       ATEC1531: {}
+  gitattributes:
+    source: CrossPlatform/Git/.gitattributes
+    destinations:
+      default: ${home}/.gitattributes
+    exclude: []
+    attribute: Generic
+    commands: []
+    randoms: {}
+  gitconfig:
+    source: CrossPlatform/Git/.gitconfig
+    destinations:
+      default: ${home}/.gitconfig
+    exclude: []
+    attribute: Generic
+    commands: []
+    randoms: {}
+  gitignore:
+    source: CrossPlatform/Git/.gitignore
+    destinations:
+      default: ${home}/.gitignore
+    exclude: []
+    attribute: Generic
+    commands: []
+    randoms: {}
 directories:
   C4dScripts:
     source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/scripts
     destinations:
       default: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/scripts
-    commands: []
     exclude:
     - vm
+    commands: []
+    attribute: Generic
     randoms:
       ATEC1531:
         c4d: BFE04C39
@@ -91,10 +118,10 @@ directories:
     source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/layout
     destinations:
       default: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/layout
-    commands: []
     exclude:
     - vm
+    commands: []
+    attribute: Generic
     randoms:
       ATEC1531:
         c4d: BFE04C39
-  
