@@ -64,7 +64,6 @@ files:
     attribute: Generic
     commands:
     - EnablePsScripts
-    - ImportPublicGpgKey
     randoms:
       ATEC1531: {}
   CodeSettings:
@@ -78,30 +77,33 @@ files:
     - InstallVsCodeExtensions
     randoms:
       ATEC1531: {}
-  gitattributes:
+  GitAttributes:
     source: CrossPlatform/Git/.gitattributes
     destinations:
       default: ${home}/.gitattributes
     exclude: []
     attribute: Generic
     commands: []
-    randoms: {}
-  gitconfig:
+    randoms:
+      ATEC1531: {}
+  GitConfig:
     source: CrossPlatform/Git/.gitconfig
     destinations:
       default: ${home}/.gitconfig
     exclude: []
-    attribute: Generic
+    attribute: Script
     commands: []
-    randoms: {}
-  gitignore:
+    randoms:
+      ATEC1531: {}
+  GitIgnore:
     source: CrossPlatform/Git/.gitignore
     destinations:
       default: ${home}/.gitignore
     exclude: []
     attribute: Generic
     commands: []
-    randoms: {}
+    randoms:
+      ATEC1531: {}
 directories:
   C4dScripts:
     source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/scripts
@@ -109,8 +111,8 @@ directories:
       default: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/scripts
     exclude:
     - vm
-    commands: []
     attribute: Generic
+    commands: []
     randoms:
       ATEC1531:
         c4d: BFE04C39
@@ -120,8 +122,8 @@ directories:
       default: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/layout
     exclude:
     - vm
-    commands: []
     attribute: Generic
+    commands: []
     randoms:
       ATEC1531:
         c4d: BFE04C39

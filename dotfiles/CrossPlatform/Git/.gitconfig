@@ -142,5 +142,10 @@
     # Load local configs.
     path = ~/.gitconfig.local
 
+OvO/"/if $PROFILE == vm\"\OvO
 [credential]
 	helper = !~/.config/owl/scripts/bin/pass-git-helper
+OvO/"/else\"\OvO
+[gpg]
+	program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
+OvO/"/end if\"\OvO
