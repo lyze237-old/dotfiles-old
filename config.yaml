@@ -33,6 +33,14 @@ options:
     home: New-Item -Path '${destination}' -ItemType SymbolicLink -Value '${source}'
     work: New-Item -Path '${destination}' -ItemType SymbolicLink -Value '${source}'
     vm: ln -s '${source}' '${destination}'
+  encryptCommand:
+    windows: gpg --armor --output '${destination}' --encrypt --recipient lyze@owl.sh '${source}'
+    ubuntu: gpg --armor --output '${destination}' --encrypt --recipient lyze@owl.sh '${source}'
+    mac: gpg --armor --output '${destination}'' --encrypt --recipient lyze@owl.sh '${source}'
+  decryptCommand:
+    windows: gpg --armor --output '${destination}'' --decrypt '${source}'
+    ubuntu: gpg --armor --output '${destination}'' --decrypt '${source}'
+    mac: gpg --armor --output '${destination}'' --decrypt '${source}'
   baseDirectory: dotfiles
 commands:
   EnablePsScripts:
@@ -47,41 +55,46 @@ commands:
     vm: gpg --recv-keys 0103354801C36F14
 packages: {}
 files:
-- source: Windows/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
-  destinations:
-    default: ${home}/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
-  commands:
-  - EnablePsScripts
-  - ImportPublicGpgKey
-  exclude:
-  - vm
-  randoms:
-    ATEC1531: {}
-- source: CrossPlatform/Code/User/settings.json
-  destinations:
-    vm: ${home}/.config/Code/User/settings.json
-    default: ${home}/AppData/Roaming/Code/User/settings.json
-  commands:
-  - InstallVsCodeExtensions
-  exclude: []
-  randoms:
-    ATEC1531: {}
+  PowerShellProfile:
+    source: Windows/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
+    destinations:
+      default: ${home}/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
+    commands:
+    - EnablePsScripts
+    - ImportPublicGpgKey
+    exclude:
+    - vm
+    randoms:
+      ATEC1531: {}
+  CodeSettings:
+    source: CrossPlatform/Code/User/settings.json
+    destinations:
+      vm: ${home}/.config/Code/User/settings.json
+      default: ${home}/AppData/Roaming/Code/User/settings.json
+    commands:
+    - InstallVsCodeExtensions
+    exclude: []
+    randoms:
+      ATEC1531: {}
 directories:
-- source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/scripts
-  destinations:
-    default: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/scripts
-  commands: []
-  exclude:
-  - vm
-  randoms:
-    ATEC1531:
-      c4d: BFE04C39
-- source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/layout
-  destinations:
-    default: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/layout
-  commands: []
-  exclude:
-  - vm
-  randoms:
-    ATEC1531:
-      c4d: BFE04C39
+  C4dScripts:
+    source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/scripts
+    destinations:
+      default: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/scripts
+    commands: []
+    exclude:
+    - vm
+    randoms:
+      ATEC1531:
+        c4d: BFE04C39
+  C4dLayout:
+    source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/layout
+    destinations:
+      default: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/layout
+    commands: []
+    exclude:
+    - vm
+    randoms:
+      ATEC1531:
+        c4d: BFE04C39
+  
