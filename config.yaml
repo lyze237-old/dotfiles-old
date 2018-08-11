@@ -1,4 +1,14 @@
 options:
+  baseDirectory: dotfiles
+  profiles:
+  - home
+  - work
+  - vm
+  computers:
+    DESKTOP-OUO4UH5:
+      profile: home
+      randoms:
+        c4d: BFE04C39
   shell:
     home:
       fileName: powershell.exe
@@ -21,10 +31,6 @@ options:
       - ${command}
       replacements:
         '"': '\"'
-  profiles:
-  - home
-  - work
-  - vm
   packageCommand:
     home: choco install -y '${package}'
     work: echo 'Id install ${package} now but I dont have a package manager installed'
@@ -41,7 +47,6 @@ options:
     windows: gpg --armor --output '${destination}'' --decrypt '${source}'
     ubuntu: gpg --armor --output '${destination}'' --decrypt '${source}'
     mac: gpg --armor --output '${destination}'' --decrypt '${source}'
-  baseDirectory: dotfiles
 commands:
   EnablePsScripts:
     home: Set-ExecutionPolicy RemoteSigned
@@ -56,7 +61,65 @@ commands:
   InstallPowerShellModules:
     home: ./dotfiles/Commands/InstallPowerShellModules.ps1
     work: ./dotfiles/Commands/InstallPowerShellModules.ps1
-packages: {}
+  InstallChoco:
+    home: Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+  EnableChocoFeatures:
+    home: choco feature enable -n allowGlobalConfirmation
+packages:
+  dotnet4.7.1:
+    home: dotnet4.7.1
+  vivaldi:
+    home: vivaldi
+  discord:
+    home: discord
+  telegram:
+    home: telegram
+  steam:
+    home: steam
+  uplay:
+    home: uplay
+  origin:
+    home: origin
+  leagueoflegends:
+    home: leagueoflegends
+  spotify:
+    home: spotify -ignore-checksum
+  gimp:
+    home: gimp
+  7zip:
+    home: 7zip
+  vlc:
+    home: vlc
+  cue:
+    home: cue
+  sharex:
+    home: sharex
+  borderlessgaming:
+    home: borderlessgaming
+  teamviewer:
+    home: teamviewer
+  wiztree:
+    home: wiztree
+  yubikey-manager:
+    home: yubikey-manager
+  altdrag:
+    home: altdrag
+  gopass:
+    home: gopass
+  vscode:
+    home: vscode
+  dotnetcore-sdk:
+    home: dotnetcore-sdk
+  unity:
+    home: unity
+  jetbrainstoolbox:
+    home: jetbrainstoolbox
+  jdk10:
+    home: jdk10
+  git:
+    home: git
+  git-lfs:
+    home: git-lfs
 files:
   PowerShellProfile:
     source: Windows/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
@@ -66,9 +129,11 @@ files:
     - vm
     attribute: Generic
     commands:
+    - ImportPublicGpgKey
     - EnablePsScripts
-    randoms:
-      ATEC1531: {}
+    - InstallPowerShellModules
+    - InstallChoco
+    - EnableChocoFeatures
   CodeSettings:
     source: CrossPlatform/Code/User/settings.json
     destinations:
@@ -78,8 +143,6 @@ files:
     attribute: Generic
     commands:
     - InstallVsCodeExtensions
-    randoms:
-      ATEC1531: {}
   GitAttributes:
     source: CrossPlatform/Git/.gitattributes
     destinations:
@@ -87,8 +150,6 @@ files:
     exclude: []
     attribute: Generic
     commands: []
-    randoms:
-      ATEC1531: {}
   GitConfig:
     source: CrossPlatform/Git/.gitconfig
     destinations:
@@ -96,8 +157,6 @@ files:
     exclude: []
     attribute: Script
     commands: []
-    randoms:
-      ATEC1531: {}
   GitIgnore:
     source: CrossPlatform/Git/.gitignore
     destinations:
@@ -105,8 +164,6 @@ files:
     exclude: []
     attribute: Generic
     commands: []
-    randoms:
-      ATEC1531: {}
 directories:
   C4dScripts:
     source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/scripts
@@ -116,9 +173,6 @@ directories:
     - vm
     attribute: Generic
     commands: []
-    randoms:
-      ATEC1531:
-        c4d: BFE04C39
   C4dLayout:
     source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/layout
     destinations:
@@ -127,6 +181,3 @@ directories:
     - vm
     attribute: Generic
     commands: []
-    randoms:
-      ATEC1531:
-        c4d: BFE04C39
