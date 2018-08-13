@@ -1,7 +1,7 @@
 options:
   baseDirectory: dotfiles
   profiles:
-  - &o3
+  - &o5
     name: default
     default: true
   - &o0
@@ -61,7 +61,7 @@ options:
     fileName: gpg
     arguments: --armor --output '${destination}' --decrypt '${source}'
 commands:
-- &o5
+- &o4
   name: SetExecutionPolicy
   commands:
   - profile: *o0
@@ -80,7 +80,7 @@ commands:
     fileName: ./dotfiles/Commands/InstallVsCodeExtension.ps1
   - profile: *o2
     fileName: ./dotfiles/Commands/InstallVsCodeExtension.ps1
-- &o4
+- &o3
   name: ImportPublicGpgKey
   commands:
   - profile: *o0
@@ -124,7 +124,9 @@ computers:
     profile: *o0
     randoms:
       c4d: BFE04C39
-    executedOneShots: []
+    executedOneShots:
+    - *o3
+    - *o4
 packages:
   dotnet4.7.1:
     *o1: dotnet4.7.1
@@ -184,13 +186,13 @@ files:
   PowerShellProfile:
     source: Windows/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
     destinations:
-      *o3: ${home}/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
+      *o5: ${home}/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
     exclude:
     - *o2
     attribute: Generic
     commands:
+    - *o3
     - *o4
-    - *o5
     - *o6
     - *o7
     - *o8
@@ -198,7 +200,7 @@ files:
     source: CrossPlatform/Code/User/settings.json
     destinations:
       *o2: ${home}/.config/Code/User/settings.json
-      *o3: ${home}/AppData/Roaming/Code/User/settings.json
+      *o5: ${home}/AppData/Roaming/Code/User/settings.json
     exclude: []
     attribute: Generic
     commands:
@@ -206,21 +208,21 @@ files:
   GitAttributes:
     source: CrossPlatform/Git/.gitattributes
     destinations:
-      *o3: ${home}/.gitattributes
+      *o5: ${home}/.gitattributes
     exclude: []
     attribute: Generic
     commands: []
   GitConfig:
     source: CrossPlatform/Git/.gitconfig
     destinations:
-      *o3: ${home}/.gitconfig
+      *o5: ${home}/.gitconfig
     exclude: []
     attribute: Script
     commands: []
   GitIgnore:
     source: CrossPlatform/Git/.gitignore
     destinations:
-      *o3: ${home}/.gitignore
+      *o5: ${home}/.gitignore
     exclude: []
     attribute: Generic
     commands: []
@@ -228,7 +230,7 @@ directories:
   C4dScripts:
     source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/scripts
     destinations:
-      *o3: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/scripts
+      *o5: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/scripts
     exclude:
     - *o2
     attribute: Generic
@@ -236,7 +238,7 @@ directories:
   C4dLayout:
     source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/layout
     destinations:
-      *o3: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/layout
+      *o5: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/layout
     exclude:
     - *o2
     attribute: Generic
