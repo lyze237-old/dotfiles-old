@@ -130,6 +130,8 @@ computers:
 packages:
   dotnet4.7.1:
     *o1: dotnet4.7.1
+  conemu:
+    *o1: conemu
   vivaldi:
     *o1: vivaldi
   discord:
@@ -224,6 +226,14 @@ files:
     destinations:
       *o5: ${home}/.gitignore
     exclude: []
+    attribute: Generic
+    commands: []
+  conemu.xml:
+    source: Windows/AppData/Roaming/ConEmu.xml
+    destinations:
+      *o5: ${home}/AppData/Roaming/ConEmu.xml
+    exclude: 
+    - *o2
     attribute: Generic
     commands: []
 directories:
