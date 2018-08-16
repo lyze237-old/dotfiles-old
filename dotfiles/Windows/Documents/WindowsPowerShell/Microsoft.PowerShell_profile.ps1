@@ -37,10 +37,12 @@ function Prompt
         Write-Host "v" -NoNewline -ForegroundColor Gray;
         Write-Host "^" -NoNewline -ForegroundColor Yellow;
     }
-
-    Write-Host "O" -NoNewline -ForegroundColor Yellow;
-    Write-Host "v" -NoNewline -ForegroundColor Gray;
-    Write-Host "O" -NoNewline -ForegroundColor Yellow;
+    else 
+    {
+        Write-Host "O" -NoNewline -ForegroundColor Yellow;
+        Write-Host "v" -NoNewline -ForegroundColor Gray;
+        Write-Host "O" -NoNewline -ForegroundColor Yellow;
+    }
 
     Write-Host "/" -NoNewline -ForegroundColor Cyan;
     Write-Host "`"" -NoNewline -ForegroundColor Red;
@@ -57,7 +59,8 @@ function Edit-PowershellProfile
     Start-Process $Profile;
 }
 
-function Test-Administrator {
+function Test-Administrator 
+{
     $user = [Security.Principal.WindowsIdentity]::GetCurrent();
     (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator);
 }
