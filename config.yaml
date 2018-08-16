@@ -1,7 +1,7 @@
 options:
   baseDirectory: dotfiles
   profiles:
-  - &o5
+  - &o7
     name: default
     default: true
   - &o0
@@ -93,21 +93,21 @@ commands:
     fileName: gpg
     arguments: --recv-keys 0103354801C36F14
   oneShot: true
-- &o6
+- &o8
   name: InstallPowerShellModules
   commands:
   - profile: *o0
     fileName: ./dotfiles/Commands/InstallPowerShellModules.ps1
   - profile: *o1
     fileName: ./dotfiles/Commands/InstallPowerShellModules.ps1
-- &o7
+- &o5
   name: InstallChoco
   commands:
   - profile: *o1
     fileName: Set-ExecutionPolicy
     arguments: Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
   oneShot: true
-- &o8
+- &o6
   name: EnableChocoFeatures
   commands:
   - profile: *o1
@@ -128,7 +128,11 @@ computers:
     profile: *o1
     randoms:
       c4d: BFE04C39
-    executedOneShots: []
+    executedOneShots:
+    - *o3
+    - *o4
+    - *o5
+    - *o6
   ATEC1531:
     profile: *o0
     randoms:
@@ -197,21 +201,21 @@ files:
   PowerShellProfile:
     source: Windows/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
     destinations:
-      *o5: ${home}/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
+      *o7: ${home}/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
     exclude:
     - *o2
     attribute: Generic
     commands:
     - *o3
     - *o4
-    - *o6
-    - *o7
     - *o8
+    - *o5
+    - *o6
   CodeSettings:
     source: CrossPlatform/Code/User/settings.json
     destinations:
       *o2: ${home}/.config/Code/User/settings.json
-      *o5: ${home}/AppData/Roaming/Code/User/settings.json
+      *o7: ${home}/AppData/Roaming/Code/User/settings.json
     exclude: []
     attribute: Generic
     commands:
@@ -219,28 +223,28 @@ files:
   GitAttributes:
     source: CrossPlatform/Git/.gitattributes
     destinations:
-      *o5: ${home}/.gitattributes
+      *o7: ${home}/.gitattributes
     exclude: []
     attribute: Generic
     commands: []
   GitConfig:
     source: CrossPlatform/Git/.gitconfig
     destinations:
-      *o5: ${home}/.gitconfig
+      *o7: ${home}/.gitconfig
     exclude: []
     attribute: Script
     commands: []
   GitIgnore:
     source: CrossPlatform/Git/.gitignore
     destinations:
-      *o5: ${home}/.gitignore
+      *o7: ${home}/.gitignore
     exclude: []
     attribute: Generic
     commands: []
   conemu.xml:
     source: Windows/AppData/Roaming/ConEmu.xml
     destinations:
-      *o5: ${home}/AppData/Roaming/ConEmu.xml
+      *o7: ${home}/AppData/Roaming/ConEmu.xml
     exclude:
     - *o2
     attribute: Generic
@@ -249,7 +253,7 @@ directories:
   C4dScripts:
     source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/scripts
     destinations:
-      *o5: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/scripts
+      *o7: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/scripts
     exclude:
     - *o2
     attribute: Generic
@@ -257,7 +261,7 @@ directories:
   C4dLayout:
     source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/layout
     destinations:
-      *o5: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/layout
+      *o7: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/layout
     exclude:
     - *o2
     attribute: Generic
