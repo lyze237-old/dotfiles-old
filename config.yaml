@@ -114,6 +114,15 @@ commands:
     fileName: choco
     arguments: feature enable -n allowGlobalConfirmation
   oneShot: true
+- name: UpdateHelp
+  commands:
+  - profile: *o0
+    fileName: Update-Help
+    arguments: Update-Help
+  - profile: *o1
+    fileName: Update-Help
+    arguments: Update-Help
+  oneShot: true
 computers:
   DESKTOP-OUO4UH5:
     profile: *o1
@@ -232,7 +241,7 @@ files:
     source: Windows/AppData/Roaming/ConEmu.xml
     destinations:
       *o5: ${home}/AppData/Roaming/ConEmu.xml
-    exclude: 
+    exclude:
     - *o2
     attribute: Generic
     commands: []
