@@ -1,1 +1,2 @@
 PSReadLine
+Get-ChildItemColor
