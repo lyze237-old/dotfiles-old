@@ -60,6 +60,15 @@ options:
   - profile: *o2
     fileName: gpg
     arguments: --armor --output '${destination}' --decrypt '${source}'
+  adminCommand:
+  - profile: *o0
+    verb: runas
+    useShellExecute: true
+  - profile: *o1
+    verb: runas
+    useShellExecute: true
+  - fileName: sudo
+    profile: *o2
 commands:
 - &o4
   name: SetExecutionPolicy
@@ -67,9 +76,11 @@ commands:
   - profile: *o0
     fileName: Set-ExecutionPolicy
     arguments: RemoteSigned
+    admin: true
   - profile: *o1
     fileName: Set-ExecutionPolicy
     arguments: RemoteSigned
+    admin: true
   oneShot: true
 - &o9
   name: InstallVsCodeExtensions
@@ -106,6 +117,7 @@ commands:
   - profile: *o1
     fileName: Set-ExecutionPolicy
     arguments: Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+    admin: true
   oneShot: true
 - &o6
   name: EnableChocoFeatures
@@ -113,15 +125,18 @@ commands:
   - profile: *o1
     fileName: choco
     arguments: feature enable -n allowGlobalConfirmation
+    admin: true
   oneShot: true
 - name: UpdateHelp
   commands:
   - profile: *o0
     fileName: Update-Help
     arguments: Update-Help
+    admin: true
   - profile: *o1
     fileName: Update-Help
     arguments: Update-Help
+    admin: true
   oneShot: true
 computers:
   DESKTOP-OUO4UH5:
