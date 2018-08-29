@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "9d625a4a6d7120634a626277501e75e0f4339bcc"
+    "signature": "5a31922352ee83a3fd828fa3d876bb3f2d3e1559"
   },
   "compilationOptions": {},
   "targets": {
@@ -14,8 +14,8 @@
           "Serilog.Sinks.Console": "3.1.1",
           "Serilog.Sinks.RollingFile": "3.3.0",
           "YamlDotNet": "5.0.1",
-          "hoot.town.owlscript": "1.0.7",
-          "hoot.town.owlutils": "1.0.53"
+          "hoot.town.owlscript": "1.0.8",
+          "hoot.town.owlutils": "1.0.65"
         },
         "runtime": {
           "HootManager.dll": {}
@@ -64,21 +64,21 @@
           }
         }
       },
-      "hoot.town.owlscript/1.0.7": {
+      "hoot.town.owlscript/1.0.8": {
         "dependencies": {
           "Serilog": "2.7.1",
           "Serilog.Sinks.Console": "3.1.1",
           "Serilog.Sinks.RollingFile": "3.3.0",
-          "hoot.town.owlutils": "1.0.53"
+          "hoot.town.owlutils": "1.0.65"
         },
         "runtime": {
           "lib/netstandard2.0/hoot.town.owlscript.dll": {
-            "assemblyVersion": "1.0.7.0",
-            "fileVersion": "1.0.7.0"
+            "assemblyVersion": "1.0.8.0",
+            "fileVersion": "1.0.8.0"
           }
         }
       },
-      "hoot.town.owlutils/1.0.53": {
+      "hoot.town.owlutils/1.0.65": {
         "dependencies": {
           "Serilog": "2.7.1",
           "Serilog.Sinks.Console": "3.1.1",
@@ -86,8 +86,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/hoot.town.owlutils.dll": {
-            "assemblyVersion": "1.0.53.0",
-            "fileVersion": "1.0.53.0"
+            "assemblyVersion": "1.0.65.0",
+            "fileVersion": "1.0.65.0"
           }
         }
       },
@@ -426,19 +426,19 @@
       "path": "fare/2.1.1",
       "hashPath": "fare.2.1.1.nupkg.sha512"
     },
-    "hoot.town.owlscript/1.0.7": {
+    "hoot.town.owlscript/1.0.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-BBk/OoHGtM9feQA7VpVb4g2e2ygOdvw6VccdxqVHYEpTk/5rRd/6Aw606U5rVTAmJ5lslph3vQQLHRLnCgK76Q==",
-      "path": "hoot.town.owlscript/1.0.7",
-      "hashPath": "hoot.town.owlscript.1.0.7.nupkg.sha512"
+      "sha512": "sha512-GQy0Q0PHJjN14GQ9STVqbLujoVE1SP7/rkWtKLKBkJvUJ5Ay3RCa42NMAK7ZlWvZa8Ni06wZgRZJ6QoCU+fncA==",
+      "path": "hoot.town.owlscript/1.0.8",
+      "hashPath": "hoot.town.owlscript.1.0.8.nupkg.sha512"
     },
-    "hoot.town.owlutils/1.0.53": {
+    "hoot.town.owlutils/1.0.65": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-X/RMXi8hlxsGDqXFvi791pQ8KEPwmYxAhzUFD3qsnkcFwKHNRnY0UR2faBISTDz7k5lysRtY3kH/FCBRHLJ7KA==",
-      "path": "hoot.town.owlutils/1.0.53",
-      "hashPath": "hoot.town.owlutils.1.0.53.nupkg.sha512"
+      "sha512": "sha512-2qXovZ1hw7F3oA8c50ivjufiQFLATF7DUSbAiVesIgj7raLs0JSXtWq7IjxFM/QzZCYw7HD34n84L/jFZdVUxQ==",
+      "path": "hoot.town.owlutils/1.0.65",
+      "hashPath": "hoot.town.owlutils.1.0.65.nupkg.sha512"
     },
     "runtime.native.System/4.3.0": {
       "type": "package",

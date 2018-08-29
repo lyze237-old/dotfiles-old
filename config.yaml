@@ -208,6 +208,8 @@ packages:
     *o1: jetbrainstoolbox
   jdk10:
     *o1: jdk10
+  gradle:
+    *o1: gradle
   git:
     *o1: git
   git-lfs:
