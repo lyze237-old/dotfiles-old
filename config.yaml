@@ -1,285 +1,303 @@
 options:
   baseDirectory: dotfiles
   profiles:
-  - &o7
+  - &default
     name: default
     default: true
-  - &o0
+  - &work
     name: work
-  - &o1
+  - &home
     name: home
-  - &o2
-    name: vm
+  - &linux
+    name: linux
   shell:
-  - profile: *o0
+  - profile: *work
     fileName: powershell.exe
-    arguments: -Command "${command}"
-  - profile: *o1
+    arguments: -Command ${command}
+  - profile: *home
     fileName: powershell.exe
-    arguments: -Command "${command}"
-  - profile: *o2
-    fileName: bash
-    arguments: -c "${command}"
+    arguments: -Command ${command}
+  - profile: *linux
+    fileName: pwsh
+    arguments: -Command ${command}
   packageCommand:
-  - profile: *o0
+  - profile: *work
     fileName: echo
     arguments: Id install ${package} now but I dont have a package manager installed
-  - profile: *o1
+  - profile: *home
     fileName: choco
-    arguments: install -y '${package}'
-  - profile: *o2
+    arguments: install -y ${package}
+  - profile: *linux
     fileName: yay
-    arguments: -S -y '${package}'
+    arguments: -S -y ${package}
   symlinkCommand:
-  - profile: *o0
+  - profile: *work
     fileName: New-Item
     arguments: -Path '${destination}' -ItemType SymbolicLink -Value '${source}'
-  - profile: *o1
+  - profile: *home
     fileName: New-Item
     arguments: -Path '${destination}' -ItemType SymbolicLink -Value '${source}'
-  - profile: *o2
+  - profile: *linux
     fileName: ln
     arguments: -s '${source}' '${destination}'
   encryptCommand:
-  - profile: *o0
+  - profile: *work
     fileName: gpg
     arguments: --armor --output '${destination}' --encrypt --recipient 'your@email.com' '${source}'
-  - profile: *o1
+  - profile: *home
     fileName: gpg
     arguments: --armor --output '${destination}' --encrypt --recipient 'your@email.com' '${source}'
-  - profile: *o2
+  - profile: *linux
     fileName: gpg
     arguments: --armor --output '${destination}' --encrypt --recipient 'your@email.com' '${source}'
   decryptCommand:
-  - profile: *o0
+  - profile: *work
     fileName: gpg
     arguments: --armor --output '${destination}' --decrypt '${source}'
-  - profile: *o1
+  - profile: *home
     fileName: gpg
     arguments: --armor --output '${destination}' --decrypt '${source}'
-  - profile: *o2
+  - profile: *linux
     fileName: gpg
     arguments: --armor --output '${destination}' --decrypt '${source}'
   adminCommand:
-  - profile: *o0
+  - profile: *work
     verb: runas
     useShellExecute: true
-  - profile: *o1
+  - profile: *home
     verb: runas
     useShellExecute: true
   - fileName: sudo
-    profile: *o2
+    profile: *linux
 commands:
-- &o4
+- &SetExecutionPolicy
   name: SetExecutionPolicy
   commands:
-  - profile: *o0
+  - profile: *work
     fileName: Set-ExecutionPolicy
     arguments: RemoteSigned
     admin: true
-  - profile: *o1
+  - profile: *home
     fileName: Set-ExecutionPolicy
     arguments: RemoteSigned
     admin: true
   oneShot: true
-- &o9
+- &InstallVsCodeExtensions
   name: InstallVsCodeExtensions
   commands:
-  - profile: *o0
+  - profile: *work
     fileName: ./dotfiles/Commands/InstallVsCodeExtension.ps1
-  - profile: *o1
+  - profile: *home
     fileName: ./dotfiles/Commands/InstallVsCodeExtension.ps1
-  - profile: *o2
+  - profile: *linux
     fileName: ./dotfiles/Commands/InstallVsCodeExtension.ps1
-- &o3
+- &ImportPublicGpgKey
   name: ImportPublicGpgKey
   commands:
-  - profile: *o0
+  - profile: *work
     fileName: gpg
     arguments: --recv-keys 0103354801C36F14
-  - profile: *o1
+  - profile: *home
     fileName: gpg
     arguments: --recv-keys 0103354801C36F14
-  - profile: *o2
+  - profile: *linux
     fileName: gpg
     arguments: --recv-keys 0103354801C36F14
   oneShot: true
-- &o8
+- &InstallPowerShellModules
   name: InstallPowerShellModules
   commands:
-  - profile: *o0
+  - profile: *work
     fileName: ./dotfiles/Commands/InstallPowerShellModules.ps1
-  - profile: *o1
+  - profile: *home
     fileName: ./dotfiles/Commands/InstallPowerShellModules.ps1
-- &o5
+  - profile: *linux
+    fileName: ./dotfiles/Commands/InstallPowerShellModules.ps1
+- &InstallChoco
   name: InstallChoco
   commands:
-  - profile: *o1
+  - profile: *home
     fileName: Set-ExecutionPolicy
     arguments: Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
     admin: true
   oneShot: true
-- &o6
+- &EnableChocoFeatures
   name: EnableChocoFeatures
   commands:
-  - profile: *o1
+  - profile: *home
     fileName: choco
     arguments: feature enable -n allowGlobalConfirmation
     admin: true
   oneShot: true
+- name: NetworkManager
+  commands:
+  - profile: *linux
+    fileName: pwsh
+    arguments: -Command systemctl enable NetworkManager ; systemctl start NetworkManager
+    admin: true
+  oneShot: true
 - name: UpdateHelp
   commands:
-  - profile: *o0
+  - profile: *work
     fileName: Update-Help
-    arguments: Update-Help
     admin: true
-  - profile: *o1
+  - profile: *home
     fileName: Update-Help
-    arguments: Update-Help
     admin: true
+  - profile: *linux
+    fileName: sudo pwsh -Command Update-Help
   oneShot: true
 computers:
   DESKTOP-OUO4UH5:
-    profile: *o1
+    profile: *home
     randoms:
       c4d: BFE04C39
     executedOneShots:
-    - *o3
-    - *o4
-    - *o5
-    - *o6
+    - *ImportPublicGpgKey
+    - *SetExecutionPolicy
+    - *InstallChoco
+    - *EnableChocoFeatures
   ATEC1531:
-    profile: *o0
+    profile: *work
     randoms:
       c4d: BFE04C39
     executedOneShots:
-    - *o3
-    - *o4
+    - *ImportPublicGpgKey
+    - *SetExecutionPolicy
+  vbox:
+    profile: *linux
+    randoms: {}
+    executedOneShots:
+    - *ImportPublicGpgKey
 packages:
   dotnet4.7.1:
-    *o1: dotnet4.7.1
+    *home: dotnet4.7.1
   conemu:
-    *o1: conemu
-  vivaldi:
-    *o1: vivaldi
-  discord:
-    *o1: discord
-  telegram:
-    *o1: telegram
-  steam:
-    *o1: steam
-  uplay:
-    *o1: uplay
-  origin:
-    *o1: origin
-  leagueoflegends:
-    *o1: leagueoflegends
-  spotify:
-    *o1: spotify -ignore-checksum
+    *home: conemu
+  chrome:
+    *home: googlechrome
+    *linux: google-chrome
+  chatting:
+    *home: discord-pbt telegram-desktop
+  games:
+    *home: leagueoflegends borderlessgaming origin uplay steam
+    *linux: steam
   gimp:
-    *o1: gimp
-  7zip:
-    *o1: 7zip
-  vlc:
-    *o1: vlc
+    *home: gimp
+    *linux: gimp
+  zip:
+    *home: 7zip
+    *linux: unzip
+  music:
+    *home: vlc spotify -ignore-checksum
+    *linux: vlc spotify playerctl pavucontrol pulsemixer
   cue:
-    *o1: cue
-  sharex:
-    *o1: sharex
-  borderlessgaming:
-    *o1: borderlessgaming
+    *home: cue
+  screenshot:
+    *home: sharex
+    *linux: maim
   teamviewer:
-    *o1: teamviewer
+    *home: teamviewer
+    *linux: teamviewer
   wiztree:
-    *o1: wiztree
+    *home: wiztree
   yubikey-manager:
-    *o1: yubikey-manager
+    *home: yubikey-manager
   altdrag:
-    *o1: altdrag
+    *home: altdrag
   gopass:
-    *o1: gopass
-  vscode:
-    *o1: vscode
+    *home: gopass
+    *linux: gopass
   dotnetcore-sdk:
-    *o1: dotnetcore-sdk
-  unity:
-    *o1: unity
-  jetbrainstoolbox:
-    *o1: jetbrainstoolbox
-  jdk10:
-    *o1: jdk10
-  gradle:
-    *o1: gradle
+    *home: dotnetcore-sdk
+    *linux: dotnet-sdk
+  editors:
+    *home: jetbrainstoolbox vscode unity
+    *linux: jetbrains-toolbox code vim neovim
+  java:
+    *home: jdk10 gradle
+    *linux: jdk10-openjdk gradle
   git:
-    *o1: git
-  git-lfs:
-    *o1: git-lfs
+    *home: git git-lfs
+    *linux: git git-lfs
+  xorg:
+    *linux: xorg xorg-xinit awesome
+  utils:
+    *linux: xdg-utils xclip xdotool numlockx jq wmctrl parcellite htop rofi arandr redshift-gtk-git
+  fonts:
+    *linux: noto-fonts-cjk noto-fonts-extra ttf-dejavu ttf-twemoji-color
+  themes:
+    *linux: numix-circle-icon-theme-git breeze-obsidian-cursor-theme
+  networking:
+    *linux: networkmanager
+  thunar:
+    *linux: thunar thunar-volman tumbler thunar-media-tags-plugin thunar-archive-plugin gvfs ristretto
 files:
   PowerShellProfile:
     source: Windows/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
     destinations:
-      *o7: ${home}/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
-    exclude:
-    - *o2
-    attribute: Generic
-    commands:
-    - *o3
-    - *o4
-    - *o8
-    - *o5
-    - *o6
-  CodeSettings:
-    source: CrossPlatform/Code/User/settings.json
-    destinations:
-      *o2: ${home}/.config/Code/User/settings.json
-      *o7: ${home}/AppData/Roaming/Code/User/settings.json
+      *linux: ${home}/.config/powershell/Microsoft.PowerShell_profile.ps1
+      *default: ${home}/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
     exclude: []
     attribute: Generic
     commands:
-    - *o9
+    - *ImportPublicGpgKey
+    - *SetExecutionPolicy
+    - *InstallPowerShellModules
+    - *InstallChoco
+    - *EnableChocoFeatures
+  CodeSettings:
+    source: CrossPlatform/Code/User/settings.json
+    destinations:
+      *linux: ${home}/.config/Code/User/settings.json
+      *default: ${home}/AppData/Roaming/Code/User/settings.json
+    exclude: []
+    attribute: Generic
+    commands:
+    - *InstallVsCodeExtensions
   GitAttributes:
     source: CrossPlatform/Git/.gitattributes
     destinations:
-      *o7: ${home}/.gitattributes
+      *default: ${home}/.gitattributes
     exclude: []
     attribute: Generic
     commands: []
   GitConfig:
     source: CrossPlatform/Git/.gitconfig
     destinations:
-      *o7: ${home}/.gitconfig
+      *default: ${home}/.gitconfig
     exclude: []
     attribute: Script
     commands: []
   GitIgnore:
     source: CrossPlatform/Git/.gitignore
     destinations:
-      *o7: ${home}/.gitignore
+      *default: ${home}/.gitignore
     exclude: []
     attribute: Generic
     commands: []
   conemu.xml:
     source: Windows/AppData/Roaming/ConEmu.xml
     destinations:
-      *o7: ${home}/AppData/Roaming/ConEmu.xml
+      *default: ${home}/AppData/Roaming/ConEmu.xml
     exclude:
-    - *o2
+    - *linux
     attribute: Generic
     commands: []
 directories:
   C4dScripts:
     source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/scripts
     destinations:
-      *o7: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/scripts
+      *default: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/scripts
     exclude:
-    - *o2
+    - *linux
     attribute: Generic
     commands: []
   C4dLayout:
     source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/layout
     destinations:
-      *o7: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/layout
+      *default: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/layout
     exclude:
-    - *o2
+    - *linux
     attribute: Generic
     commands: []
