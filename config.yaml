@@ -232,6 +232,8 @@ packages:
     *linux: networkmanager
   thunar:
     *linux: thunar thunar-volman tumbler thunar-media-tags-plugin thunar-archive-plugin gvfs ristretto
+  termite:
+    *linux: termite
 files:
   PowerShellProfile:
     source: Windows/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
@@ -241,11 +243,7 @@ files:
     exclude: []
     attribute: Generic
     commands:
-    - *ImportPublicGpgKey
-    - *SetExecutionPolicy
     - *InstallPowerShellModules
-    - *InstallChoco
-    - *EnableChocoFeatures
   CodeSettings:
     source: CrossPlatform/Code/User/settings.json
     destinations:
@@ -301,3 +299,9 @@ directories:
     - *linux
     attribute: Generic
     commands: []
+preCommands:
+- *ImportPublicGpgKey
+- *SetExecutionPolicy
+- *InstallChoco
+- *EnableChocoFeatures
+postCommands: []
