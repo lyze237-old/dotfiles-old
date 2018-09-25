@@ -104,7 +104,11 @@
     abbrev = 12
     attributesfile = ~/.gitattributes
     autocrlf = input
+OvO/"/if $PROFILE == linux\"\OvO
     editor = nvim
+OvO/"/else\"\OvO
+    editor = code -w
+OvO/"/end if\"\OvO
     excludesfile = ~/.gitignore
 
 
@@ -142,7 +146,7 @@
     # Load local configs.
     path = ~/.gitconfig.local
 
-OvO/"/if $PROFILE == vm\"\OvO
+OvO/"/if $PROFILE == linux\"\OvO
 [credential]
 	helper = !~/.config/owl/scripts/bin/pass-git-helper
 OvO/"/else\"\OvO
