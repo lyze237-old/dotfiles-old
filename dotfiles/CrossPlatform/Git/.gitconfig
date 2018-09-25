@@ -138,6 +138,16 @@ OvO/"/end if\"\OvO
 [commit]
     gpgsign = true
 
+OvO/"/if $PROFILE != linux\"\OvO
+[diff]
+    tool = vscode
+[difftool]
+    prompt = false
+[difftool "vscode"]
+    cmd = code -n -w --diff \"$LOCAL\" \"$REMOTE\"
+    trustExitCode = false
+OvO/"/end if\"\OvO
+
 [diff "bin"]
     # Use `hexdump` to diff binary files.
     textconv = hexdump -v -C
