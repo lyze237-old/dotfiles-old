@@ -70,12 +70,30 @@ function Write-Copyright
     param($target = (Get-Location).Path)
 
     # Header template
+    $year = Get-Date -Format yyyy;
     $header = "//-----------------------------------------------------------------------
 // <copyright>
-// `"THE BEER-WARE LICENSE`" (Revision 42):
-// <lyze@owl.sh> wrote this file. As long as you retain this notice you
-// can do whatever you want with this stuff. If we meet some day, and you think
-// this stuff is worth it, you can buy me a beer in return Michael Weinberger
+// MIT License
+//
+// Copyright (c) " + $year + " Michael Weinberger lyze@owl.sh
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the `"Software`"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED `"AS IS`", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 // </copyright>
 //-----------------------------------------------------------------------`r`n"
 
@@ -88,10 +106,11 @@ function Write-Copyright
         $contentAsString =  $content | Out-String
         
         <# If content starts with // then the file has a copyright notice already
-        Let's Skip the first 14 lines of the copyright notice template... #>
+        Let's Skip the first 26 lines of the copyright notice template... #>
         if($contentAsString.StartsWith("//"))
         {
-        $content = $content | Select-Object -skip 14
+            $oldCopyrightLength = ($content | Where { $_.StartsWith("//") }).Length + 1
+            $content = $content | Select-Object -skip $oldCopyrightLength
         }
 
         # Splitting the file path and getting the leaf/last part, that is, the file name
@@ -101,14 +120,14 @@ function Write-Copyright
         $fileheader = $header
 
         # Writing the header to the file
-        Set-Content $file $fileheader -encoding UTF8
+        Set-Content $file $fileheader -encoding Oem
 
         # Append the content to the file
         Add-Content $file $content
     }
 
     #Filter files getting only .cs ones and exclude specific file extensions
-    Get-ChildItem $target -Filter *.cs -Exclude *.Designer.cs,T4MVC.cs,*.generated.cs,*.ModelUnbinder.cs -Recurse | % `
+    Get-ChildItem $target -Include @("*.cs", "*.java") -Exclude *.Designer.cs,T4MVC.cs,*.generated.cs,*.ModelUnbinder.cs -Recurse | % `
     {
         <# For each file on the $target directory that matches the filter,
         let's call the Write-Header function defined above passing the file as parameter #>
