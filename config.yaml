@@ -234,6 +234,9 @@ packages:
     *linux: thunar thunar-volman tumbler thunar-media-tags-plugin thunar-archive-plugin gvfs ristretto
   termite:
     *linux: termite
+  bitwarden:
+    *home: bitwarden bitwarden-cli
+    *linux: bitwarden-bin bitwarden-cli
 files:
   PowerShellProfile:
     source: Windows/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
