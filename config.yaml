@@ -18,8 +18,8 @@ options:
     fileName: powershell.exe
     arguments: -Command ${command}
   - profile: *linux
-    fileName: pwsh
-    arguments: -Command ${command}
+    fileName: bash
+    arguments: -c "${command}"
   packageCommand:
   - profile: *work
     fileName: echo
@@ -28,8 +28,8 @@ options:
     fileName: choco
     arguments: install -y ${package}
   - profile: *linux
-    fileName: yay
-    arguments: -S -y ${package}
+    fileName: apt
+    arguments: install -y ${package}
   symlinkCommand:
   - profile: *work
     fileName: New-Item
@@ -43,13 +43,13 @@ options:
   encryptCommand:
   - profile: *work
     fileName: gpg
-    arguments: --armor --output '${destination}' --encrypt --recipient 'your@email.com' '${source}'
+    arguments: --armor --output '${destination}' --encrypt --recipient 'lyze@owl.sh' '${source}'
   - profile: *home
     fileName: gpg
-    arguments: --armor --output '${destination}' --encrypt --recipient 'your@email.com' '${source}'
+    arguments: --armor --output '${destination}' --encrypt --recipient 'lyze@owl.sh' '${source}'
   - profile: *linux
     fileName: gpg
-    arguments: --armor --output '${destination}' --encrypt --recipient 'your@email.com' '${source}'
+    arguments: --armor --output '${destination}' --encrypt --recipient 'lyze@owl.sh' '${source}'
   decryptCommand:
   - profile: *work
     fileName: gpg
@@ -86,11 +86,11 @@ commands:
   name: InstallVsCodeExtensions
   commands:
   - profile: *work
-    fileName: ./dotfiles/Commands/InstallVsCodeExtension.ps1
+    fileName: ./dotfiles/Commands/InstallVsCodeExtensions.ps1
   - profile: *home
-    fileName: ./dotfiles/Commands/InstallVsCodeExtension.ps1
+    fileName: ./dotfiles/Commands/InstallVsCodeExtensions.ps1
   - profile: *linux
-    fileName: ./dotfiles/Commands/InstallVsCodeExtension.ps1
+    fileName: ./dotfiles/Commands/InstallVsCodeExtensions.ps1
 - &ImportPublicGpgKey
   name: ImportPublicGpgKey
   commands:
@@ -129,13 +129,6 @@ commands:
     arguments: feature enable -n allowGlobalConfirmation
     admin: true
   oneShot: true
-- name: NetworkManager
-  commands:
-  - profile: *linux
-    fileName: pwsh
-    arguments: -Command systemctl enable NetworkManager ; systemctl start NetworkManager
-    admin: true
-  oneShot: true
 - name: UpdateHelp
   commands:
   - profile: *work
@@ -144,8 +137,13 @@ commands:
   - profile: *home
     fileName: Update-Help
     admin: true
+  oneShot: true
+- &NvimInit
+  name: NvimInit
+  commands:
   - profile: *linux
-    fileName: sudo pwsh -Command Update-Help
+    fileName: curl
+    arguments: -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   oneShot: true
 computers:
   DESKTOP-OUO4UH5:
@@ -164,11 +162,12 @@ computers:
     executedOneShots:
     - *ImportPublicGpgKey
     - *SetExecutionPolicy
-  vbox:
+  thinkpad:
     profile: *linux
     randoms: {}
     executedOneShots:
     - *ImportPublicGpgKey
+    - *NvimInit
 packages:
   dotnet4.7.1:
     *home: dotnet4.7.1
@@ -176,67 +175,38 @@ packages:
     *home: conemu
   chrome:
     *home: googlechrome
-    *linux: google-chrome
   chatting:
     *home: discord-pbt telegram-desktop
   games:
     *home: leagueoflegends borderlessgaming origin uplay steam
-    *linux: steam
   gimp:
     *home: gimp
-    *linux: gimp
   zip:
     *home: 7zip
-    *linux: unzip
   music:
     *home: vlc spotify -ignore-checksum
-    *linux: vlc spotify playerctl pavucontrol pulsemixer
   cue:
     *home: cue
   screenshot:
     *home: sharex
-    *linux: maim
   teamviewer:
     *home: teamviewer
-    *linux: teamviewer
   wiztree:
     *home: wiztree
   yubikey-manager:
     *home: yubikey-manager
   altdrag:
     *home: altdrag
-  gopass:
-    *home: gopass
-    *linux: gopass
   dotnetcore-sdk:
     *home: dotnetcore-sdk
-    *linux: dotnet-sdk
   editors:
     *home: jetbrainstoolbox vscode unity
-    *linux: jetbrains-toolbox code vim neovim
   java:
     *home: jdk10 gradle
-    *linux: jdk10-openjdk gradle
   git:
     *home: git git-lfs
-    *linux: git git-lfs
-  xorg:
-    *linux: xorg xorg-xinit awesome
-  utils:
-    *linux: xdg-utils xclip xdotool numlockx jq wmctrl parcellite htop rofi arandr redshift-gtk-git
-  fonts:
-    *linux: noto-fonts-cjk noto-fonts-extra ttf-dejavu ttf-twemoji-color
-  themes:
-    *linux: numix-circle-icon-theme-git breeze-obsidian-cursor-theme
-  networking:
-    *linux: networkmanager
-  thunar:
-    *linux: thunar thunar-volman tumbler thunar-media-tags-plugin thunar-archive-plugin gvfs ristretto
-  termite:
-    *linux: termite
   bitwarden:
     *home: bitwarden bitwarden-cli
-    *linux: bitwarden-bin bitwarden-cli
 files:
   PowerShellProfile:
     source: Windows/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
@@ -285,6 +255,21 @@ files:
     - *linux
     attribute: Generic
     commands: []
+  fishconfig:
+    source: Linux/fish/config.fish
+    destinations:
+      *default: ${home}/.config/fish/config.fish
+    exclude: []
+    attribute: Generic
+    commands: []
+  nvim:
+    source: Linux/nvim/init.vim
+    destinations:
+      *default: ${home}/.config/nvim/init.vim
+    exclude: []
+    attribute: Generic
+    commands:
+    - *NvimInit
 directories:
   C4dScripts:
     source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/scripts
@@ -300,6 +285,20 @@ directories:
       *default: ${home}/AppData/Roaming/MAXON/Cinema 4D R19_${random_c4d}/library/layout
     exclude:
     - *linux
+    attribute: Generic
+    commands: []
+  fishfunctions:
+    source: Linux/fish/functions
+    destinations:
+      *default: ${home}/.config/fish/functions
+    exclude: []
+    attribute: Generic
+    commands: []
+  fishprompt:
+    source: Linux/fish/prompt/
+    destinations:
+      *default: ${home}/.config/fish/prompt/
+    exclude: []
     attribute: Generic
     commands: []
 preCommands:
