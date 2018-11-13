@@ -198,7 +198,7 @@ packages:
   altdrag:
     *home: altdrag
   dotnetcore-sdk:
-    *home: dotnetcore-sdk
+    *home: dotnetcore-sdk dotnet.script
   editors:
     *home: jetbrainstoolbox vscode unity
   java:
