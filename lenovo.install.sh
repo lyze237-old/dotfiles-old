@@ -3,19 +3,7 @@
 # ubuntu 18.10 gnome edition
 
 
-sudo snap install spotify telegram-desktop bitwarden bw 
-sudo snap install --classic powershell-preview
-sudo snap alias powershell-preview pwsh
-
-sudo apt install neovim gnome-tweak-tool evolution chrome-gnome-shell git fish scdaemon curl inkscape vlc gimp
-
-sudo apt remove thunderbird
-
-# gruvbox gnome terminals
-cd /tmp
-git clone https://github.com/metalelf0/gnome-terminal-colors.git
-cd gnome-terminal-colors
-./install.sh -s gruvbox-dark
+sudo apt install neovim evolution git fish scdaemon curl inkscape vlc gimp build-essential jq
 
 # fish shell
 chsh -s `which fish`
@@ -42,12 +30,48 @@ libinput-gestures-setup start &
 echo install the following programs manually: 
 echo vs code
 echo jetbrains toolbox
-echo discord
+echo telegram
+echo powershell
 
 # installs dotnet-script
-curl -s https://raw.githubusercontent.com/filipw/dotnet-script/master/install/install.sh | bash
+curl -s https://raw.githubusercontent.com/filipw/dotnet-script/master/install/install.sh | sudo bash
 
-# install vs code extensions
-./dotfiles/Commands/InstallVsCodeExtensions.ps1
+# install discord
+cd /tmp
+wget "https://discordapp.com/api/download?platform=linux&format=deb" -O discord.deb
+sudo dpkg -i discord.deb
+sudo apt -f install
+cd ~
 
-echo install vs code and jetbrains toolbox manually
+# install telegram
+cd ~/.local/share/
+mkdir lyze_telegram
+cd lyze_telegram
+wget "https://telegram.org/dl/desktop/linux" -O "telegram.tar.xz"
+tar xf telegram.tar.xz
+rm telegram.tar.xz
+mv Telegram Telegram_
+mv Telegram_/* .
+rm -r Telegram_
+cd ~
+
+# numix circle
+echo Adding numix circle repo
+sudo add-apt-repository -y ppa:numix/ppa
+sudo apt install numix-icon-theme-circle
+
+# vim-plug
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# toolbox
+cd ~/.local/share/
+mkdir lyze_toolbox
+cd lyze_toolbox
+wget $(curl -s "https://data.services.jetbrains.com//products/releases?code=TBA&latest=true&type=release" | jq -r ".TBA | .[] | .downloads | .linux | .link") -O "toolbox.tar.gz"
+tar xvf toolbox.tar.gz
+rm toolbox.tar.gz
+tbx=$(ls)
+mv $tbx/* .
+rm -r $tbx
+./jetbrains-toolbox

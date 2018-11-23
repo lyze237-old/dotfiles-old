@@ -259,18 +259,18 @@ files:
     source: Linux/fish/config.fish
     destinations:
       *default: ${home}/.config/fish/config.fish
-    exclude: 
-    - &home
-    - &work
+    exclude:
+    - *home
+    - *work
     attribute: Generic
     commands: []
   nvim:
     source: Linux/nvim/init.vim
     destinations:
       *default: ${home}/.config/nvim/init.vim
-    exclude: 
-    - &home
-    - &work
+    exclude:
+    - *home
+    - *work
     attribute: Generic
     commands:
     - *NvimInit
@@ -278,9 +278,9 @@ files:
     source: Linux/libinput/libinput-gestures.conf
     destinations:
       *default: ${home}/.config/libinput-gestures.conf
-    exclude: 
-    - &home
-    - &work
+    exclude:
+    - *home
+    - *work
     attribute: Generic
     commands: []
 directories:
@@ -312,8 +312,26 @@ directories:
     destinations:
       *default: ${home}/.config/fish/prompt/
     exclude:
-    - &home
-    - &work
+    - *work
+    - *home
+    attribute: Generic
+    commands: []
+  themes:
+    source: Linux/themes
+    destinations:
+      *default: ${home}/.themes
+    exclude:
+    - *home
+    - *work
+    attribute: Generic
+    commands: []
+  terminal-colorscheme:
+    source: Linux/xfce4/terminal/colorschemes
+    destinations:
+      *default: ${home}/.config/xfce4/terminal/colorschemes/
+    exclude:
+    - *home
+    - *work
     attribute: Generic
     commands: []
 preCommands:
