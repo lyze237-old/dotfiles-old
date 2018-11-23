@@ -138,15 +138,17 @@ OvO/"/end if\"\OvO
 [commit]
     gpgsign = true
 
-OvO/"/if $PROFILE != linux\"\OvO
 [diff]
     tool = vscode
-[difftool]
-    prompt = false
 [difftool "vscode"]
     cmd = code -n -w --diff \"$LOCAL\" \"$REMOTE\"
     trustExitCode = false
-OvO/"/end if\"\OvO
+
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code -n -w $MERGED
+
 
 [diff "bin"]
     # Use `hexdump` to diff binary files.
