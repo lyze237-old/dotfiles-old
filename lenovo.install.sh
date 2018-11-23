@@ -44,4 +44,10 @@ echo vs code
 echo jetbrains toolbox
 echo discord
 
+# installs dotnet-script
+curl -s https://raw.githubusercontent.com/filipw/dotnet-script/master/install/install.sh | bash
+
+# install vs code extensions
 ./dotfiles/Commands/InstallVsCodeExtensions.ps1
+
+echo install vs code and jetbrains toolbox manually
