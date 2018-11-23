@@ -259,17 +259,30 @@ files:
     source: Linux/fish/config.fish
     destinations:
       *default: ${home}/.config/fish/config.fish
-    exclude: []
+    exclude: 
+    - &home
+    - &work
     attribute: Generic
     commands: []
   nvim:
     source: Linux/nvim/init.vim
     destinations:
       *default: ${home}/.config/nvim/init.vim
-    exclude: []
+    exclude: 
+    - &home
+    - &work
     attribute: Generic
     commands:
     - *NvimInit
+  libinput-gestures:
+    source: Linux/libinput/libinput-gestures.conf
+    destinations:
+      *default: ${home}/.config/libinput-gestures.conf
+    exclude: 
+    - &home
+    - &work
+    attribute: Generic
+    commands: []
 directories:
   C4dScripts:
     source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/scripts
@@ -298,7 +311,9 @@ directories:
     source: Linux/fish/prompt/
     destinations:
       *default: ${home}/.config/fish/prompt/
-    exclude: []
+    exclude:
+    - &home
+    - &work
     attribute: Generic
     commands: []
 preCommands:
