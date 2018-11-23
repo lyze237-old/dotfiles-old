@@ -283,6 +283,15 @@ files:
     - *work
     attribute: Generic
     commands: []
+  ssh-config:
+    source: Linux/ssh/config
+    destinations:
+      *default: ${home}/.ssh/config
+    exclude:
+    - *home
+    - *work
+    attribute: Generic
+    commands: []
 directories:
   C4dScripts:
     source: Windows/AppData/Roaming/MAXON/Cinema 4D R19/library/scripts
@@ -329,6 +338,15 @@ directories:
     source: Linux/xfce4/terminal/colorschemes
     destinations:
       *default: ${home}/.config/xfce4/terminal/colorschemes/
+    exclude:
+    - *home
+    - *work
+    attribute: Generic
+    commands: []
+  fonts:
+    source: Linux/fonts
+    destinations:
+      *default: ${home}/.fonts/
     exclude:
     - *home
     - *work

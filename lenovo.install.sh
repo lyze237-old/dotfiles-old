@@ -1,9 +1,9 @@
 #/usr/bin/env bash
 
-# ubuntu 18.10 gnome edition
+# xubuntu 18.10
 
-
-sudo apt install neovim evolution git fish scdaemon curl inkscape vlc gimp build-essential jq
+sudo snap install spotify
+sudo apt install neovim evolution git fish scdaemon curl inkscape vlc gimp build-essential jq telegram-desktop
 
 # fish shell
 chsh -s `which fish`
@@ -29,8 +29,6 @@ libinput-gestures-setup start &
 
 echo install the following programs manually: 
 echo vs code
-echo jetbrains toolbox
-echo telegram
 echo powershell
 
 # installs dotnet-script
@@ -41,18 +39,6 @@ cd /tmp
 wget "https://discordapp.com/api/download?platform=linux&format=deb" -O discord.deb
 sudo dpkg -i discord.deb
 sudo apt -f install
-cd ~
-
-# install telegram
-cd ~/.local/share/
-mkdir lyze_telegram
-cd lyze_telegram
-wget "https://telegram.org/dl/desktop/linux" -O "telegram.tar.xz"
-tar xf telegram.tar.xz
-rm telegram.tar.xz
-mv Telegram Telegram_
-mv Telegram_/* .
-rm -r Telegram_
 cd ~
 
 # numix circle
@@ -75,3 +61,9 @@ tbx=$(ls)
 mv $tbx/* .
 rm -r $tbx
 ./jetbrains-toolbox
+
+# ssh stuff
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/*
+ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+
