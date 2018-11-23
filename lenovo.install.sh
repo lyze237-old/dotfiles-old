@@ -3,7 +3,7 @@
 # ubuntu 18.10 gnome edition
 
 
-sudo snap install vlc spotify telegram-desktop bitwarden bw 
+sudo snap install spotify telegram-desktop bitwarden bw 
 sudo snap install --classic powershell-preview
 sudo snap alias powershell-preview pwsh
 
