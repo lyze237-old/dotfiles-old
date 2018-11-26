@@ -1,3 +1,5 @@
 Host gitlab.com
 	IdentityFile ~/.ssh/gitlab_rsa
+Host github.com
+	IdentityFile ~/.ssh/gitlab_rsa
 
