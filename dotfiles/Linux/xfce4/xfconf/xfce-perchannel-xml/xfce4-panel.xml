@@ -49,6 +49,9 @@
       <property name="square-icons" type="bool" value="true"/>
       <property name="size-max" type="uint" value="22"/>
       <property name="names-ordered" type="array">
+        <value type="string" value="google-play-music-desktop-player"/>
+        <value type="string" value="networkmanager applet"/>
+        <value type="string" value="telegram-desktop"/>
         <value type="string" value="discord"/>
         <value type="string" value="system-config-printer"/>
         <value type="string" value="update-notifier"/>
@@ -74,6 +77,7 @@
       <property name="square-icons" type="bool" value="true"/>
       <property name="symbolic-icons" type="bool" value="true"/>
       <property name="known-items" type="array">
+        <value type="string" value="TagSpaces1"/>
         <value type="string" value="hp-systray"/>
         <value type="string" value="Telegram Desktop"/>
         <value type="string" value="Toolbox"/>
@@ -86,7 +90,7 @@
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="enable-mpris" type="bool" value="true"/>
       <property name="mixer-command" type="string" value="pavucontrol"/>
-      <property name="mpris-players" type="string" value="parole;spotify"/>
+      <property name="mpris-players" type="string" value="google-play-music-desktop-player;parole;spotify"/>
       <property name="show-notifications" type="bool" value="true"/>
     </property>
     <property name="plugin-11" type="string" value="separator">

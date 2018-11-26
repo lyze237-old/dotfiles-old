@@ -346,8 +346,10 @@ directories:
   xfce4:
     source: Linux/xfce4
     destinations:
-      *default: /home/lyze/.config/xfce4
-    exclude: []
+      *default: ${home}/.config/xfce4
+    exclude:
+    - *home
+    - *work
     attribute: Generic
     commands: []
 preCommands:

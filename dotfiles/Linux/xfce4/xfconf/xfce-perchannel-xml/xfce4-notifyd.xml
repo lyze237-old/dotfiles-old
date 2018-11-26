@@ -7,9 +7,13 @@
   <property name="do-fadeout" type="empty"/>
   <property name="applications" type="empty">
     <property name="known_applications" type="array">
+      <value type="string" value="Discord"/>
+      <value type="string" value="Electron"/>
+      <value type="string" value="google-chrome"/>
       <value type="string" value="hplip"/>
       <value type="string" value="jetbrains-toolbox"/>
       <value type="string" value="nm-applet"/>
+      <value type="string" value="org.gnome.Evolution"/>
       <value type="string" value="org.gnome.Software"/>
       <value type="string" value="Xfce volume control"/>
       <value type="string" value="Xfce4-notifyd settings"/>
