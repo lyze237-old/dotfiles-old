@@ -334,15 +334,6 @@ directories:
     - *work
     attribute: Generic
     commands: []
-  terminal-colorscheme:
-    source: Linux/xfce4/terminal/colorschemes
-    destinations:
-      *default: ${home}/.config/xfce4/terminal/colorschemes/
-    exclude:
-    - *home
-    - *work
-    attribute: Generic
-    commands: []
   fonts:
     source: Linux/fonts
     destinations:
@@ -350,6 +341,13 @@ directories:
     exclude:
     - *home
     - *work
+    attribute: Generic
+    commands: []
+  xfce4:
+    source: Linux/xfce4
+    destinations:
+      *default: /home/lyze/.config/xfce4
+    exclude: []
     attribute: Generic
     commands: []
 preCommands:

@@ -3,7 +3,7 @@
 # xubuntu 18.10
 
 sudo snap install spotify
-sudo apt install neovim evolution git fish scdaemon curl inkscape vlc gimp build-essential jq telegram-desktop
+sudo apt install neovim evolution git fish scdaemon curl inkscape vlc gimp build-essential jq telegram-desktop hplip-gui
 
 # fish shell
 chsh -s `which fish`
@@ -41,6 +41,27 @@ sudo dpkg -i discord.deb
 sudo apt -f install
 cd ~
 
+# install chrome
+cd /tmp
+wget "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" -O chrome.deb
+sudo dpkg -i chrome.deb
+sudo apt -f install
+cd ~
+
+# install vs code
+cd /tmp
+wget "https://go.microsoft.com/fwlink/?LinkID=760868" -O code.deb
+sudo dpkg -i code.deb
+sudo apt -f install
+cd ~
+
+# install pwsh
+cd /tmp
+wget $(curl -s https://api.github.com/repos/PowerShell/PowerShell/releases/latest | jq .assets[].browser_download_url | grep -E "powershell.*\.ubuntu\.18\.04_amd64\.deb"| sed -e 's/^"//' -e 's/"$//')
+sudo dpkg -i powershell*.deb
+sudo apt -f install
+cd ~
+
 # numix circle
 echo Adding numix circle repo
 sudo add-apt-repository -y ppa:numix/ppa
@@ -62,8 +83,18 @@ mv $tbx/* .
 rm -r $tbx
 ./jetbrains-toolbox
 
+# insync
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C
+sudo bash -c "echo deb http://apt.insynchq.com/ubuntu cosmic non-free contrib > /etc/apt/sources.list.d/insync.list"
+sudo apt update
+sudo apt install insync
+
 # ssh stuff
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/*
 ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
 
+# change git location
+cd ~/.dotfiles
+git remote rm origin
+git remote add origin git@gitlab.com:lyze237/dotfiles-public
