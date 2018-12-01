@@ -2,8 +2,11 @@
 
 # xubuntu 18.10
 
-sudo snap install spotify
-sudo apt install neovim evolution git fish scdaemon curl inkscape vlc gimp build-essential jq telegram-desktop hplip-gui
+sudo apt install neovim evolution git fish scdaemon curl inkscape vlc gimp build-essential jq telegram-desktop hplip-gui redshift-gtk
+
+# fix lock screen
+sudo apt remove light-locker
+sudo apt install xscreensaver
 
 # fish shell
 chsh -s `which fish`
