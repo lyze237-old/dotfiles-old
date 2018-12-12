@@ -55,6 +55,13 @@ sudo dpkg -i powershell*.deb
 sudo apt -f install
 cd ~
 
+# install gopass
+cd /tmp
+wget $(curl -s https://api.github.com/repos/gopasspw/gopass/releases/latest | jq .assets[].browser_download_url | grep -E "gopass.*amd64\.deb" | sed -e 's/^"//' -e 's/"$//')
+sudo dpkg -i gopass*.deb
+sudo apt -f install
+cd ~
+
 # numix circle
 echo Adding numix circle repo
 sudo add-apt-repository -y ppa:numix/ppa
@@ -76,12 +83,6 @@ mv $tbx/* .
 rm -r $tbx
 ./jetbrains-toolbox
 
-# insync
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C
-sudo bash -c "echo deb http://apt.insynchq.com/ubuntu cosmic non-free contrib > /etc/apt/sources.list.d/insync.list"
-sudo apt update
-sudo apt install insync
-
 # ssh stuff
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/*
@@ -91,3 +92,9 @@ ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
 cd ~/.dotfiles
 git remote rm origin
 git remote add origin git@gitlab.com:lyze237/dotfiles-public
+
+# tlp
+sudo apt install tlp powertop
+sudo tlp start
+sudo powertop --calibrate
+
