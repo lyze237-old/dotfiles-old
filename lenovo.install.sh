@@ -2,7 +2,8 @@
 
 # xubuntu 18.10
 
-sudo apt install neovim evolution git fish scdaemon curl inkscape vlc gimp build-essential jq telegram-desktop hplip-gui redshift-gtk
+sudo snap install spotify
+sudo apt install neovim evolution git fish scdaemon curl inkscape vlc gimp build-essential jq telegram-desktop hplip-gui redshift-gtk firefox
 
 # fix lock screen
 sudo apt remove light-locker
@@ -30,10 +31,6 @@ sudo make install
 libinput-gestures-setup autostart
 libinput-gestures-setup start &
 
-echo install the following programs manually: 
-echo vs code
-echo powershell
-
 # installs dotnet-script
 curl -s https://raw.githubusercontent.com/filipw/dotnet-script/master/install/install.sh | sudo bash
 
@@ -41,13 +38,6 @@ curl -s https://raw.githubusercontent.com/filipw/dotnet-script/master/install/in
 cd /tmp
 wget "https://discordapp.com/api/download?platform=linux&format=deb" -O discord.deb
 sudo dpkg -i discord.deb
-sudo apt -f install
-cd ~
-
-# install chrome
-cd /tmp
-wget "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" -O chrome.deb
-sudo dpkg -i chrome.deb
 sudo apt -f install
 cd ~
 
