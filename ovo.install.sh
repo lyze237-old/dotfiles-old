@@ -2,8 +2,22 @@
 
 # xubuntu 18.10
 
+# general setup installation
+sudo apt install git curl wget zip unzip
+
+# mouse/keyboard driver install
+
+sudo apt-get install build-essential cmake libudev-dev qt5-default zlib1g-dev libappindicator-dev libpulse-dev libquazip5-dev compton
+
+cd /tmp
+git clone https://github.com/ckb-next/ckb-next.git
+cd ckb-next
+./quickinstall
+
+# general stuff
+
 sudo snap install spotify
-sudo apt install neovim evolution git fish scdaemon curl inkscape vlc gimp build-essential jq telegram-desktop hplip-gui redshift-gtk firefox evolution-rss steam compton
+sudo apt install neovim evolution git fish scdaemon curl inkscape vlc gimp build-essential jq telegram-desktop hplip-gui redshift-gtk firefox evolution-rss steam
 
 # fix lock screen
 sudo apt remove light-locker
@@ -19,17 +33,7 @@ wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-pr
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt install apt-transport-https
 sudo apt update
-sudo apt install dotnet-sdk-2.1
-
-# libinput-gestures
-cd /tmp
-sudo gpasswd -a $USER input
-sudo apt-get install xdotool wmctrl libinput-tools
-git clone https://github.com/bulletmark/libinput-gestures.git
-cd libinput-gestures
-sudo make install
-libinput-gestures-setup autostart
-libinput-gestures-setup start &
+sudo apt install dotnet-sdk-2.2
 
 # installs dotnet-script
 curl -s https://raw.githubusercontent.com/filipw/dotnet-script/master/install/install.sh | sudo bash
@@ -84,22 +88,23 @@ rm -r $tbx
 ./jetbrains-toolbox
 
 # ssh stuff
+mkdir ~/.ssh
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/*
 ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 # change git location
 cd ~/.dotfiles
 git remote rm origin
 git remote add origin git@gitlab.com:lyze237/dotfiles-public
 
-# tlp
-sudo apt install tlp powertop
-sudo tlp start
-sudo powertop --calibrate
-
 # steam mesa drivers
 sudo add-apt-repository ppa:paulo-miguel-dias/pkppa
 sudo apt update
 sudo apt install  mesa-vulkan-drivers mesa-vulkan-drivers:i386
 
+# nextcloud
+sudo add-apt-repository ppa:nextcloud-devs/client
+sudo apt-get update
+sudo apt install nextcloud-client

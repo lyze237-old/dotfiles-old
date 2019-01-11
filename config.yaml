@@ -168,6 +168,12 @@ computers:
     executedOneShots:
     - *ImportPublicGpgKey
     - *NvimInit
+  ovo:
+    profile: *linux
+    randoms: {}
+    executedOneShots:
+    - *ImportPublicGpgKey
+    - *NvimInit
 packages:
   dotnet4.7.1:
     *home: dotnet4.7.1
