@@ -3,7 +3,7 @@
 # xubuntu 18.10
 
 sudo snap install spotify
-sudo apt install neovim evolution git fish scdaemon curl inkscape vlc gimp build-essential jq telegram-desktop hplip-gui redshift-gtk firefox
+sudo apt install neovim evolution git fish scdaemon curl inkscape vlc gimp build-essential jq telegram-desktop hplip-gui redshift-gtk firefox evolution-rss
 
 # fix lock screen
 sudo apt remove light-locker
@@ -97,4 +97,9 @@ git remote add origin git@gitlab.com:lyze237/dotfiles-public
 sudo apt install tlp powertop
 sudo tlp start
 sudo powertop --calibrate
+
+# steam mesa drivers
+sudo add-apt-repository ppa:paulo-miguel-dias/pkppa
+sudo apt update
+sudo apt install  mesa-vulkan-drivers mesa-vulkan-drivers:i386
 
