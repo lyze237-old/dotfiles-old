@@ -14,14 +14,14 @@ $tempDirectory = "HootManager_temp"
 if (-not (Test-Path $directory)) {
     Write-Host "Downloading latest version"
     Write-Host "Checking job page"
-    $website = Invoke-WebRequest "https://gitlab.com/lyze237-dotnet/hootmanager/-/jobs/"
+    $website = Invoke-WebRequest "https://gitlab.com/lyze237/dotnet-hootmanager/-/jobs/"
     $elements = $website.AllElements | Where Class -eq "build-link" | Select -ExpandProperty innerText
     Write-Host "Iterating through jobs"
     foreach ($element in $elements) {
         $element = $element.Substring(1);
 
         Write-Host "Fetching page for $element"
-        $jobWebsite = Invoke-WebRequest "https://gitlab.com/lyze237-dotnet/hootmanager/-/jobs/$element/"
+        $jobWebsite = Invoke-WebRequest "https://gitlab.com/lyze237/dotnet-hootmanager/-/jobs/$element/"
         $amount = ($jobWebsite.AllElements | Where Class -eq "btn btn-sm btn-default" | Measure-Object).Count
         if ($amount -gt 0) {
             Write-Host "Found job with artifacts $element"
@@ -31,7 +31,7 @@ if (-not (Test-Path $directory)) {
         }
     }
 
-    $url = "https://gitlab.com/lyze237-dotnet/hootmanager/-/jobs/$element/artifacts/raw/result/"
+    $url = "https://gitlab.com/lyze237/dotnet-hootmanager/-/jobs/$element/artifacts/raw/result/"
     if (Get-Command dotnet -errorAction SilentlyContinue) {
         $url = $url + "HootManager-no_runtime.tar";
     } elseif ($IsWindows -or ((Test-Path env:os) -and $env:os -eq "Windows_NT")) {
