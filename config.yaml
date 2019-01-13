@@ -358,6 +358,15 @@ directories:
     - *work
     attribute: Generic
     commands: []
+  linuxscripts:
+    source: Linux/scripts
+    destinations:
+      *default: ${home}/Documents/scripts
+    exclude:
+      - *home
+      - *work
+    attribute: Generic
+    commands: []
 preCommands:
 - *ImportPublicGpgKey
 - *SetExecutionPolicy
