@@ -17,7 +17,7 @@ cd ckb-next
 # general stuff
 
 sudo snap install spotify
-sudo apt install neovim evolution git fish scdaemon curl inkscape vlc gimp build-essential jq telegram-desktop hplip-gui redshift-gtk firefox evolution-rss steam
+sudo apt install neovim evolution git fish scdaemon curl inkscape vlc gimp build-essential jq telegram-desktop hplip-gui redshift-gtk firefox evolution-rss steam steam-devices
 
 # fix lock screen
 sudo apt remove light-locker
