@@ -349,10 +349,10 @@ directories:
     - *work
     attribute: Generic
     commands: []
-  xfce4:
-    source: Linux/xfce4
+  xfce4terminal:
+    source: Linux/xfce4/terminal
     destinations:
-      *default: ${home}/.config/xfce4
+      *default: ${home}/.config/xfce4/terminal
     exclude:
     - *home
     - *work
