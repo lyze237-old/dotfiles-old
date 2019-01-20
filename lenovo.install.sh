@@ -103,3 +103,7 @@ sudo add-apt-repository ppa:paulo-miguel-dias/pkppa
 sudo apt update
 sudo apt install  mesa-vulkan-drivers mesa-vulkan-drivers:i386
 
+# emoji
+sudo apt-add-repository ppa:eosrei/fonts
+sudo apt-get update
+sudo apt-get install fonts-twemoji-svginot
