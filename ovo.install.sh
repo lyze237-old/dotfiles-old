@@ -108,3 +108,8 @@ sudo apt install  mesa-vulkan-drivers mesa-vulkan-drivers:i386
 sudo add-apt-repository ppa:nextcloud-devs/client
 sudo apt-get update
 sudo apt install nextcloud-client
+
+# emoji
+sudo apt-add-repository ppa:eosrei/fonts
+sudo apt-get update
+sudo apt-get install fonts-twemoji-svginot
