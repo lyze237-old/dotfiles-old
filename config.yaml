@@ -378,7 +378,7 @@ directories:
     source: Linux/icons/Lyze
     destinations:
       *default: ${home}/.icons/Lyze
-    exclude: 
+    exclude:
     - *home
     - *work
     attribute: Generic
