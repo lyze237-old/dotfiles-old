@@ -9,5 +9,27 @@
         "suppressShowKeyBindingsNotice": true
     },
     "editor.lineNumbers": "relative",
-    "java.errors.incompleteClasspath.severity": "ignore"
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["u"],
+      "after": [],
+      "commands": [
+          {
+              "command": "undo",
+              "args": []
+          }
+      ]
+    },
+    {
+      "before": ["<C-r>"],
+      "after": [],
+      "commands": [
+          {
+              "command": "redo",
+              "args": []
+          }
+      ]
+    }
+  ]
 }
